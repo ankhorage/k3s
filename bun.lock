@@ -5,8 +5,8 @@
     "": {
       "name": "@ankhorage/k3s",
       "dependencies": {
-        "@ankhorage/contracts": "^16.0.0",
-        "@ankhorage/kubernetes": "^0.3.0",
+        "@ankhorage/contracts": "^17.0.0",
+        "@ankhorage/kubernetes": "^0.5.0",
       },
       "devDependencies": {
         "@ankhorage/devtools": "^1.14.6",
@@ -20,11 +20,11 @@
   "packages": {
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.1", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-PqGeC16IkWzTA3Qig3T1p6CE6oN6JC1fv83cJ8SdohY5vlNE1YqJAZsLkzCy59ylJOwgPITA98TRH3jIVnlGBw=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@16.0.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.0", "@ankhorage/utility": "^0.8.0", "expo-splash-screen": "~57.0.9" } }, "sha512-PbLrvDyJ1NyWrJNJDlzZzdDxQVH/M4WbVP3mkqHhue2KBA39RmvDGPArbsIHEye+F5F2ob32CKgsSCA6XYuPaQ=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@17.0.0", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.0", "@ankhorage/utility": "^0.8.0", "expo-splash-screen": "~57.0.9" } }, "sha512-bI0o+sKoNixpxCf0YOMBc8dvXxHFkGrBprUGTiBQE7CyIX/8txdCgLMvtUai/Ggl0HGyNMxHbDMDqcaCeF57WQ=="],
 
     "@ankhorage/devtools": ["@ankhorage/devtools@1.14.6", "", { "dependencies": { "@ankhorage/utility": "^0.5.1", "@changesets/cli": "^3.0.2", "@eslint/compat": "^2.1.1", "@eslint/js": "^10.0.1", "eslint": "^10.10.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.6", "eslint-plugin-react": "^7.37.5", "eslint-plugin-react-hooks": "^7.0.0", "eslint-plugin-react-native": "^5.0.0", "eslint-plugin-security": "^4.0.1", "eslint-plugin-simple-import-sort": "^14.0.0", "eslint-plugin-unused-imports": "^4.4.1", "knip": "^6.34.0", "prettier": "^3.9.6", "typescript-eslint": "^8.69.0" }, "bin": { "ankhorage-changeset": "dist/cli/bin/changeset.js", "ankhorage-eslint": "dist/cli/bin/eslint.js", "ankhorage-knip": "dist/cli/bin/knip.js", "ankhorage-prettier": "dist/cli/bin/prettier.js" } }, "sha512-O3g8Ep2ccSY3c972dbrnJn6mCLUQCZdA8pCggw/ja+MzlbNRVc+KrpyZSNMxgHOaoVTkG32lpVmJUPX4uULCBg=="],
 
-    "@ankhorage/kubernetes": ["@ankhorage/kubernetes@0.3.0", "", { "dependencies": { "@ankhorage/contracts": "^16.0.0" } }, "sha512-RkQTfz1M+ouz63aH8Mo59vEBAzIEWy8to4DBc1lp3OK1/8d6Mm4j1+Ika3qUATxVORKaZqrzofppixgTS1Jefg=="],
+    "@ankhorage/kubernetes": ["@ankhorage/kubernetes@0.5.0", "", { "dependencies": { "@ankhorage/contracts": "^17.0.0" } }, "sha512-xFozi7gh/SoQYTpGjSjZSmuIFEdtMT57iXihuMgZdtXYj325554x15ksQdTNSjJI7zW44FT8223J+JFIswvS6Q=="],
 
     "@ankhorage/paradox": ["@ankhorage/paradox@0.1.26", "", { "dependencies": { "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-6m+GVcA58LOgiZp9PZZERvd2vL9vus+Ab1fM+ZehS+b6MuSH/RAUvGZ5ifOpgVuCczLAMzi5mxKNrRlShm0zHw=="],
 

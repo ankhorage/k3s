@@ -1,10 +1,10 @@
 import type { InfraExecutionContext, InfraResult } from '@ankhorage/contracts/infra';
 
 import type {
-  K3sAdapterOptions,
   K3sClusterSpec,
   K3sDesiredState,
   K3sNodeAccess,
+  K3sRuntimeDependencies,
 } from '../../../../types/k3sRuntime';
 import { getK3sClusterSpec } from '../../utils/getK3sClusterSpec';
 import { resolveK3sNodeAccessAsync } from '../../utils/resolveK3sNodeAccessAsync';
@@ -16,7 +16,7 @@ interface PreparedK3sRuntime {
 
 /** Resolve transient access and validate k3s control-plane prerequisites. */
 export async function prepareK3sRuntimeAsync(
-  options: K3sAdapterOptions,
+  options: K3sRuntimeDependencies,
   context: InfraExecutionContext,
   desired: K3sDesiredState,
 ): Promise<InfraResult<PreparedK3sRuntime>> {

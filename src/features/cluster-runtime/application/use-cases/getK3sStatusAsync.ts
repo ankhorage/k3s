@@ -5,25 +5,25 @@ import type {
 } from '@ankhorage/contracts/infra';
 import { createKubernetesDriver } from '@ankhorage/kubernetes';
 
-import type { K3sAdapterOptions } from '../../../../types/k3sRuntime';
+import type { K3sDesiredState, K3sRuntimeDependencies } from '../../../../types/k3sRuntime';
 import { createK3sClusterOwner, createK3sNodeOwner } from '../../utils/createK3sOwners';
-import { getK3sClusterIdentity } from '../../utils/getK3sClusterIdentity';
+import { prepareK3sRuntimeAsync } from './prepareK3sRuntimeAsync';
 
 /*** Aggregate k3s node, cluster and owned Kubernetes workload status. */
 export async function getK3sStatusAsync(
-  options: K3sAdapterOptions,
+  options: K3sRuntimeDependencies,
   context: InfraExecutionContext,
+  desired: K3sDesiredState,
 ): Promise<InfraResult<readonly InfraResourceStatus[]>> {
-  const identity = getK3sClusterIdentity(context);
-  if (!identity.ok) return identity;
-  const observed = await options.controlPlane.inspectAsync(identity.value, context.signal);
+  const prepared = await prepareK3sRuntimeAsync(options, context, desired);
+  if (!prepared.ok) return prepared;
+  const { spec, access } = prepared.value;
+  const observed = await options.controlPlane.inspectAsync(spec, access, context.signal);
   if (!observed.ok) return observed;
-  const nodes = observed.value.nodes.map((node) =>
-    createK3sNodeOwner(context, identity.value, node.id),
-  );
-  const cluster = createK3sClusterOwner(context, identity.value, nodes);
+  const nodes = observed.value.nodes.map((node) => createK3sNodeOwner(context, spec, node.id));
+  const cluster = createK3sClusterOwner(context, spec, nodes);
   const nodeStatuses: InfraResourceStatus[] = observed.value.nodes.map((node) => {
-    const owner = createK3sNodeOwner(context, identity.value, node.id);
+    const owner = createK3sNodeOwner(context, spec, node.id);
     return {
       owner: owner.identity,
       state: node.state,
@@ -41,8 +41,8 @@ export async function getK3sStatusAsync(
   const workloads = await createKubernetesDriver({ api: observed.value.api }).statusAsync({
     context,
     ownerAdapter: 'k3s',
-    workloads: [],
-    availableOutputs: [],
+    workloads: desired.workloads,
+    availableOutputs: desired.availableOutputs,
   });
   if (!workloads.ok) return workloads;
   return {

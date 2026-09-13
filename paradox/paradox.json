@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.1.0",
+      "value": "v0.2.0",
       "color": "cb3837"
     },
     {
@@ -71,7 +71,7 @@
     {
       "path": "examples/basic-usage/index.ts",
       "isEntrypoint": false,
-      "dependencies": ["dist/index.d.ts"],
+      "dependencies": [],
       "exports": []
     },
     {
@@ -81,11 +81,79 @@
       "exports": ["infraAdapterDescriptor"]
     },
     {
+      "path": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "src/types/k3sRuntime.ts"
+      ],
+      "exports": ["createK3sCliControlPlane"]
+    },
+    {
+      "path": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/types/k3sRuntime.ts"],
+      "exports": ["createK3sNodeCommandExecutor"]
+    },
+    {
+      "path": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "src/types/k3sRuntime.ts"
+      ],
+      "exports": [
+        "inspectK3sCliAsync",
+        "isK3sInstalledAsync",
+        "validateK3sCliAsync",
+        "versionMatchesAsync"
+      ]
+    },
+    {
+      "path": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/types/k3sRuntime.ts"],
+      "exports": [
+        "assertNonNegativeInteger",
+        "assertPositiveInteger",
+        "commandFailed",
+        "delayAsync",
+        "invalidAccess",
+        "invalidLocalTopology",
+        "K3S_BINARY",
+        "K3S_INSTALL_URL",
+        "K3sCliContext",
+        "loadOfficialInstallScriptAsync",
+        "readinessTimeout",
+        "runNodeCommandAsync",
+        "success"
+      ]
+    },
+    {
+      "path": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "src/types/k3sRuntime.ts"
+      ],
+      "exports": [
+        "destroyK3sCliAsync",
+        "ensureK3sCliAsync",
+        "loadK3sImagesAsync",
+        "suspendK3sCliAsync",
+        "waitForK3sCliAsync"
+      ]
+    },
+    {
       "path": "src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts",
         "src/features/cluster-runtime/utils/createK3sOwners.ts",
-        "src/features/cluster-runtime/utils/getK3sClusterIdentity.ts",
         "src/types/k3sRuntime.ts"
       ],
       "exports": ["destroyK3sRuntimeAsync"]
@@ -105,8 +173,8 @@
       "path": "src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts",
         "src/features/cluster-runtime/utils/createK3sOwners.ts",
-        "src/features/cluster-runtime/utils/getK3sClusterIdentity.ts",
         "src/types/k3sRuntime.ts"
       ],
       "exports": ["getK3sStatusAsync"]
@@ -136,8 +204,8 @@
       "path": "src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts",
         "src/features/cluster-runtime/utils/createK3sOwners.ts",
-        "src/features/cluster-runtime/utils/getK3sClusterIdentity.ts",
         "src/types/k3sRuntime.ts"
       ],
       "exports": ["suspendK3sRuntimeAsync"]
@@ -156,6 +224,7 @@
       "isEntrypoint": false,
       "dependencies": [
         "src/constants/infra.ts",
+        "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
         "src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts",
         "src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts",
         "src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts",
@@ -205,14 +274,20 @@
       "dependencies": [],
       "exports": [
         "createInfraAdapter",
+        "createK3sCliControlPlane",
+        "createK3sNodeCommandExecutor",
         "infraAdapterDescriptor",
         "K3sAdapterOptions",
+        "K3sCliControlPlaneOptions",
         "K3sClusterIdentity",
         "K3sClusterObservation",
         "K3sClusterSpec",
         "K3sControlPlane",
         "K3sDesiredState",
         "K3sNodeAccess",
+        "K3sNodeCommandExecutor",
+        "K3sNodeCommandRequest",
+        "K3sNodeCommandResult",
         "K3sNodeObservation",
         "K3sNodeSpec",
         "K3sTopology"
@@ -222,6 +297,15 @@
       "path": "src/infraAdapter.test.ts",
       "isEntrypoint": false,
       "dependencies": ["src/index.ts", "src/runtimeFixtures.test.ts"],
+      "exports": []
+    },
+    {
+      "path": "src/k3sCliControlPlane.test.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "src/index.ts"
+      ],
       "exports": []
     },
     {
@@ -242,14 +326,19 @@
       "dependencies": [],
       "exports": [
         "K3sAdapterOptions",
+        "K3sCliControlPlaneOptions",
         "K3sClusterIdentity",
         "K3sClusterObservation",
         "K3sClusterSpec",
         "K3sControlPlane",
         "K3sDesiredState",
         "K3sNodeAccess",
+        "K3sNodeCommandExecutor",
+        "K3sNodeCommandRequest",
+        "K3sNodeCommandResult",
         "K3sNodeObservation",
         "K3sNodeSpec",
+        "K3sRuntimeDependencies",
         "K3sTopology"
       ]
     }
@@ -257,30 +346,87 @@
   "exports": [
     {
       "name": "createInfraAdapter",
-      "description": "Create the canonical k3s runtime adapter entrypoint.\n\nThe caller supplies a k3s-specific control-plane boundary. Standard workload projection and\nreconciliation are delegated to the published Kubernetes driver.",
+      "description": "Create the canonical k3s runtime adapter entrypoint.\n\nThe default composition bootstraps local Linux or host-key-pinned SSH nodes through the official\nk3s installer. Standard workload projection and reconciliation are delegated to the published\nKubernetes driver. Tests and specialized hosts may inject the control-plane boundary.",
       "isReadme": true,
       "examples": [],
       "kind": "function",
       "modulePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
       "sourceLocation": {
         "filePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
-        "line": 20,
+        "line": 22,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
       "relatedSymbols": ["K3sAdapterOptions"],
       "signatures": [
         {
-          "label": "(options: K3sAdapterOptions) => InfraRuntimeAdapter<\"k3s\">",
+          "label": "(options?: K3sAdapterOptions) => InfraRuntimeAdapter<\"k3s\">",
           "parameters": [
             {
               "name": "options",
               "type": "K3sAdapterOptions",
-              "required": true,
+              "required": false,
               "description": null
             }
           ],
           "returnType": "InfraRuntimeAdapter<\"k3s\">",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "createK3sCliControlPlane",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "line": 19,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["K3sCliControlPlaneOptions", "K3sControlPlane"],
+      "signatures": [
+        {
+          "label": "(options?: K3sCliControlPlaneOptions) => K3sControlPlane",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "K3sCliControlPlaneOptions",
+              "required": false,
+              "description": null
+            }
+          ],
+          "returnType": "K3sControlPlane",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "createK3sNodeCommandExecutor",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 14,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["K3sNodeCommandExecutor"],
+      "signatures": [
+        {
+          "label": "() => K3sNodeCommandExecutor",
+          "parameters": [],
+          "returnType": "K3sNodeCommandExecutor",
           "returnDescription": null
         }
       ],
@@ -318,14 +464,68 @@
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["K3sControlPlane"],
+      "relatedSymbols": ["K3sCliControlPlaneOptions", "K3sControlPlane"],
       "signatures": [],
       "members": [
         {
+          "name": "cli",
+          "kind": "property",
+          "type": "K3sCliControlPlaneOptions | undefined",
+          "required": false,
+          "description": null
+        },
+        {
           "name": "controlPlane",
           "kind": "property",
-          "type": "K3sControlPlane",
-          "required": true,
+          "type": "K3sControlPlane | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "K3sCliControlPlaneOptions",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types/k3sRuntime.ts",
+      "sourceLocation": {
+        "filePath": "src/types/k3sRuntime.ts",
+        "line": 38,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["K3sNodeCommandExecutor"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "executor",
+          "kind": "property",
+          "type": "K3sNodeCommandExecutor | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "installScriptLoader",
+          "kind": "property",
+          "type": "((signal?: AbortSignal) => Promise<string>) | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "pollIntervalMs",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "readinessTimeoutSeconds",
+          "kind": "property",
+          "type": "number | undefined",
+          "required": false,
           "description": null
         }
       ],
@@ -340,7 +540,7 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 14,
+        "line": 45,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -380,7 +580,7 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 62,
+        "line": 93,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -434,7 +634,7 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 31,
+        "line": 62,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -495,22 +695,17 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 71,
+        "line": 102,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
-      "relatedSymbols": [
-        "K3sClusterIdentity",
-        "K3sClusterObservation",
-        "K3sClusterSpec",
-        "K3sNodeAccess"
-      ],
+      "relatedSymbols": ["K3sClusterObservation", "K3sClusterSpec", "K3sNodeAccess"],
       "signatures": [],
       "members": [
         {
           "name": "destroyAsync",
           "kind": "method",
-          "type": "(identity: K3sClusterIdentity, signal?: AbortSignal) => Promise<InfraResult<null>>",
+          "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?: AbortSignal) => Promise<InfraResult<null>>",
           "required": true,
           "description": null
         },
@@ -524,21 +719,21 @@
         {
           "name": "inspectAsync",
           "kind": "method",
-          "type": "(identity: K3sClusterIdentity, signal?: AbortSignal) => Promise<InfraResult<K3sClusterObservation>>",
+          "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?: AbortSignal) => Promise<InfraResult<K3sClusterObservation>>",
           "required": true,
           "description": null
         },
         {
           "name": "loadImagesAsync",
           "kind": "method",
-          "type": "(identity: K3sClusterIdentity, images: readonly string[], signal?: AbortSignal) => Promise<InfraResult<null>>",
+          "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], images: readonly string[], signal?: AbortSignal) => Promise<InfraResult<null>>",
           "required": true,
           "description": null
         },
         {
           "name": "suspendAsync",
           "kind": "method",
-          "type": "(identity: K3sClusterIdentity, signal?: AbortSignal) => Promise<InfraResult<null>>",
+          "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?: AbortSignal) => Promise<InfraResult<null>>",
           "required": true,
           "description": null
         },
@@ -552,7 +747,7 @@
         {
           "name": "waitUntilReadyAsync",
           "kind": "method",
-          "type": "(identity: K3sClusterIdentity, signal?: AbortSignal) => Promise<InfraResult<K3sClusterObservation>>",
+          "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?: AbortSignal) => Promise<InfraResult<K3sClusterObservation>>",
           "required": true,
           "description": null
         }
@@ -568,7 +763,7 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 99,
+        "line": 141,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -586,13 +781,133 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 38,
+        "line": 69,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "K3sNodeCommandExecutor",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types/k3sRuntime.ts",
+      "sourceLocation": {
+        "filePath": "src/types/k3sRuntime.ts",
+        "line": 34,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["K3sNodeAccess", "K3sNodeCommandRequest", "K3sNodeCommandResult"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "runAsync",
+          "kind": "method",
+          "type": "(access: K3sNodeAccess, request: K3sNodeCommandRequest) => Promise<K3sNodeCommandResult>",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "K3sNodeCommandRequest",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types/k3sRuntime.ts",
+      "sourceLocation": {
+        "filePath": "src/types/k3sRuntime.ts",
+        "line": 19,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "arguments",
+          "kind": "property",
+          "type": "readonly string[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "environment",
+          "kind": "property",
+          "type": "Readonly<Record<string, string>> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "executable",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "signal",
+          "kind": "property",
+          "type": "AbortSignal | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "stdin",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "K3sNodeCommandResult",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/types/k3sRuntime.ts",
+      "sourceLocation": {
+        "filePath": "src/types/k3sRuntime.ts",
+        "line": 27,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "exitCode",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "stderr",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "stdout",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
       "structuredRows": []
     },
     {
@@ -604,7 +919,7 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 55,
+        "line": 86,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -651,7 +966,7 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 25,
+        "line": 56,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -691,7 +1006,7 @@
       "modulePath": "src/types/k3sRuntime.ts",
       "sourceLocation": {
         "filePath": "src/types/k3sRuntime.ts",
-        "line": 20,
+        "line": 51,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -719,6 +1034,393 @@
   "components": [],
   "sourceFunctions": [
     {
+      "name": "createK3sCliControlPlane",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "line": 19,
+        "column": 1
+      }
+    },
+    {
+      "name": "createK3sNodeCommandExecutor",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 14,
+        "column": 1
+      }
+    },
+    {
+      "name": "runSshAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 23,
+        "column": 1
+      }
+    },
+    {
+      "name": "scanAndVerifyHostAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 36,
+        "column": 1
+      }
+    },
+    {
+      "name": "runVerifiedSshAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 63,
+        "column": 1
+      }
+    },
+    {
+      "name": "createRemoteCommand",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 102,
+        "column": 1
+      }
+    },
+    {
+      "name": "createRemoteStdin",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 117,
+        "column": 1
+      }
+    },
+    {
+      "name": "getRemoteEnvironment",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 123,
+        "column": 1
+      }
+    },
+    {
+      "name": "quote",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 136,
+        "column": 1
+      }
+    },
+    {
+      "name": "runSubprocessAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "line": 140,
+        "column": 1
+      }
+    },
+    {
+      "name": "validateK3sCliAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 20,
+        "column": 1
+      }
+    },
+    {
+      "name": "inspectK3sCliAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 44,
+        "column": 1
+      }
+    },
+    {
+      "name": "inspectNodeAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 69,
+        "column": 1
+      }
+    },
+    {
+      "name": "isK3sInstalledAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 98,
+        "column": 1
+      }
+    },
+    {
+      "name": "versionMatchesAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 113,
+        "column": 1
+      }
+    },
+    {
+      "name": "createK3sKubernetesApi",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 128,
+        "column": 1
+      }
+    },
+    {
+      "name": "aggregateState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 141,
+        "column": 1
+      }
+    },
+    {
+      "name": "isInactiveService",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 148,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasExactAccess",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "line": 152,
+        "column": 1
+      }
+    },
+    {
+      "name": "runNodeCommandAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 15,
+        "column": 1
+      }
+    },
+    {
+      "name": "loadOfficialInstallScriptAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 34,
+        "column": 1
+      }
+    },
+    {
+      "name": "delayAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 40,
+        "column": 1
+      }
+    },
+    {
+      "name": "success",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 57,
+        "column": 1
+      }
+    },
+    {
+      "name": "invalidAccess",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 61,
+        "column": 1
+      }
+    },
+    {
+      "name": "invalidLocalTopology",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 68,
+        "column": 1
+      }
+    },
+    {
+      "name": "readinessTimeout",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 72,
+        "column": 1
+      }
+    },
+    {
+      "name": "commandFailed",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 76,
+        "column": 1
+      }
+    },
+    {
+      "name": "failure",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 80,
+        "column": 1
+      }
+    },
+    {
+      "name": "assertNonNegativeInteger",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 84,
+        "column": 1
+      }
+    },
+    {
+      "name": "assertPositiveInteger",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "line": 89,
+        "column": 1
+      }
+    },
+    {
+      "name": "ensureK3sCliAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 20,
+        "column": 1
+      }
+    },
+    {
+      "name": "waitForK3sCliAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 55,
+        "column": 1
+      }
+    },
+    {
+      "name": "loadK3sImagesAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 74,
+        "column": 1
+      }
+    },
+    {
+      "name": "suspendK3sCliAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 96,
+        "column": 1
+      }
+    },
+    {
+      "name": "destroyK3sCliAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 115,
+        "column": 1
+      }
+    },
+    {
+      "name": "resumeK3sNodesAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 135,
+        "column": 1
+      }
+    },
+    {
+      "name": "installOrStartNodeAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 154,
+        "column": 1
+      }
+    },
+    {
+      "name": "inspectK3sApiAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 183,
+        "column": 1
+      }
+    },
+    {
+      "name": "readJoinTokenAsync",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 199,
+        "column": 1
+      }
+    },
+    {
+      "name": "canResume",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 215,
+        "column": 1
+      }
+    },
+    {
+      "name": "createInstallExec",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 221,
+        "column": 1
+      }
+    },
+    {
+      "name": "getNodeHost",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 231,
+        "column": 1
+      }
+    },
+    {
+      "name": "getService",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "line": 235,
+        "column": 1
+      }
+    },
+    {
       "name": "destroyK3sRuntimeAsync",
       "description": "Remove workloads before k3s, retaining the cluster whenever persistent data survives.",
       "sourceLocation": {
@@ -732,7 +1434,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts",
-        "line": 50,
+        "line": 55,
         "column": 1
       }
     },
@@ -741,7 +1443,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts",
-        "line": 63,
+        "line": 68,
         "column": 1
       }
     },
@@ -750,7 +1452,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts",
-        "line": 72,
+        "line": 77,
         "column": 1
       }
     },
@@ -882,10 +1584,10 @@
     },
     {
       "name": "createInfraAdapter",
-      "description": "Create the canonical k3s runtime adapter entrypoint.\n\nThe caller supplies a k3s-specific control-plane boundary. Standard workload projection and\nreconciliation are delegated to the published Kubernetes driver.",
+      "description": "Create the canonical k3s runtime adapter entrypoint.\n\nThe default composition bootstraps local Linux or host-key-pinned SSH nodes through the official\nk3s installer. Standard workload projection and reconciliation are delegated to the published\nKubernetes driver. Tests and specialized hosts may inject the control-plane boundary.",
       "sourceLocation": {
         "filePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
-        "line": 20,
+        "line": 22,
         "column": 1
       }
     },
@@ -971,11 +1673,38 @@
       }
     },
     {
+      "name": "createLocalFixture",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/k3sCliControlPlane.test.ts",
+        "line": 115,
+        "column": 1
+      }
+    },
+    {
+      "name": "createRemoteFixture",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/k3sCliControlPlane.test.ts",
+        "line": 138,
+        "column": 1
+      }
+    },
+    {
+      "name": "result",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/k3sCliControlPlane.test.ts",
+        "line": 180,
+        "column": 1
+      }
+    },
+    {
       "name": "createLocalDesired",
       "description": null,
       "sourceLocation": {
         "filePath": "src/k3sRuntime.test.ts",
-        "line": 89,
+        "line": 93,
         "column": 1
       }
     },
@@ -984,7 +1713,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/k3sRuntime.test.ts",
-        "line": 98,
+        "line": 102,
         "column": 1
       }
     },
@@ -993,7 +1722,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/k3sRuntime.test.ts",
-        "line": 117,
+        "line": 121,
         "column": 1
       }
     },
@@ -1002,7 +1731,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/k3sRuntime.test.ts",
-        "line": 129,
+        "line": 133,
         "column": 1
       }
     },
@@ -1011,7 +1740,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/k3sRuntime.test.ts",
-        "line": 153,
+        "line": 157,
         "column": 1
       }
     },
@@ -1049,8 +1778,24 @@
       "name": "createInfraAdapter",
       "sourcePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
       "symbolName": "createInfraAdapter",
-      "description": "Create the canonical k3s runtime adapter entrypoint.\n\nThe caller supplies a k3s-specific control-plane boundary. Standard workload projection and\nreconciliation are delegated to the published Kubernetes driver.",
+      "description": "Create the canonical k3s runtime adapter entrypoint.\n\nThe default composition bootstraps local Linux or host-key-pinned SSH nodes through the official\nk3s installer. Standard workload projection and reconciliation are delegated to the published\nKubernetes driver. Tests and specialized hosts may inject the control-plane boundary.",
       "isReadme": true
+    },
+    {
+      "kind": "export",
+      "name": "createK3sCliControlPlane",
+      "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+      "symbolName": "createK3sCliControlPlane",
+      "description": null,
+      "isReadme": false
+    },
+    {
+      "kind": "export",
+      "name": "createK3sNodeCommandExecutor",
+      "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+      "symbolName": "createK3sNodeCommandExecutor",
+      "description": null,
+      "isReadme": false
     }
   ],
   "graphs": {
@@ -1058,6 +1803,16 @@
       {
         "fromPath": "src/index.ts",
         "toPath": "src/constants/infra.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
         "sourcePath": "src/index.ts"
       },
       {
@@ -1081,6 +1836,16 @@
         "sourcePath": "src/infraAdapter.test.ts"
       },
       {
+        "fromPath": "src/k3sCliControlPlane.test.ts",
+        "toPath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromPath": "src/k3sCliControlPlane.test.ts",
+        "toPath": "src/index.ts",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
         "fromPath": "src/k3sRuntime.test.ts",
         "toPath": "src/index.ts",
         "sourcePath": "src/k3sRuntime.test.ts"
@@ -1096,9 +1861,64 @@
         "sourcePath": "src/runtimeFixtures.test.ts"
       },
       {
-        "fromPath": "examples/basic-usage/index.ts",
-        "toPath": "dist/index.d.ts",
-        "sourcePath": "examples/basic-usage/index.ts"
+        "fromPath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "toPath": "src/types/k3sRuntime.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "toPath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "toPath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "toPath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+        "toPath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "toPath": "src/types/k3sRuntime.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "toPath": "src/types/k3sRuntime.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "toPath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "toPath": "src/types/k3sRuntime.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "toPath": "src/types/k3sRuntime.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "toPath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts",
+        "toPath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
       },
       {
         "fromPath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
@@ -1108,6 +1928,11 @@
       {
         "fromPath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
         "toPath": "src/types/k3sRuntime.ts",
+        "sourcePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts"
+      },
+      {
+        "fromPath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
+        "toPath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
         "sourcePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts"
       },
       {
@@ -1182,7 +2007,7 @@
       },
       {
         "fromPath": "src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts",
-        "toPath": "src/features/cluster-runtime/utils/getK3sClusterIdentity.ts",
+        "toPath": "src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts",
         "sourcePath": "src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts"
       },
       {
@@ -1217,7 +2042,7 @@
       },
       {
         "fromPath": "src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts",
-        "toPath": "src/features/cluster-runtime/utils/getK3sClusterIdentity.ts",
+        "toPath": "src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts",
         "sourcePath": "src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts"
       },
       {
@@ -1267,7 +2092,7 @@
       },
       {
         "fromPath": "src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts",
-        "toPath": "src/features/cluster-runtime/utils/getK3sClusterIdentity.ts",
+        "toPath": "src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts",
         "sourcePath": "src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts"
       },
       {
@@ -1311,6 +2136,102 @@
         "toSymbol": "createInfraAdapter",
         "callExpression": "createInfraAdapter",
         "sourcePath": "src/infraAdapter.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "it",
+        "callExpression": "it",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "createK3sCliControlPlane",
+        "callExpression": "createK3sCliControlPlane",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "createLocalFixture",
+        "callExpression": "createLocalFixture",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "validateAsync",
+        "callExpression": "controlPlane.validateAsync",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "inspectAsync",
+        "callExpression": "controlPlane.inspectAsync",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "ensureAsync",
+        "callExpression": "controlPlane.ensureAsync",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "waitUntilReadyAsync",
+        "callExpression": "controlPlane.waitUntilReadyAsync",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "loadImagesAsync",
+        "callExpression": "controlPlane.loadImagesAsync",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "suspendAsync",
+        "callExpression": "controlPlane.suspendAsync",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "destroyAsync",
+        "callExpression": "controlPlane.destroyAsync",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "src/k3sCliControlPlane.test.ts",
+        "toSymbol": "createRemoteFixture",
+        "callExpression": "createRemoteFixture",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "runAsync",
+        "toSymbol": "handleSystemd",
+        "callExpression": "this.handleSystemd",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "runAsync",
+        "toSymbol": "handleCommand",
+        "callExpression": "this.handleCommand",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "handleSystemd",
+        "toSymbol": "result",
+        "callExpression": "result",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
+      },
+      {
+        "fromSymbol": "handleCommand",
+        "toSymbol": "result",
+        "callExpression": "result",
+        "sourcePath": "src/k3sCliControlPlane.test.ts"
       },
       {
         "fromSymbol": "src/k3sRuntime.test.ts",
@@ -1445,6 +2366,570 @@
         "sourcePath": "examples/basic-usage/index.ts"
       },
       {
+        "fromSymbol": "createK3sCliControlPlane",
+        "toSymbol": "createK3sNodeCommandExecutor",
+        "callExpression": "createK3sNodeCommandExecutor",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "createK3sCliControlPlane",
+        "toSymbol": "assertNonNegativeInteger",
+        "callExpression": "assertNonNegativeInteger",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "createK3sCliControlPlane",
+        "toSymbol": "assertPositiveInteger",
+        "callExpression": "assertPositiveInteger",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "validateAsync",
+        "toSymbol": "validateK3sCliAsync",
+        "callExpression": "validateK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "inspectAsync",
+        "toSymbol": "inspectK3sCliAsync",
+        "callExpression": "inspectK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "ensureAsync",
+        "toSymbol": "ensureK3sCliAsync",
+        "callExpression": "ensureK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "waitUntilReadyAsync",
+        "toSymbol": "waitForK3sCliAsync",
+        "callExpression": "waitForK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "loadImagesAsync",
+        "toSymbol": "loadK3sImagesAsync",
+        "callExpression": "loadK3sImagesAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "suspendAsync",
+        "toSymbol": "suspendK3sCliAsync",
+        "callExpression": "suspendK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "destroyAsync",
+        "toSymbol": "destroyK3sCliAsync",
+        "callExpression": "destroyK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "runAsync",
+        "toSymbol": "runSubprocessAsync",
+        "callExpression": "runSubprocessAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runAsync",
+        "toSymbol": "runSshAsync",
+        "callExpression": "runSshAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runSshAsync",
+        "toSymbol": "scanAndVerifyHostAsync",
+        "callExpression": "scanAndVerifyHostAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runSshAsync",
+        "toSymbol": "runVerifiedSshAsync",
+        "callExpression": "runVerifiedSshAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "scanAndVerifyHostAsync",
+        "toSymbol": "runSubprocessAsync",
+        "callExpression": "runSubprocessAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runVerifiedSshAsync",
+        "toSymbol": "mkdtemp",
+        "callExpression": "mkdtemp",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runVerifiedSshAsync",
+        "toSymbol": "join",
+        "callExpression": "join",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runVerifiedSshAsync",
+        "toSymbol": "tmpdir",
+        "callExpression": "tmpdir",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runVerifiedSshAsync",
+        "toSymbol": "writeFile",
+        "callExpression": "writeFile",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runVerifiedSshAsync",
+        "toSymbol": "runSubprocessAsync",
+        "callExpression": "runSubprocessAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runVerifiedSshAsync",
+        "toSymbol": "createRemoteCommand",
+        "callExpression": "createRemoteCommand",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runVerifiedSshAsync",
+        "toSymbol": "createRemoteStdin",
+        "callExpression": "createRemoteStdin",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "runVerifiedSshAsync",
+        "toSymbol": "rm",
+        "callExpression": "rm",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "createRemoteCommand",
+        "toSymbol": "getRemoteEnvironment",
+        "callExpression": "getRemoteEnvironment",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "createRemoteCommand",
+        "toSymbol": "quote",
+        "callExpression": "quote",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "createRemoteStdin",
+        "toSymbol": "getRemoteEnvironment",
+        "callExpression": "getRemoteEnvironment",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "toSymbol": "spawn",
+        "callExpression": "spawn",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+        "toSymbol": "resolve",
+        "callExpression": "resolve",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
+        "fromSymbol": "validateK3sCliAsync",
+        "toSymbol": "hasExactAccess",
+        "callExpression": "hasExactAccess",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "validateK3sCliAsync",
+        "toSymbol": "invalidAccess",
+        "callExpression": "invalidAccess",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "validateK3sCliAsync",
+        "toSymbol": "invalidLocalTopology",
+        "callExpression": "invalidLocalTopology",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "validateK3sCliAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "context.executor.runAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "validateK3sCliAsync",
+        "toSymbol": "commandFailed",
+        "callExpression": "commandFailed",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "validateK3sCliAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectK3sCliAsync",
+        "toSymbol": "hasExactAccess",
+        "callExpression": "hasExactAccess",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectK3sCliAsync",
+        "toSymbol": "invalidAccess",
+        "callExpression": "invalidAccess",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectK3sCliAsync",
+        "toSymbol": "inspectNodeAsync",
+        "callExpression": "inspectNodeAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectK3sCliAsync",
+        "toSymbol": "aggregateState",
+        "callExpression": "aggregateState",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectK3sCliAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectK3sCliAsync",
+        "toSymbol": "createK3sKubernetesApi",
+        "callExpression": "createK3sKubernetesApi",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectNodeAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "context.executor.runAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectNodeAsync",
+        "toSymbol": "isInactiveService",
+        "callExpression": "isInactiveService",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectNodeAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectNodeAsync",
+        "toSymbol": "versionMatchesAsync",
+        "callExpression": "versionMatchesAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectNodeAsync",
+        "toSymbol": "isK3sInstalledAsync",
+        "callExpression": "isK3sInstalledAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "isK3sInstalledAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "context.executor.runAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "isK3sInstalledAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "isK3sInstalledAsync",
+        "toSymbol": "commandFailed",
+        "callExpression": "commandFailed",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "versionMatchesAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "context.executor.runAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "runAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "executor.runAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "createK3sKubernetesApi",
+        "toSymbol": "createKubectlKubernetesApi",
+        "callExpression": "createKubectlKubernetesApi",
+        "sourcePath": "src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "runNodeCommandAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "context.executor.runAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromSymbol": "runNodeCommandAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromSymbol": "runNodeCommandAsync",
+        "toSymbol": "commandFailed",
+        "callExpression": "commandFailed",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromSymbol": "src/features/cluster-runtime/adapters/k3sCliSupport.ts",
+        "toSymbol": "reject",
+        "callExpression": "reject",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromSymbol": "invalidAccess",
+        "toSymbol": "failure",
+        "callExpression": "failure",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromSymbol": "invalidLocalTopology",
+        "toSymbol": "failure",
+        "callExpression": "failure",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromSymbol": "readinessTimeout",
+        "toSymbol": "failure",
+        "callExpression": "failure",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromSymbol": "commandFailed",
+        "toSymbol": "failure",
+        "callExpression": "failure",
+        "sourcePath": "src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "inspectK3sCliAsync",
+        "callExpression": "inspectK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "canResume",
+        "callExpression": "canResume",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "resumeK3sNodesAsync",
+        "callExpression": "resumeK3sNodesAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "installScriptLoader",
+        "callExpression": "context.installScriptLoader",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "commandFailed",
+        "callExpression": "commandFailed",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "invalidAccess",
+        "callExpression": "invalidAccess",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "installOrStartNodeAsync",
+        "callExpression": "installOrStartNodeAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "readJoinTokenAsync",
+        "callExpression": "readJoinTokenAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "ensureK3sCliAsync",
+        "toSymbol": "getNodeHost",
+        "callExpression": "getNodeHost",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "waitForK3sCliAsync",
+        "toSymbol": "inspectK3sCliAsync",
+        "callExpression": "inspectK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "waitForK3sCliAsync",
+        "toSymbol": "inspectK3sApiAsync",
+        "callExpression": "inspectK3sApiAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "waitForK3sCliAsync",
+        "toSymbol": "readinessTimeout",
+        "callExpression": "readinessTimeout",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "waitForK3sCliAsync",
+        "toSymbol": "delayAsync",
+        "callExpression": "delayAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "loadK3sImagesAsync",
+        "toSymbol": "runNodeCommandAsync",
+        "callExpression": "runNodeCommandAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "loadK3sImagesAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "suspendK3sCliAsync",
+        "toSymbol": "runNodeCommandAsync",
+        "callExpression": "runNodeCommandAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "suspendK3sCliAsync",
+        "toSymbol": "getService",
+        "callExpression": "getService",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "suspendK3sCliAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "destroyK3sCliAsync",
+        "toSymbol": "isK3sInstalledAsync",
+        "callExpression": "isK3sInstalledAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "destroyK3sCliAsync",
+        "toSymbol": "runNodeCommandAsync",
+        "callExpression": "runNodeCommandAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "destroyK3sCliAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "resumeK3sNodesAsync",
+        "toSymbol": "runNodeCommandAsync",
+        "callExpression": "runNodeCommandAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "resumeK3sNodesAsync",
+        "toSymbol": "getService",
+        "callExpression": "getService",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "resumeK3sNodesAsync",
+        "toSymbol": "inspectK3sCliAsync",
+        "callExpression": "inspectK3sCliAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "installOrStartNodeAsync",
+        "toSymbol": "isK3sInstalledAsync",
+        "callExpression": "isK3sInstalledAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "installOrStartNodeAsync",
+        "toSymbol": "versionMatchesAsync",
+        "callExpression": "versionMatchesAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "installOrStartNodeAsync",
+        "toSymbol": "runNodeCommandAsync",
+        "callExpression": "runNodeCommandAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "installOrStartNodeAsync",
+        "toSymbol": "getService",
+        "callExpression": "getService",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "installOrStartNodeAsync",
+        "toSymbol": "createInstallExec",
+        "callExpression": "createInstallExec",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectK3sApiAsync",
+        "toSymbol": "invalidAccess",
+        "callExpression": "invalidAccess",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "inspectK3sApiAsync",
+        "toSymbol": "runNodeCommandAsync",
+        "callExpression": "runNodeCommandAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "readJoinTokenAsync",
+        "toSymbol": "runAsync",
+        "callExpression": "context.executor.runAsync",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "readJoinTokenAsync",
+        "toSymbol": "success",
+        "callExpression": "success",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "readJoinTokenAsync",
+        "toSymbol": "commandFailed",
+        "callExpression": "commandFailed",
+        "sourcePath": "src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+      },
+      {
+        "fromSymbol": "createInfraAdapter",
+        "toSymbol": "createK3sCliControlPlane",
+        "callExpression": "createK3sCliControlPlane",
+        "sourcePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts"
+      },
+      {
         "fromSymbol": "validateAsync",
         "toSymbol": "validateK3sRuntimeAsync",
         "callExpression": "validateK3sRuntimeAsync",
@@ -1518,8 +3003,8 @@
       },
       {
         "fromSymbol": "destroyK3sRuntimeAsync",
-        "toSymbol": "getK3sClusterIdentity",
-        "callExpression": "getK3sClusterIdentity",
+        "toSymbol": "prepareK3sRuntimeAsync",
+        "callExpression": "prepareK3sRuntimeAsync",
         "sourcePath": "src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts"
       },
       {
@@ -1620,8 +3105,8 @@
       },
       {
         "fromSymbol": "getK3sStatusAsync",
-        "toSymbol": "getK3sClusterIdentity",
-        "callExpression": "getK3sClusterIdentity",
+        "toSymbol": "prepareK3sRuntimeAsync",
+        "callExpression": "prepareK3sRuntimeAsync",
         "sourcePath": "src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts"
       },
       {
@@ -1746,8 +3231,8 @@
       },
       {
         "fromSymbol": "suspendK3sRuntimeAsync",
-        "toSymbol": "getK3sClusterIdentity",
-        "callExpression": "getK3sClusterIdentity",
+        "toSymbol": "prepareK3sRuntimeAsync",
+        "callExpression": "prepareK3sRuntimeAsync",
         "sourcePath": "src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts"
       },
       {
@@ -1783,6 +3268,21 @@
     ],
     "typeReferences": [
       {
+        "fromSymbol": "createK3sCliControlPlane",
+        "toType": "K3sCliControlPlaneOptions",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "createK3sCliControlPlane",
+        "toType": "K3sControlPlane",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+      },
+      {
+        "fromSymbol": "createK3sNodeCommandExecutor",
+        "toType": "K3sNodeCommandExecutor",
+        "sourcePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+      },
+      {
         "fromSymbol": "createInfraAdapter",
         "toType": "InfraRuntimeAdapter",
         "sourcePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts"
@@ -1794,7 +3294,22 @@
       },
       {
         "fromSymbol": "K3sAdapterOptions",
+        "toType": "K3sCliControlPlaneOptions",
+        "sourcePath": "src/types/k3sRuntime.ts"
+      },
+      {
+        "fromSymbol": "K3sAdapterOptions",
         "toType": "K3sControlPlane",
+        "sourcePath": "src/types/k3sRuntime.ts"
+      },
+      {
+        "fromSymbol": "K3sCliControlPlaneOptions",
+        "toType": "AbortSignal",
+        "sourcePath": "src/types/k3sRuntime.ts"
+      },
+      {
+        "fromSymbol": "K3sCliControlPlaneOptions",
+        "toType": "K3sNodeCommandExecutor",
         "sourcePath": "src/types/k3sRuntime.ts"
       },
       {
@@ -1829,11 +3344,6 @@
       },
       {
         "fromSymbol": "K3sControlPlane",
-        "toType": "K3sClusterIdentity",
-        "sourcePath": "src/types/k3sRuntime.ts"
-      },
-      {
-        "fromSymbol": "K3sControlPlane",
         "toType": "K3sClusterObservation",
         "sourcePath": "src/types/k3sRuntime.ts"
       },
@@ -1845,6 +3355,31 @@
       {
         "fromSymbol": "K3sControlPlane",
         "toType": "K3sNodeAccess",
+        "sourcePath": "src/types/k3sRuntime.ts"
+      },
+      {
+        "fromSymbol": "K3sNodeCommandExecutor",
+        "toType": "K3sNodeAccess",
+        "sourcePath": "src/types/k3sRuntime.ts"
+      },
+      {
+        "fromSymbol": "K3sNodeCommandExecutor",
+        "toType": "K3sNodeCommandRequest",
+        "sourcePath": "src/types/k3sRuntime.ts"
+      },
+      {
+        "fromSymbol": "K3sNodeCommandExecutor",
+        "toType": "K3sNodeCommandResult",
+        "sourcePath": "src/types/k3sRuntime.ts"
+      },
+      {
+        "fromSymbol": "K3sNodeCommandRequest",
+        "toType": "AbortSignal",
+        "sourcePath": "src/types/k3sRuntime.ts"
+      },
+      {
+        "fromSymbol": "K3sNodeCommandRequest",
+        "toType": "Readonly",
         "sourcePath": "src/types/k3sRuntime.ts"
       },
       {

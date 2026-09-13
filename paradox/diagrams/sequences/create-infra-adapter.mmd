@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant participant_assertNonNegativeInteger as assertNonNegativeInteger
+  participant participant_assertPositiveInteger as assertPositiveInteger
+  participant participant_createInfraAdapter as createInfraAdapter
+  participant participant_createK3sCliControlPlane as createK3sCliControlPlane
+  participant participant_createK3sNodeCommandExecutor as createK3sNodeCommandExecutor
+  participant_createInfraAdapter->>participant_createK3sCliControlPlane: createK3sCliControlPlane()
+  participant_createK3sCliControlPlane->>participant_createK3sNodeCommandExecutor: createK3sNodeCommandExecutor()
+  participant_createK3sNodeCommandExecutor-->>participant_createK3sCliControlPlane: return
+  participant_createK3sCliControlPlane->>participant_assertNonNegativeInteger: assertNonNegativeInteger()
+  participant_assertNonNegativeInteger-->>participant_createK3sCliControlPlane: return
+  participant_createK3sCliControlPlane->>participant_assertPositiveInteger: assertPositiveInteger()
+  participant_assertPositiveInteger-->>participant_createK3sCliControlPlane: return
+  participant_createK3sCliControlPlane-->>participant_createInfraAdapter: return

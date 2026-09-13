@@ -1,6 +1,11 @@
 graph LR
   module_examples_basic_usage_index_ts["examples/basic-usage/index.ts"]
   module_src_constants_infra_ts["src/constants/infra.ts"]
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts["src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"]
+  module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts["src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"]
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts["src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"]
+  module_src_features_cluster_runtime_adapters_k3sCliSupport_ts["src/features/cluster-runtime/adapters/k3sCliSupport.ts"]
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts["src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"]
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts["src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts"]
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts["src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts"]
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts["src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts"]
@@ -16,17 +21,29 @@ graph LR
   module_src_features_cluster_runtime_utils_resolveK3sNodeAccessAsync_ts["src/features/cluster-runtime/utils/resolveK3sNodeAccessAsync.ts"]
   module_src_index_ts["src/index.ts"]
   module_src_infraAdapter_test_ts["src/infraAdapter.test.ts"]
+  module_src_k3sCliControlPlane_test_ts["src/k3sCliControlPlane.test.ts"]
   module_src_k3sRuntime_test_ts["src/k3sRuntime.test.ts"]
   module_src_runtimeFixtures_test_ts["src/runtimeFixtures.test.ts"]
   module_src_types_k3sRuntime_ts["src/types/k3sRuntime.ts"]
   export_createInfraAdapter["createInfraAdapter"]
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --> export_createInfraAdapter
   export_createInfraAdapter -.-> export_K3sAdapterOptions
+  export_createK3sCliControlPlane["createK3sCliControlPlane"]
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --> export_createK3sCliControlPlane
+  export_createK3sCliControlPlane -.-> export_K3sCliControlPlaneOptions
+  export_createK3sCliControlPlane -.-> export_K3sControlPlane
+  export_createK3sNodeCommandExecutor["createK3sNodeCommandExecutor"]
+  module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --> export_createK3sNodeCommandExecutor
+  export_createK3sNodeCommandExecutor -.-> export_K3sNodeCommandExecutor
   export_infraAdapterDescriptor["infraAdapterDescriptor"]
   module_src_constants_infra_ts --> export_infraAdapterDescriptor
   export_K3sAdapterOptions["K3sAdapterOptions"]
   module_src_types_k3sRuntime_ts --> export_K3sAdapterOptions
+  export_K3sAdapterOptions -.-> export_K3sCliControlPlaneOptions
   export_K3sAdapterOptions -.-> export_K3sControlPlane
+  export_K3sCliControlPlaneOptions["K3sCliControlPlaneOptions"]
+  module_src_types_k3sRuntime_ts --> export_K3sCliControlPlaneOptions
+  export_K3sCliControlPlaneOptions -.-> export_K3sNodeCommandExecutor
   export_K3sClusterIdentity["K3sClusterIdentity"]
   module_src_types_k3sRuntime_ts --> export_K3sClusterIdentity
   export_K3sClusterObservation["K3sClusterObservation"]
@@ -38,7 +55,6 @@ graph LR
   export_K3sClusterSpec -.-> export_K3sTopology
   export_K3sControlPlane["K3sControlPlane"]
   module_src_types_k3sRuntime_ts --> export_K3sControlPlane
-  export_K3sControlPlane -.-> export_K3sClusterIdentity
   export_K3sControlPlane -.-> export_K3sClusterObservation
   export_K3sControlPlane -.-> export_K3sClusterSpec
   export_K3sControlPlane -.-> export_K3sNodeAccess
@@ -46,6 +62,15 @@ graph LR
   module_src_types_k3sRuntime_ts --> export_K3sDesiredState
   export_K3sNodeAccess["K3sNodeAccess"]
   module_src_types_k3sRuntime_ts --> export_K3sNodeAccess
+  export_K3sNodeCommandExecutor["K3sNodeCommandExecutor"]
+  module_src_types_k3sRuntime_ts --> export_K3sNodeCommandExecutor
+  export_K3sNodeCommandExecutor -.-> export_K3sNodeAccess
+  export_K3sNodeCommandExecutor -.-> export_K3sNodeCommandRequest
+  export_K3sNodeCommandExecutor -.-> export_K3sNodeCommandResult
+  export_K3sNodeCommandRequest["K3sNodeCommandRequest"]
+  module_src_types_k3sRuntime_ts --> export_K3sNodeCommandRequest
+  export_K3sNodeCommandResult["K3sNodeCommandResult"]
+  module_src_types_k3sRuntime_ts --> export_K3sNodeCommandResult
   export_K3sNodeObservation["K3sNodeObservation"]
   module_src_types_k3sRuntime_ts --> export_K3sNodeObservation
   export_K3sNodeSpec["K3sNodeSpec"]

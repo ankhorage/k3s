@@ -8,7 +8,38 @@ import type {
 import type { KubernetesApi } from '@ankhorage/kubernetes';
 
 export interface K3sAdapterOptions {
+  readonly controlPlane?: K3sControlPlane;
+  readonly cli?: K3sCliControlPlaneOptions;
+}
+
+export interface K3sRuntimeDependencies {
   readonly controlPlane: K3sControlPlane;
+}
+
+export interface K3sNodeCommandRequest {
+  readonly executable: string;
+  readonly arguments: readonly string[];
+  readonly stdin?: string;
+  readonly environment?: Readonly<Record<string, string>>;
+  readonly signal?: AbortSignal;
+}
+
+export interface K3sNodeCommandResult {
+  readonly exitCode: number;
+  readonly stdout: string;
+  readonly stderr: string;
+}
+
+/** Execute one argv-safe command on a resolved local or SSH node. */
+export interface K3sNodeCommandExecutor {
+  runAsync(access: K3sNodeAccess, request: K3sNodeCommandRequest): Promise<K3sNodeCommandResult>;
+}
+
+export interface K3sCliControlPlaneOptions {
+  readonly executor?: K3sNodeCommandExecutor;
+  readonly installScriptLoader?: (signal?: AbortSignal) => Promise<string>;
+  readonly pollIntervalMs?: number;
+  readonly readinessTimeoutSeconds?: number;
 }
 
 export interface K3sClusterIdentity {
@@ -75,7 +106,8 @@ export interface K3sControlPlane {
     signal?: AbortSignal,
   ): Promise<InfraResult<null>>;
   inspectAsync(
-    identity: K3sClusterIdentity,
+    spec: K3sClusterSpec,
+    access: readonly K3sNodeAccess[],
     signal?: AbortSignal,
   ): Promise<InfraResult<K3sClusterObservation>>;
   ensureAsync(
@@ -84,16 +116,26 @@ export interface K3sControlPlane {
     signal?: AbortSignal,
   ): Promise<InfraResult<K3sClusterObservation>>;
   waitUntilReadyAsync(
-    identity: K3sClusterIdentity,
+    spec: K3sClusterSpec,
+    access: readonly K3sNodeAccess[],
     signal?: AbortSignal,
   ): Promise<InfraResult<K3sClusterObservation>>;
   loadImagesAsync(
-    identity: K3sClusterIdentity,
+    spec: K3sClusterSpec,
+    access: readonly K3sNodeAccess[],
     images: readonly string[],
     signal?: AbortSignal,
   ): Promise<InfraResult<null>>;
-  suspendAsync(identity: K3sClusterIdentity, signal?: AbortSignal): Promise<InfraResult<null>>;
-  destroyAsync(identity: K3sClusterIdentity, signal?: AbortSignal): Promise<InfraResult<null>>;
+  suspendAsync(
+    spec: K3sClusterSpec,
+    access: readonly K3sNodeAccess[],
+    signal?: AbortSignal,
+  ): Promise<InfraResult<null>>;
+  destroyAsync(
+    spec: K3sClusterSpec,
+    access: readonly K3sNodeAccess[],
+    signal?: AbortSignal,
+  ): Promise<InfraResult<null>>;
 }
 
 export type K3sDesiredState = InfraRuntimeDesiredState<'k3s'>;

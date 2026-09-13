@@ -7,10 +7,10 @@ import type {
 import { createKubernetesDriver, projectKubernetesResourcesAsync } from '@ankhorage/kubernetes';
 
 import type {
-  K3sAdapterOptions,
   K3sClusterObservation,
   K3sDesiredState,
   K3sNodeObservation,
+  K3sRuntimeDependencies,
 } from '../../../../types/k3sRuntime';
 import { createK3sClusterOwner, createK3sNodeOwner } from '../../utils/createK3sOwners';
 import { createKubernetesDriverRequest } from '../../utils/createKubernetesDriverRequest';
@@ -18,14 +18,14 @@ import { prepareK3sRuntimeAsync } from './prepareK3sRuntimeAsync';
 
 /*** Plan k3s nodes, cluster and standard Kubernetes resources without mutation. */
 export async function planK3sRuntimeAsync(
-  options: K3sAdapterOptions,
+  options: K3sRuntimeDependencies,
   context: InfraExecutionContext,
   desired: K3sDesiredState,
 ): Promise<InfraResult<readonly InfraPlanAction[]>> {
   const prepared = await prepareK3sRuntimeAsync(options, context, desired);
   if (!prepared.ok) return prepared;
-  const { spec } = prepared.value;
-  const observed = await options.controlPlane.inspectAsync(spec, context.signal);
+  const { spec, access } = prepared.value;
+  const observed = await options.controlPlane.inspectAsync(spec, access, context.signal);
   if (!observed.ok) return observed;
   const nodeOwners = spec.nodes.map(({ id }) => createK3sNodeOwner(context, spec, id));
   const clusterOwner = createK3sClusterOwner(context, spec, nodeOwners);

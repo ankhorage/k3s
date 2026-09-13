@@ -4,28 +4,28 @@ import type {
   InfraResult,
 } from '@ankhorage/contracts/infra';
 
-import type { K3sAdapterOptions } from '../../../../types/k3sRuntime';
+import type { K3sDesiredState, K3sRuntimeDependencies } from '../../../../types/k3sRuntime';
 import { createK3sClusterOwner, createK3sNodeOwner } from '../../utils/createK3sOwners';
-import { getK3sClusterIdentity } from '../../utils/getK3sClusterIdentity';
+import { prepareK3sRuntimeAsync } from './prepareK3sRuntimeAsync';
 
 /*** Stop k3s nodes while preserving the cluster and persistent workload data. */
 export async function suspendK3sRuntimeAsync(
-  options: K3sAdapterOptions,
+  options: K3sRuntimeDependencies,
   context: InfraExecutionContext,
+  desired: K3sDesiredState,
 ): Promise<InfraResult<InfraReconcileResult>> {
-  const identity = getK3sClusterIdentity(context);
-  if (!identity.ok) return identity;
-  const observed = await options.controlPlane.inspectAsync(identity.value, context.signal);
+  const prepared = await prepareK3sRuntimeAsync(options, context, desired);
+  if (!prepared.ok) return prepared;
+  const { spec, access } = prepared.value;
+  const observed = await options.controlPlane.inspectAsync(spec, access, context.signal);
   if (!observed.ok) return observed;
-  const suspended = await options.controlPlane.suspendAsync(identity.value, context.signal);
+  const suspended = await options.controlPlane.suspendAsync(spec, access, context.signal);
   if (!suspended.ok) return suspended;
-  const nodes = observed.value.nodes.map(({ id }) =>
-    createK3sNodeOwner(context, identity.value, id),
-  );
+  const nodes = observed.value.nodes.map(({ id }) => createK3sNodeOwner(context, spec, id));
   return {
     ok: true,
     value: {
-      resources: [...nodes, createK3sClusterOwner(context, identity.value, nodes)],
+      resources: [...nodes, createK3sClusterOwner(context, spec, nodes)],
       outputs: [],
     },
     diagnostics: [],

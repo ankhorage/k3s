@@ -1,30 +1,87 @@
 [
   {
     "name": "createInfraAdapter",
-    "description": "Create the canonical k3s runtime adapter entrypoint.\n\nThe caller supplies a k3s-specific control-plane boundary. Standard workload projection and\nreconciliation are delegated to the published Kubernetes driver.",
+    "description": "Create the canonical k3s runtime adapter entrypoint.\n\nThe default composition bootstraps local Linux or host-key-pinned SSH nodes through the official\nk3s installer. Standard workload projection and reconciliation are delegated to the published\nKubernetes driver. Tests and specialized hosts may inject the control-plane boundary.",
     "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
     "sourceLocation": {
       "filePath": "src/features/cluster-runtime/composition/createInfraAdapter.ts",
-      "line": 20,
+      "line": 22,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": ["K3sAdapterOptions"],
     "signatures": [
       {
-        "label": "(options: K3sAdapterOptions) => InfraRuntimeAdapter<\"k3s\">",
+        "label": "(options?: K3sAdapterOptions) => InfraRuntimeAdapter<\"k3s\">",
         "parameters": [
           {
             "name": "options",
             "type": "K3sAdapterOptions",
-            "required": true,
+            "required": false,
             "description": null
           }
         ],
         "returnType": "InfraRuntimeAdapter<\"k3s\">",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createK3sCliControlPlane",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+    "sourceLocation": {
+      "filePath": "src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts",
+      "line": 19,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["K3sCliControlPlaneOptions", "K3sControlPlane"],
+    "signatures": [
+      {
+        "label": "(options?: K3sCliControlPlaneOptions) => K3sControlPlane",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "K3sCliControlPlaneOptions",
+            "required": false,
+            "description": null
+          }
+        ],
+        "returnType": "K3sControlPlane",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createK3sNodeCommandExecutor",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+    "sourceLocation": {
+      "filePath": "src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts",
+      "line": 14,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["K3sNodeCommandExecutor"],
+    "signatures": [
+      {
+        "label": "() => K3sNodeCommandExecutor",
+        "parameters": [],
+        "returnType": "K3sNodeCommandExecutor",
         "returnDescription": null
       }
     ],
@@ -62,14 +119,68 @@
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["K3sControlPlane"],
+    "relatedSymbols": ["K3sCliControlPlaneOptions", "K3sControlPlane"],
     "signatures": [],
     "members": [
       {
+        "name": "cli",
+        "kind": "property",
+        "type": "K3sCliControlPlaneOptions | undefined",
+        "required": false,
+        "description": null
+      },
+      {
         "name": "controlPlane",
         "kind": "property",
-        "type": "K3sControlPlane",
-        "required": true,
+        "type": "K3sControlPlane | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "K3sCliControlPlaneOptions",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/k3sRuntime.ts",
+    "sourceLocation": {
+      "filePath": "src/types/k3sRuntime.ts",
+      "line": 38,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["K3sNodeCommandExecutor"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "executor",
+        "kind": "property",
+        "type": "K3sNodeCommandExecutor | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "installScriptLoader",
+        "kind": "property",
+        "type": "((signal?: AbortSignal) => Promise<string>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "pollIntervalMs",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "readinessTimeoutSeconds",
+        "kind": "property",
+        "type": "number | undefined",
+        "required": false,
         "description": null
       }
     ],
@@ -84,7 +195,7 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 14,
+      "line": 45,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -124,7 +235,7 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 62,
+      "line": 93,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -178,7 +289,7 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 31,
+      "line": 62,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -239,22 +350,17 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 71,
+      "line": 102,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
-    "relatedSymbols": [
-      "K3sClusterIdentity",
-      "K3sClusterObservation",
-      "K3sClusterSpec",
-      "K3sNodeAccess"
-    ],
+    "relatedSymbols": ["K3sClusterObservation", "K3sClusterSpec", "K3sNodeAccess"],
     "signatures": [],
     "members": [
       {
         "name": "destroyAsync",
         "kind": "method",
-        "type": "(identity: K3sClusterIdentity, signal?: AbortSignal) => Promise<InfraResult<null>>",
+        "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?: AbortSignal) => Promise<InfraResult<null>>",
         "required": true,
         "description": null
       },
@@ -268,21 +374,21 @@
       {
         "name": "inspectAsync",
         "kind": "method",
-        "type": "(identity: K3sClusterIdentity, signal?: AbortSignal) => Promise<InfraResult<K3sClusterObservation>>",
+        "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?: AbortSignal) => Promise<InfraResult<K3sClusterObservation>>",
         "required": true,
         "description": null
       },
       {
         "name": "loadImagesAsync",
         "kind": "method",
-        "type": "(identity: K3sClusterIdentity, images: readonly string[], signal?: AbortSignal) => Promise<InfraResult<null>>",
+        "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], images: readonly string[], signal?: AbortSignal) => Promise<InfraResult<null>>",
         "required": true,
         "description": null
       },
       {
         "name": "suspendAsync",
         "kind": "method",
-        "type": "(identity: K3sClusterIdentity, signal?: AbortSignal) => Promise<InfraResult<null>>",
+        "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?: AbortSignal) => Promise<InfraResult<null>>",
         "required": true,
         "description": null
       },
@@ -296,7 +402,7 @@
       {
         "name": "waitUntilReadyAsync",
         "kind": "method",
-        "type": "(identity: K3sClusterIdentity, signal?: AbortSignal) => Promise<InfraResult<K3sClusterObservation>>",
+        "type": "(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?: AbortSignal) => Promise<InfraResult<K3sClusterObservation>>",
         "required": true,
         "description": null
       }
@@ -312,7 +418,7 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 99,
+      "line": 141,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -330,13 +436,133 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 38,
+      "line": 69,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "K3sNodeCommandExecutor",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/k3sRuntime.ts",
+    "sourceLocation": {
+      "filePath": "src/types/k3sRuntime.ts",
+      "line": 34,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["K3sNodeAccess", "K3sNodeCommandRequest", "K3sNodeCommandResult"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "runAsync",
+        "kind": "method",
+        "type": "(access: K3sNodeAccess, request: K3sNodeCommandRequest) => Promise<K3sNodeCommandResult>",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "K3sNodeCommandRequest",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/k3sRuntime.ts",
+    "sourceLocation": {
+      "filePath": "src/types/k3sRuntime.ts",
+      "line": 19,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "arguments",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "environment",
+        "kind": "property",
+        "type": "Readonly<Record<string, string>> | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "executable",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "signal",
+        "kind": "property",
+        "type": "AbortSignal | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "stdin",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "K3sNodeCommandResult",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/types/k3sRuntime.ts",
+    "sourceLocation": {
+      "filePath": "src/types/k3sRuntime.ts",
+      "line": 27,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "exitCode",
+        "kind": "property",
+        "type": "number",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "stderr",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "stdout",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      }
+    ],
     "structuredRows": []
   },
   {
@@ -348,7 +574,7 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 55,
+      "line": 86,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -395,7 +621,7 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 25,
+      "line": 56,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -435,7 +661,7 @@
     "modulePath": "src/types/k3sRuntime.ts",
     "sourceLocation": {
       "filePath": "src/types/k3sRuntime.ts",
-      "line": 20,
+      "line": 51,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
