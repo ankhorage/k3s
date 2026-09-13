@@ -2,8 +2,9 @@ import { INFRA_ADAPTER_CATALOG, isInfraAdapterDescriptor } from '@ankhorage/cont
 import { describe, expect, it } from 'bun:test';
 
 import { createInfraAdapter, infraAdapterDescriptor } from './index';
+import { FakeK3sControlPlane } from './runtimeFixtures.test';
 
-describe('k3s runtime adapter foundation', () => {
+describe('k3s runtime adapter', () => {
   it('exports the exact Contracts catalog descriptor', () => {
     expect(infraAdapterDescriptor).toEqual(INFRA_ADAPTER_CATALOG.k3s);
     expect(isInfraAdapterDescriptor(infraAdapterDescriptor)).toBe(true);
@@ -19,6 +20,7 @@ describe('k3s runtime adapter foundation', () => {
   });
 
   it('exposes the canonical implementation entrypoint', () => {
-    expect(createInfraAdapter().descriptor).toBe(infraAdapterDescriptor);
+    const controlPlane = new FakeK3sControlPlane();
+    expect(createInfraAdapter({ controlPlane }).descriptor).toBe(infraAdapterDescriptor);
   });
 });
