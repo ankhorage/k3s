@@ -21,13 +21,15 @@ it('plans and converges the complete local k3s lifecycle', async () => {
   expect(controlPlane.calls).toContain('images:registry.example/api@sha256:abc');
   const converged = await adapter.planAsync(context, desired);
   expect(converged.ok && converged.value.every(({ operation }) => operation === 'noop')).toBe(true);
-  const status = await adapter.statusAsync(context);
+  const status = await adapter.statusAsync(context, desired);
   expect(status.ok && status.value.every(({ state }) => state === 'ready')).toBe(true);
-  expect((await adapter.suspendAsync(context)).ok).toBe(true);
+  expect((await adapter.suspendAsync(context, desired)).ok).toBe(true);
   expect(controlPlane.state).toBe('stopped');
   expect((await adapter.planAsync(context, desired)).ok).toBe(false);
   expect((await adapter.ensureAsync(context, desired)).ok).toBe(true);
-  expect((await adapter.destroyAsync(context, createDestroyRequest('local'))).ok).toBe(true);
+  expect((await adapter.destroyAsync(context, desired, createDestroyRequest('local'))).ok).toBe(
+    true,
+  );
   expect(controlPlane.state).toBe('absent');
 });
 
@@ -55,9 +57,10 @@ it('retains the k3s cluster when persistent workload data is not authorized for 
   const controlPlane = new FakeK3sControlPlane();
   const adapter = createInfraAdapter({ controlPlane });
   const context = createContext('local');
-  expect((await adapter.ensureAsync(context, createLocalDesired(true))).ok).toBe(true);
+  const desired = createLocalDesired(true);
+  expect((await adapter.ensureAsync(context, desired)).ok).toBe(true);
 
-  const result = await adapter.destroyAsync(context, createDestroyRequest('local'));
+  const result = await adapter.destroyAsync(context, desired, createDestroyRequest('local'));
   expect(result.ok && result.value.resources.some(({ persistent }) => persistent)).toBe(true);
   expect(controlPlane.calls).not.toContain('destroy');
 });
@@ -66,10 +69,11 @@ it('refuses cluster deletion while retained resources cannot be inspected', asyn
   const controlPlane = new FakeK3sControlPlane();
   const adapter = createInfraAdapter({ controlPlane });
   const context = createContext('local');
-  expect((await adapter.ensureAsync(context, createLocalDesired())).ok).toBe(true);
-  expect((await adapter.suspendAsync(context)).ok).toBe(true);
+  const desired = createLocalDesired();
+  expect((await adapter.ensureAsync(context, desired)).ok).toBe(true);
+  expect((await adapter.suspendAsync(context, desired)).ok).toBe(true);
 
-  const result = await adapter.destroyAsync(context, createDestroyRequest('local'));
+  const result = await adapter.destroyAsync(context, desired, createDestroyRequest('local'));
   expect(result.ok).toBe(false);
   expect(controlPlane.calls).not.toContain('destroy');
 });

@@ -3,7 +3,7 @@
 
 # @ankhorage/k3s
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v0.1.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v0.2.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 k3s runtime adapter for provider-neutral Ankhorage infrastructure.
 
@@ -15,6 +15,8 @@ k3s runtime adapter for provider-neutral Ankhorage infrastructure.
 - [Architecture overview](././paradox/diagrams/architecture-overview.mmd)
 - [Module relationships](././paradox/diagrams/module-relationships.mmd)
 - [Export graph](././paradox/diagrams/export-graph.mmd)
+- [createInfraAdapter sequence](././paradox/diagrams/sequences/create-infra-adapter.mmd)
+- [createK3sCliControlPlane sequence](././paradox/diagrams/sequences/create-k3s-cli-control-plane.mmd)
 
 ## Public API
 
@@ -24,16 +26,17 @@ k3s runtime adapter for provider-neutral Ankhorage infrastructure.
 <summary>createInfraAdapter</summary>
 
 ```ts
-createInfraAdapter(options: K3sAdapterOptions) => InfraRuntimeAdapter<"k3s">
+createInfraAdapter(options?: K3sAdapterOptions) => InfraRuntimeAdapter<"k3s">
 ```
 
 Create the canonical k3s runtime adapter entrypoint.
 
-The caller supplies a k3s-specific control-plane boundary. Standard workload projection and
-reconciliation are delegated to the published Kubernetes driver.
+The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official
+k3s installer. Standard workload projection and reconciliation are delegated to the published
+Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary.
 
 Module: `src/features/cluster-runtime/composition/createInfraAdapter.ts`
-Source: `src/features/cluster-runtime/composition/createInfraAdapter.ts:20:1`
+Source: `src/features/cluster-runtime/composition/createInfraAdapter.ts:22:1`
 Related symbols: `K3sAdapterOptions`
 
 </details>

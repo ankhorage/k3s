@@ -2,6 +2,7 @@ import type { InfraRuntimeAdapter } from '@ankhorage/contracts/infra';
 
 import { infraAdapterDescriptor } from '../../../constants/infra';
 import type { K3sAdapterOptions } from '../../../types/k3sRuntime';
+import { createK3sCliControlPlane } from '../adapters/createK3sCliControlPlane';
 import { destroyK3sRuntimeAsync } from '../application/use-cases/destroyK3sRuntimeAsync';
 import { ensureK3sRuntimeAsync } from '../application/use-cases/ensureK3sRuntimeAsync';
 import { getK3sStatusAsync } from '../application/use-cases/getK3sStatusAsync';
@@ -12,19 +13,24 @@ import { validateK3sRuntimeAsync } from '../application/use-cases/validateK3sRun
 /***
  * Create the canonical k3s runtime adapter entrypoint.
  *
- * The caller supplies a k3s-specific control-plane boundary. Standard workload projection and
- * reconciliation are delegated to the published Kubernetes driver.
+ * The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official
+ * k3s installer. Standard workload projection and reconciliation are delegated to the published
+ * Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary.
  *
  * @readme
  */
-export function createInfraAdapter(options: K3sAdapterOptions): InfraRuntimeAdapter<'k3s'> {
+export function createInfraAdapter(options: K3sAdapterOptions = {}): InfraRuntimeAdapter<'k3s'> {
+  const dependencies = {
+    controlPlane: options.controlPlane ?? createK3sCliControlPlane(options.cli),
+  };
   return {
     descriptor: infraAdapterDescriptor,
-    validateAsync: (context, desired) => validateK3sRuntimeAsync(options, context, desired),
-    planAsync: (context, desired) => planK3sRuntimeAsync(options, context, desired),
-    ensureAsync: (context, desired) => ensureK3sRuntimeAsync(options, context, desired),
-    statusAsync: (context) => getK3sStatusAsync(options, context),
-    suspendAsync: (context) => suspendK3sRuntimeAsync(options, context),
-    destroyAsync: (context, request) => destroyK3sRuntimeAsync(options, context, request),
+    validateAsync: (context, desired) => validateK3sRuntimeAsync(dependencies, context, desired),
+    planAsync: (context, desired) => planK3sRuntimeAsync(dependencies, context, desired),
+    ensureAsync: (context, desired) => ensureK3sRuntimeAsync(dependencies, context, desired),
+    statusAsync: (context, desired) => getK3sStatusAsync(dependencies, context, desired),
+    suspendAsync: (context, desired) => suspendK3sRuntimeAsync(dependencies, context, desired),
+    destroyAsync: (context, desired, request) =>
+      destroyK3sRuntimeAsync(dependencies, context, desired, request),
   };
 }

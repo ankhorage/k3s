@@ -6,31 +6,36 @@ import type {
 } from '@ankhorage/contracts/infra';
 import { createKubernetesDriver } from '@ankhorage/kubernetes';
 
-import type { K3sAdapterOptions } from '../../../../types/k3sRuntime';
+import type { K3sDesiredState, K3sRuntimeDependencies } from '../../../../types/k3sRuntime';
 import { createK3sClusterOwner, createK3sNodeOwner } from '../../utils/createK3sOwners';
-import { getK3sClusterIdentity } from '../../utils/getK3sClusterIdentity';
+import { prepareK3sRuntimeAsync } from './prepareK3sRuntimeAsync';
 
 /*** Remove workloads before k3s, retaining the cluster whenever persistent data survives. */
 export async function destroyK3sRuntimeAsync(
-  options: K3sAdapterOptions,
+  options: K3sRuntimeDependencies,
   context: InfraExecutionContext,
+  desired: K3sDesiredState,
   request: InfraDestroyRequest,
 ): Promise<InfraResult<InfraReconcileResult>> {
   if (!isConfirmed(context, request)) return unconfirmedDestroy();
-  const identity = getK3sClusterIdentity(context);
-  if (!identity.ok) return identity;
-  const observed = await options.controlPlane.inspectAsync(identity.value, context.signal);
+  const prepared = await prepareK3sRuntimeAsync(options, context, desired);
+  if (!prepared.ok) return prepared;
+  const { spec, access } = prepared.value;
+  const observed = await options.controlPlane.inspectAsync(spec, access, context.signal);
   if (!observed.ok) return observed;
   if (observed.value.state === 'absent') {
     return { ok: true, value: { resources: [], outputs: [] }, diagnostics: [] };
   }
   if (observed.value.api === undefined) return missingDestroyAccess();
-  const nodes = observed.value.nodes.map(({ id }) =>
-    createK3sNodeOwner(context, identity.value, id),
-  );
-  const cluster = createK3sClusterOwner(context, identity.value, nodes);
+  const nodes = observed.value.nodes.map(({ id }) => createK3sNodeOwner(context, spec, id));
+  const cluster = createK3sClusterOwner(context, spec, nodes);
   const removed = await createKubernetesDriver({ api: observed.value.api }).removeAsync(
-    { context, ownerAdapter: 'k3s', workloads: [], availableOutputs: [] },
+    {
+      context,
+      ownerAdapter: 'k3s',
+      workloads: desired.workloads,
+      availableOutputs: desired.availableOutputs,
+    },
     request,
   );
   if (!removed.ok) return removed;
@@ -41,7 +46,7 @@ export async function destroyK3sRuntimeAsync(
       diagnostics: [],
     };
   }
-  const destroyed = await options.controlPlane.destroyAsync(identity.value, context.signal);
+  const destroyed = await options.controlPlane.destroyAsync(spec, access, context.signal);
   return destroyed.ok
     ? { ok: true, value: { resources: [], outputs: [] }, diagnostics: [] }
     : destroyed;

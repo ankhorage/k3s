@@ -199,6 +199,56 @@
               <button
                 class="nav-button"
                 type="button"
+                data-target="src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+              >
+                src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts
+                <small>1 function</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+              >
+                src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts
+                <small>9 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+              >
+                src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts
+                <small>9 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+              >
+                src/features/cluster-runtime/adapters/k3sCliSupport.ts
+                <small>11 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+              >
+                src/features/cluster-runtime/adapters/operateK3sCliAsync.ts
+                <small>13 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
                 data-target="src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts"
               >
                 src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts
@@ -326,6 +376,12 @@
               </button>
             </li>
             <li>
+              <button class="nav-button" type="button" data-target="src/k3sCliControlPlane.test.ts">
+                src/k3sCliControlPlane.test.ts
+                <small>3 functions</small>
+              </button>
+            </li>
+            <li>
               <button class="nav-button" type="button" data-target="src/k3sRuntime.test.ts">
                 src/k3sRuntime.test.ts
                 <small>5 functions</small>
@@ -345,9 +401,9 @@
           <section class="panel">
             <h2>Package overview</h2>
             <div class="summary">
-              <div><strong>12</strong><span class="muted">public exports</span></div>
+              <div><strong>18</strong><span class="muted">public exports</span></div>
               <div><strong>0</strong><span class="muted">components</span></div>
-              <div><strong>20</strong><span class="muted">modules</span></div>
+              <div><strong>26</strong><span class="muted">modules</span></div>
               <div><strong>1</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
@@ -358,10 +414,10 @@
 
           <section class="panel">
             <h2>Modules</h2>
-            <article class="item" data-search="examples/basic-usage/index.ts dist/index.d.ts">
+            <article class="item" data-search="examples/basic-usage/index.ts">
               <h3>examples/basic-usage/index.ts</h3>
               <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <code>dist/index.d.ts</code></p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
               <p><strong>Exports:</strong> <span class="empty">None</span></p>
             </article>
             <article class="item" data-search="src/constants/infra.ts infraAdapterDescriptor">
@@ -372,14 +428,92 @@
             </article>
             <article
               class="item"
-              data-search="src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts src/features/cluster-runtime/utils/createK3sOwners.ts src/features/cluster-runtime/utils/getK3sClusterIdentity.ts src/types/k3sRuntime.ts destroyK3sRuntimeAsync"
+              data-search="src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/features/cluster-runtime/adapters/operateK3sCliAsync.ts src/types/k3sRuntime.ts createK3sCliControlPlane"
+            >
+              <h3>src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts</code>,
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts</code>,
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts</code>,
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts</code>,
+                <code>src/types/k3sRuntime.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <code>createK3sCliControlPlane</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts src/types/k3sRuntime.ts createK3sNodeCommandExecutor"
+            >
+              <h3>src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <code>src/types/k3sRuntime.ts</code></p>
+              <p><strong>Exports:</strong> <code>createK3sNodeCommandExecutor</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/types/k3sRuntime.ts inspectK3sCliAsync isK3sInstalledAsync validateK3sCliAsync versionMatchesAsync"
+            >
+              <h3>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts</code>,
+                <code>src/types/k3sRuntime.ts</code>
+              </p>
+              <p>
+                <strong>Exports:</strong> <code>inspectK3sCliAsync</code>,
+                <code>isK3sInstalledAsync</code>, <code>validateK3sCliAsync</code>,
+                <code>versionMatchesAsync</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/cluster-runtime/adapters/k3sCliSupport.ts src/types/k3sRuntime.ts assertNonNegativeInteger assertPositiveInteger commandFailed delayAsync invalidAccess invalidLocalTopology K3S_BINARY K3S_INSTALL_URL K3sCliContext loadOfficialInstallScriptAsync readinessTimeout runNodeCommandAsync success"
+            >
+              <h3>src/features/cluster-runtime/adapters/k3sCliSupport.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <code>src/types/k3sRuntime.ts</code></p>
+              <p>
+                <strong>Exports:</strong> <code>assertNonNegativeInteger</code>,
+                <code>assertPositiveInteger</code>, <code>commandFailed</code>,
+                <code>delayAsync</code>, <code>invalidAccess</code>,
+                <code>invalidLocalTopology</code>, <code>K3S_BINARY</code>,
+                <code>K3S_INSTALL_URL</code>, <code>K3sCliContext</code>,
+                <code>loadOfficialInstallScriptAsync</code>, <code>readinessTimeout</code>,
+                <code>runNodeCommandAsync</code>, <code>success</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/cluster-runtime/adapters/operateK3sCliAsync.ts src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/types/k3sRuntime.ts destroyK3sCliAsync ensureK3sCliAsync loadK3sImagesAsync suspendK3sCliAsync waitForK3sCliAsync"
+            >
+              <h3>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts</code>,
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts</code>,
+                <code>src/types/k3sRuntime.ts</code>
+              </p>
+              <p>
+                <strong>Exports:</strong> <code>destroyK3sCliAsync</code>,
+                <code>ensureK3sCliAsync</code>, <code>loadK3sImagesAsync</code>,
+                <code>suspendK3sCliAsync</code>, <code>waitForK3sCliAsync</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts src/features/cluster-runtime/utils/createK3sOwners.ts src/types/k3sRuntime.ts destroyK3sRuntimeAsync"
             >
               <h3>src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong>
-                <code>src/features/cluster-runtime/utils/createK3sOwners.ts</code>,
-                <code>src/features/cluster-runtime/utils/getK3sClusterIdentity.ts</code>,
+                <code
+                  >src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts</code
+                >, <code>src/features/cluster-runtime/utils/createK3sOwners.ts</code>,
                 <code>src/types/k3sRuntime.ts</code>
               </p>
               <p><strong>Exports:</strong> <code>destroyK3sRuntimeAsync</code></p>
@@ -402,14 +536,15 @@
             </article>
             <article
               class="item"
-              data-search="src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts src/features/cluster-runtime/utils/createK3sOwners.ts src/features/cluster-runtime/utils/getK3sClusterIdentity.ts src/types/k3sRuntime.ts getK3sStatusAsync"
+              data-search="src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts src/features/cluster-runtime/utils/createK3sOwners.ts src/types/k3sRuntime.ts getK3sStatusAsync"
             >
               <h3>src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong>
-                <code>src/features/cluster-runtime/utils/createK3sOwners.ts</code>,
-                <code>src/features/cluster-runtime/utils/getK3sClusterIdentity.ts</code>,
+                <code
+                  >src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts</code
+                >, <code>src/features/cluster-runtime/utils/createK3sOwners.ts</code>,
                 <code>src/types/k3sRuntime.ts</code>
               </p>
               <p><strong>Exports:</strong> <code>getK3sStatusAsync</code></p>
@@ -446,14 +581,15 @@
             </article>
             <article
               class="item"
-              data-search="src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts src/features/cluster-runtime/utils/createK3sOwners.ts src/features/cluster-runtime/utils/getK3sClusterIdentity.ts src/types/k3sRuntime.ts suspendK3sRuntimeAsync"
+              data-search="src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts src/features/cluster-runtime/utils/createK3sOwners.ts src/types/k3sRuntime.ts suspendK3sRuntimeAsync"
             >
               <h3>src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong>
-                <code>src/features/cluster-runtime/utils/createK3sOwners.ts</code>,
-                <code>src/features/cluster-runtime/utils/getK3sClusterIdentity.ts</code>,
+                <code
+                  >src/features/cluster-runtime/application/use-cases/prepareK3sRuntimeAsync.ts</code
+                >, <code>src/features/cluster-runtime/utils/createK3sOwners.ts</code>,
                 <code>src/types/k3sRuntime.ts</code>
               </p>
               <p><strong>Exports:</strong> <code>suspendK3sRuntimeAsync</code></p>
@@ -474,12 +610,13 @@
             </article>
             <article
               class="item"
-              data-search="src/features/cluster-runtime/composition/createInfraAdapter.ts src/constants/infra.ts src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts src/features/cluster-runtime/application/use-cases/planK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/validateK3sRuntimeAsync.ts src/types/k3sRuntime.ts createInfraAdapter"
+              data-search="src/features/cluster-runtime/composition/createInfraAdapter.ts src/constants/infra.ts src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts src/features/cluster-runtime/application/use-cases/planK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts src/features/cluster-runtime/application/use-cases/validateK3sRuntimeAsync.ts src/types/k3sRuntime.ts createInfraAdapter"
             >
               <h3>src/features/cluster-runtime/composition/createInfraAdapter.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong> <code>src/constants/infra.ts</code>,
+                <code>src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts</code>,
                 <code
                   >src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts</code
                 >,
@@ -554,17 +691,20 @@
             </article>
             <article
               class="item"
-              data-search="src/index.ts createInfraAdapter infraAdapterDescriptor K3sAdapterOptions K3sClusterIdentity K3sClusterObservation K3sClusterSpec K3sControlPlane K3sDesiredState K3sNodeAccess K3sNodeObservation K3sNodeSpec K3sTopology"
+              data-search="src/index.ts createInfraAdapter createK3sCliControlPlane createK3sNodeCommandExecutor infraAdapterDescriptor K3sAdapterOptions K3sCliControlPlaneOptions K3sClusterIdentity K3sClusterObservation K3sClusterSpec K3sControlPlane K3sDesiredState K3sNodeAccess K3sNodeCommandExecutor K3sNodeCommandRequest K3sNodeCommandResult K3sNodeObservation K3sNodeSpec K3sTopology"
             >
               <h3>src/index.ts</h3>
               <p class="muted">Configured entrypoint</p>
               <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
               <p>
                 <strong>Exports:</strong> <code>createInfraAdapter</code>,
+                <code>createK3sCliControlPlane</code>, <code>createK3sNodeCommandExecutor</code>,
                 <code>infraAdapterDescriptor</code>, <code>K3sAdapterOptions</code>,
-                <code>K3sClusterIdentity</code>, <code>K3sClusterObservation</code>,
-                <code>K3sClusterSpec</code>, <code>K3sControlPlane</code>,
-                <code>K3sDesiredState</code>, <code>K3sNodeAccess</code>,
+                <code>K3sCliControlPlaneOptions</code>, <code>K3sClusterIdentity</code>,
+                <code>K3sClusterObservation</code>, <code>K3sClusterSpec</code>,
+                <code>K3sControlPlane</code>, <code>K3sDesiredState</code>,
+                <code>K3sNodeAccess</code>, <code>K3sNodeCommandExecutor</code>,
+                <code>K3sNodeCommandRequest</code>, <code>K3sNodeCommandResult</code>,
                 <code>K3sNodeObservation</code>, <code>K3sNodeSpec</code>, <code>K3sTopology</code>
               </p>
             </article>
@@ -577,6 +717,19 @@
               <p>
                 <strong>Dependencies:</strong> <code>src/index.ts</code>,
                 <code>src/runtimeFixtures.test.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <span class="empty">None</span></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/k3sCliControlPlane.test.ts src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts src/index.ts"
+            >
+              <h3>src/k3sCliControlPlane.test.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts</code>,
+                <code>src/index.ts</code>
               </p>
               <p><strong>Exports:</strong> <span class="empty">None</span></p>
             </article>
@@ -603,17 +756,20 @@
             </article>
             <article
               class="item"
-              data-search="src/types/k3sRuntime.ts K3sAdapterOptions K3sClusterIdentity K3sClusterObservation K3sClusterSpec K3sControlPlane K3sDesiredState K3sNodeAccess K3sNodeObservation K3sNodeSpec K3sTopology"
+              data-search="src/types/k3sRuntime.ts K3sAdapterOptions K3sCliControlPlaneOptions K3sClusterIdentity K3sClusterObservation K3sClusterSpec K3sControlPlane K3sDesiredState K3sNodeAccess K3sNodeCommandExecutor K3sNodeCommandRequest K3sNodeCommandResult K3sNodeObservation K3sNodeSpec K3sRuntimeDependencies K3sTopology"
             >
               <h3>src/types/k3sRuntime.ts</h3>
               <p class="muted">Referenced module</p>
               <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
               <p>
                 <strong>Exports:</strong> <code>K3sAdapterOptions</code>,
-                <code>K3sClusterIdentity</code>, <code>K3sClusterObservation</code>,
-                <code>K3sClusterSpec</code>, <code>K3sControlPlane</code>,
-                <code>K3sDesiredState</code>, <code>K3sNodeAccess</code>,
-                <code>K3sNodeObservation</code>, <code>K3sNodeSpec</code>, <code>K3sTopology</code>
+                <code>K3sCliControlPlaneOptions</code>, <code>K3sClusterIdentity</code>,
+                <code>K3sClusterObservation</code>, <code>K3sClusterSpec</code>,
+                <code>K3sControlPlane</code>, <code>K3sDesiredState</code>,
+                <code>K3sNodeAccess</code>, <code>K3sNodeCommandExecutor</code>,
+                <code>K3sNodeCommandRequest</code>, <code>K3sNodeCommandResult</code>,
+                <code>K3sNodeObservation</code>, <code>K3sNodeSpec</code>,
+                <code>K3sRuntimeDependencies</code>, <code>K3sTopology</code>
               </p>
             </article>
           </section>
@@ -635,21 +791,101 @@
               </article>
             </section>
             <section>
+              <h3>src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts</h3>
+              <article
+                class="item"
+                id="symbol-createk3sclicontrolplane"
+                data-search="createK3sCliControlPlane function src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts  K3sCliControlPlaneOptions K3sControlPlane (options?: K3sCliControlPlaneOptions) =&gt; K3sControlPlane"
+              >
+                <h4>createK3sCliControlPlane</h4>
+                <p class="muted">
+                  function •
+                  <code
+                    >src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts:19:1</code
+                  >
+                </p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">K3sCliControlPlaneOptions</li>
+                    <li class="chip">K3sControlPlane</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5>Signature</h5>
+                  <pre>(options?: K3sCliControlPlaneOptions) =&gt; K3sControlPlane</pre>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>options</code></td>
+                        <td><code>K3sCliControlPlaneOptions</code></td>
+                        <td>no</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p><strong>Returns:</strong> <code>K3sControlPlane</code></p>
+                </div>
+              </article>
+            </section>
+            <section>
+              <h3>src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts</h3>
+              <article
+                class="item"
+                id="symbol-createk3snodecommandexecutor"
+                data-search="createK3sNodeCommandExecutor function src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts  K3sNodeCommandExecutor () =&gt; K3sNodeCommandExecutor"
+              >
+                <h4>createK3sNodeCommandExecutor</h4>
+                <p class="muted">
+                  function •
+                  <code
+                    >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:14:1</code
+                  >
+                </p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">K3sNodeCommandExecutor</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5>Signature</h5>
+                  <pre>() =&gt; K3sNodeCommandExecutor</pre>
+
+                  <p><strong>Returns:</strong> <code>K3sNodeCommandExecutor</code></p>
+                </div>
+              </article>
+            </section>
+            <section>
               <h3>src/features/cluster-runtime/composition/createInfraAdapter.ts</h3>
               <article
                 class="item"
                 id="symbol-createinfraadapter"
-                data-search='createInfraAdapter function src/features/cluster-runtime/composition/createInfraAdapter.ts Create the canonical k3s runtime adapter entrypoint.&#10;&#10;The caller supplies a k3s-specific control-plane boundary. Standard workload projection and&#10;reconciliation are delegated to the published Kubernetes driver. K3sAdapterOptions (options: K3sAdapterOptions) =&gt; InfraRuntimeAdapter&lt;"k3s"&gt;'
+                data-search='createInfraAdapter function src/features/cluster-runtime/composition/createInfraAdapter.ts Create the canonical k3s runtime adapter entrypoint.&#10;&#10;The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official&#10;k3s installer. Standard workload projection and reconciliation are delegated to the published&#10;Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary. K3sAdapterOptions (options?: K3sAdapterOptions) =&gt; InfraRuntimeAdapter&lt;"k3s"&gt;'
               >
                 <h4>createInfraAdapter</h4>
                 <p class="muted">
                   function •
-                  <code>src/features/cluster-runtime/composition/createInfraAdapter.ts:20:1</code>
+                  <code>src/features/cluster-runtime/composition/createInfraAdapter.ts:22:1</code>
                 </p>
                 <p>
-                  Create the canonical k3s runtime adapter entrypoint. The caller supplies a
-                  k3s-specific control-plane boundary. Standard workload projection and
-                  reconciliation are delegated to the published Kubernetes driver.
+                  Create the canonical k3s runtime adapter entrypoint. The default composition
+                  bootstraps local Linux or host-key-pinned SSH nodes through the official k3s
+                  installer. Standard workload projection and reconciliation are delegated to the
+                  published Kubernetes driver. Tests and specialized hosts may inject the
+                  control-plane boundary.
                 </p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -661,7 +897,7 @@
                 <div>
                   <h5>Signature</h5>
                   <pre>
-(options: K3sAdapterOptions) =&gt; InfraRuntimeAdapter&lt;&quot;k3s&quot;&gt;</pre>
+(options?: K3sAdapterOptions) =&gt; InfraRuntimeAdapter&lt;&quot;k3s&quot;&gt;</pre>
                   <table>
                     <thead>
                       <tr>
@@ -675,7 +911,7 @@
                       <tr>
                         <td><code>options</code></td>
                         <td><code>K3sAdapterOptions</code></td>
-                        <td>yes</td>
+                        <td>no</td>
                         <td></td>
                       </tr>
                     </tbody>
@@ -692,7 +928,7 @@
               <article
                 class="item"
                 id="symbol-k3sadapteroptions"
-                data-search="K3sAdapterOptions type src/types/k3sRuntime.ts  K3sControlPlane"
+                data-search="K3sAdapterOptions type src/types/k3sRuntime.ts  K3sCliControlPlaneOptions K3sControlPlane"
               >
                 <h4>K3sAdapterOptions</h4>
                 <p class="muted">type • <code>src/types/k3sRuntime.ts:10:1</code></p>
@@ -701,6 +937,7 @@
                 <div>
                   <strong>Related symbols:</strong>
                   <ul class="chips">
+                    <li class="chip">K3sCliControlPlaneOptions</li>
                     <li class="chip">K3sControlPlane</li>
                   </ul>
                 </div>
@@ -717,10 +954,79 @@
                   </thead>
                   <tbody>
                     <tr>
+                      <td><code>cli</code></td>
+                      <td>property</td>
+                      <td><code>K3sCliControlPlaneOptions | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
                       <td><code>controlPlane</code></td>
                       <td>property</td>
-                      <td><code>K3sControlPlane</code></td>
-                      <td>yes</td>
+                      <td><code>K3sControlPlane | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+              <article
+                class="item"
+                id="symbol-k3sclicontrolplaneoptions"
+                data-search="K3sCliControlPlaneOptions type src/types/k3sRuntime.ts  K3sNodeCommandExecutor"
+              >
+                <h4>K3sCliControlPlaneOptions</h4>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:38:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">K3sNodeCommandExecutor</li>
+                  </ul>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>executor</code></td>
+                      <td>property</td>
+                      <td><code>K3sNodeCommandExecutor | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>installScriptLoader</code></td>
+                      <td>property</td>
+                      <td>
+                        <code
+                          >((signal?: AbortSignal) =&gt; Promise&lt;string&gt;) | undefined</code
+                        >
+                      </td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>pollIntervalMs</code></td>
+                      <td>property</td>
+                      <td><code>number | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>readinessTimeoutSeconds</code></td>
+                      <td>property</td>
+                      <td><code>number | undefined</code></td>
+                      <td>no</td>
                       <td></td>
                     </tr>
                   </tbody>
@@ -732,7 +1038,7 @@
                 data-search="K3sClusterIdentity type src/types/k3sRuntime.ts "
               >
                 <h4>K3sClusterIdentity</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:14:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:45:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -782,7 +1088,7 @@
                 data-search="K3sClusterObservation type src/types/k3sRuntime.ts  K3sNodeObservation"
               >
                 <h4>K3sClusterObservation</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:62:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:93:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -853,7 +1159,7 @@
                 data-search="K3sClusterSpec type src/types/k3sRuntime.ts  K3sNodeSpec K3sTopology"
               >
                 <h4>K3sClusterSpec</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:31:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:62:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -927,16 +1233,15 @@
               <article
                 class="item"
                 id="symbol-k3scontrolplane"
-                data-search="K3sControlPlane type src/types/k3sRuntime.ts  K3sClusterIdentity K3sClusterObservation K3sClusterSpec K3sNodeAccess"
+                data-search="K3sControlPlane type src/types/k3sRuntime.ts  K3sClusterObservation K3sClusterSpec K3sNodeAccess"
               >
                 <h4>K3sControlPlane</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:71:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:102:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
                   <strong>Related symbols:</strong>
                   <ul class="chips">
-                    <li class="chip">K3sClusterIdentity</li>
                     <li class="chip">K3sClusterObservation</li>
                     <li class="chip">K3sClusterSpec</li>
                     <li class="chip">K3sNodeAccess</li>
@@ -959,8 +1264,8 @@
                       <td>method</td>
                       <td>
                         <code
-                          >(identity: K3sClusterIdentity, signal?: AbortSignal) =&gt;
-                          Promise&lt;InfraResult&lt;null&gt;&gt;</code
+                          >(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?:
+                          AbortSignal) =&gt; Promise&lt;InfraResult&lt;null&gt;&gt;</code
                         >
                       </td>
                       <td>yes</td>
@@ -984,7 +1289,8 @@
                       <td>method</td>
                       <td>
                         <code
-                          >(identity: K3sClusterIdentity, signal?: AbortSignal) =&gt;
+                          >(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?:
+                          AbortSignal) =&gt;
                           Promise&lt;InfraResult&lt;K3sClusterObservation&gt;&gt;</code
                         >
                       </td>
@@ -996,8 +1302,9 @@
                       <td>method</td>
                       <td>
                         <code
-                          >(identity: K3sClusterIdentity, images: readonly string[], signal?:
-                          AbortSignal) =&gt; Promise&lt;InfraResult&lt;null&gt;&gt;</code
+                          >(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], images: readonly
+                          string[], signal?: AbortSignal) =&gt;
+                          Promise&lt;InfraResult&lt;null&gt;&gt;</code
                         >
                       </td>
                       <td>yes</td>
@@ -1008,8 +1315,8 @@
                       <td>method</td>
                       <td>
                         <code
-                          >(identity: K3sClusterIdentity, signal?: AbortSignal) =&gt;
-                          Promise&lt;InfraResult&lt;null&gt;&gt;</code
+                          >(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?:
+                          AbortSignal) =&gt; Promise&lt;InfraResult&lt;null&gt;&gt;</code
                         >
                       </td>
                       <td>yes</td>
@@ -1032,7 +1339,8 @@
                       <td>method</td>
                       <td>
                         <code
-                          >(identity: K3sClusterIdentity, signal?: AbortSignal) =&gt;
+                          >(spec: K3sClusterSpec, access: readonly K3sNodeAccess[], signal?:
+                          AbortSignal) =&gt;
                           Promise&lt;InfraResult&lt;K3sClusterObservation&gt;&gt;</code
                         >
                       </td>
@@ -1048,7 +1356,7 @@
                 data-search="K3sDesiredState unknown src/types/k3sRuntime.ts "
               >
                 <h4>K3sDesiredState</h4>
-                <p class="muted">unknown • <code>src/types/k3sRuntime.ts:99:1</code></p>
+                <p class="muted">unknown • <code>src/types/k3sRuntime.ts:141:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1059,10 +1367,160 @@
                 data-search="K3sNodeAccess unknown src/types/k3sRuntime.ts "
               >
                 <h4>K3sNodeAccess</h4>
-                <p class="muted">unknown • <code>src/types/k3sRuntime.ts:38:1</code></p>
+                <p class="muted">unknown • <code>src/types/k3sRuntime.ts:69:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+              <article
+                class="item"
+                id="symbol-k3snodecommandexecutor"
+                data-search="K3sNodeCommandExecutor type src/types/k3sRuntime.ts  K3sNodeAccess K3sNodeCommandRequest K3sNodeCommandResult"
+              >
+                <h4>K3sNodeCommandExecutor</h4>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:34:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">K3sNodeAccess</li>
+                    <li class="chip">K3sNodeCommandRequest</li>
+                    <li class="chip">K3sNodeCommandResult</li>
+                  </ul>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>runAsync</code></td>
+                      <td>method</td>
+                      <td>
+                        <code
+                          >(access: K3sNodeAccess, request: K3sNodeCommandRequest) =&gt;
+                          Promise&lt;K3sNodeCommandResult&gt;</code
+                        >
+                      </td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+              <article
+                class="item"
+                id="symbol-k3snodecommandrequest"
+                data-search="K3sNodeCommandRequest type src/types/k3sRuntime.ts "
+              >
+                <h4>K3sNodeCommandRequest</h4>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:19:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>arguments</code></td>
+                      <td>property</td>
+                      <td><code>readonly string[]</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>environment</code></td>
+                      <td>property</td>
+                      <td><code>Readonly&lt;Record&lt;string, string&gt;&gt; | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>executable</code></td>
+                      <td>property</td>
+                      <td><code>string</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>signal</code></td>
+                      <td>property</td>
+                      <td><code>AbortSignal | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>stdin</code></td>
+                      <td>property</td>
+                      <td><code>string | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+              <article
+                class="item"
+                id="symbol-k3snodecommandresult"
+                data-search="K3sNodeCommandResult type src/types/k3sRuntime.ts "
+              >
+                <h4>K3sNodeCommandResult</h4>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:27:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>exitCode</code></td>
+                      <td>property</td>
+                      <td><code>number</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>stderr</code></td>
+                      <td>property</td>
+                      <td><code>string</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>stdout</code></td>
+                      <td>property</td>
+                      <td><code>string</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
               </article>
               <article
                 class="item"
@@ -1070,7 +1528,7 @@
                 data-search="K3sNodeObservation type src/types/k3sRuntime.ts "
               >
                 <h4>K3sNodeObservation</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:55:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:86:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1129,7 +1587,7 @@
                 data-search="K3sNodeSpec type src/types/k3sRuntime.ts "
               >
                 <h4>K3sNodeSpec</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:25:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:56:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1175,7 +1633,7 @@
                 data-search="K3sTopology type src/types/k3sRuntime.ts "
               >
                 <h4>K3sTopology</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:20:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:51:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1228,16 +1686,55 @@
                 entrypoint_src_index_ts
                 module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
                 package__ankhorage_k3s -.-&gt; module_examples_basic_usage_index_ts
-                module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
                 module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
                 package__ankhorage_k3s -.-&gt; module_src_constants_infra_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
+                package__ankhorage_k3s -.-&gt;
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
+                package__ankhorage_k3s -.-&gt;
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+                package__ankhorage_k3s -.-&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
+                package__ankhorage_k3s -.-&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
+                package__ankhorage_k3s -.-&gt;
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
                 package__ankhorage_k3s -.-&gt;
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
+                --&gt;
+                module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
+                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
@@ -1256,9 +1753,10 @@
                 package__ankhorage_k3s -.-&gt;
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
+                --&gt;
+                module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
+                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_planK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/planK3sRuntimeAsync.ts&quot;]
@@ -1286,9 +1784,10 @@
                 package__ankhorage_k3s -.-&gt;
                 module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
+                --&gt;
+                module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
+                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
                 module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/validateK3sRuntimeAsync.ts&quot;]
@@ -1304,6 +1803,8 @@
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
                 module_src_constants_infra_ts
+                module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
@@ -1349,6 +1850,11 @@
                 package__ankhorage_k3s -.-&gt; module_src_infraAdapter_test_ts
                 module_src_infraAdapter_test_ts --&gt; module_src_index_ts
                 module_src_infraAdapter_test_ts --&gt; module_src_runtimeFixtures_test_ts
+                module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
+                package__ankhorage_k3s -.-&gt; module_src_k3sCliControlPlane_test_ts
+                module_src_k3sCliControlPlane_test_ts --&gt;
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
+                module_src_k3sCliControlPlane_test_ts --&gt; module_src_index_ts
                 module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
                 package__ankhorage_k3s -.-&gt; module_src_k3sRuntime_test_ts
                 module_src_k3sRuntime_test_ts --&gt; module_src_index_ts
@@ -1368,13 +1874,34 @@ graph TD
   package__ankhorage_k3s --&gt; entrypoint_src_index_ts
   module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_examples_basic_usage_index_ts
-  module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_constants_infra_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts
+  module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_k3sCliSupport_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
+  module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
-  module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts
@@ -1384,8 +1911,8 @@ graph TD
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
+  module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
-  module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_planK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/planK3sRuntimeAsync.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_application_use_cases_planK3sRuntimeAsync_ts
@@ -1400,8 +1927,8 @@ graph TD
   module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/suspendK3sRuntimeAsync.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts
+  module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
-  module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
   module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/validateK3sRuntimeAsync.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts
@@ -1410,6 +1937,7 @@ graph TD
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts[&quot;src/features/cluster-runtime/composition/createInfraAdapter.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_composition_createInfraAdapter_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
+  module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
@@ -1438,6 +1966,10 @@ graph TD
   package__ankhorage_k3s -.-&gt; module_src_infraAdapter_test_ts
   module_src_infraAdapter_test_ts --&gt; module_src_index_ts
   module_src_infraAdapter_test_ts --&gt; module_src_runtimeFixtures_test_ts
+  module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_k3sCliControlPlane_test_ts
+  module_src_k3sCliControlPlane_test_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
+  module_src_k3sCliControlPlane_test_ts --&gt; module_src_index_ts
   module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_k3sRuntime_test_ts
   module_src_k3sRuntime_test_ts --&gt; module_src_index_ts
@@ -1460,6 +1992,11 @@ graph TD
                 graph LR
                 module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
                 module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
@@ -1475,14 +2012,39 @@ graph TD
                 module_src_features_cluster_runtime_utils_resolveK3sNodeAccessAsync_ts[&quot;src/features/cluster-runtime/utils/resolveK3sNodeAccessAsync.ts&quot;]
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
+                module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
                 module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
                 module_src_runtimeFixtures_test_ts[&quot;src/runtimeFixtures.test.ts&quot;]
                 module_src_types_k3sRuntime_ts[&quot;src/types/k3sRuntime.ts&quot;]
-                module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
+                --&gt;
+                module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
                 --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
-                module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts
@@ -1495,9 +2057,10 @@ graph TD
                 module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
+                --&gt;
+                module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
+                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_planK3sRuntimeAsync_ts
@@ -1516,9 +2079,10 @@ graph TD
                 module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
+                --&gt;
+                module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts
-                --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
+                --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
                 module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts
@@ -1528,6 +2092,8 @@ graph TD
                 --&gt; module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
                 module_src_constants_infra_ts
+                module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
@@ -1555,10 +2121,12 @@ graph TD
                 module_src_features_cluster_runtime_utils_resolveK3sNodeAccessAsync_ts --&gt;
                 module_src_types_k3sRuntime_ts module_src_infraAdapter_test_ts --&gt;
                 module_src_index_ts module_src_infraAdapter_test_ts --&gt;
-                module_src_runtimeFixtures_test_ts module_src_k3sRuntime_test_ts --&gt;
-                module_src_index_ts module_src_k3sRuntime_test_ts --&gt;
-                module_src_runtimeFixtures_test_ts module_src_runtimeFixtures_test_ts --&gt;
-                module_src_index_ts
+                module_src_runtimeFixtures_test_ts module_src_k3sCliControlPlane_test_ts --&gt;
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
+                module_src_k3sCliControlPlane_test_ts --&gt; module_src_index_ts
+                module_src_k3sRuntime_test_ts --&gt; module_src_index_ts
+                module_src_k3sRuntime_test_ts --&gt; module_src_runtimeFixtures_test_ts
+                module_src_runtimeFixtures_test_ts --&gt; module_src_index_ts
               </div>
               <details>
                 <summary>View Mermaid source</summary>
@@ -1566,6 +2134,11 @@ graph TD
 graph LR
   module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
+  module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+  module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
@@ -1581,19 +2154,31 @@ graph LR
   module_src_features_cluster_runtime_utils_resolveK3sNodeAccessAsync_ts[&quot;src/features/cluster-runtime/utils/resolveK3sNodeAccessAsync.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
+  module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
   module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
   module_src_runtimeFixtures_test_ts[&quot;src/runtimeFixtures.test.ts&quot;]
   module_src_types_k3sRuntime_ts[&quot;src/types/k3sRuntime.ts&quot;]
-  module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_k3sCliSupport_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
-  module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
-  module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_planK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_planK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
@@ -1602,12 +2187,13 @@ graph LR
   module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_getK3sClusterSpec_ts
   module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_resolveK3sNodeAccessAsync_ts
   module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
-  module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
   module_src_features_cluster_runtime_application_use_cases_suspendK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_constants_infra_ts
+  module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts
@@ -1623,6 +2209,8 @@ graph LR
   module_src_features_cluster_runtime_utils_resolveK3sNodeAccessAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_infraAdapter_test_ts --&gt; module_src_index_ts
   module_src_infraAdapter_test_ts --&gt; module_src_runtimeFixtures_test_ts
+  module_src_k3sCliControlPlane_test_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
+  module_src_k3sCliControlPlane_test_ts --&gt; module_src_index_ts
   module_src_k3sRuntime_test_ts --&gt; module_src_index_ts
   module_src_k3sRuntime_test_ts --&gt; module_src_runtimeFixtures_test_ts
   module_src_runtimeFixtures_test_ts --&gt; module_src_index_ts
@@ -1636,6 +2224,11 @@ graph LR
                 graph LR
                 module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
                 module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
@@ -1651,17 +2244,31 @@ graph LR
                 module_src_features_cluster_runtime_utils_resolveK3sNodeAccessAsync_ts[&quot;src/features/cluster-runtime/utils/resolveK3sNodeAccessAsync.ts&quot;]
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
+                module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
                 module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
                 module_src_runtimeFixtures_test_ts[&quot;src/runtimeFixtures.test.ts&quot;]
                 module_src_types_k3sRuntime_ts[&quot;src/types/k3sRuntime.ts&quot;]
                 export_createInfraAdapter[&quot;createInfraAdapter&quot;]
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt;
                 export_createInfraAdapter export_createInfraAdapter -.-&gt; export_K3sAdapterOptions
+                export_createK3sCliControlPlane[&quot;createK3sCliControlPlane&quot;]
+                module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
+                export_createK3sCliControlPlane export_createK3sCliControlPlane -.-&gt;
+                export_K3sCliControlPlaneOptions export_createK3sCliControlPlane -.-&gt;
+                export_K3sControlPlane
+                export_createK3sNodeCommandExecutor[&quot;createK3sNodeCommandExecutor&quot;]
+                module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt;
+                export_createK3sNodeCommandExecutor export_createK3sNodeCommandExecutor -.-&gt;
+                export_K3sNodeCommandExecutor
                 export_infraAdapterDescriptor[&quot;infraAdapterDescriptor&quot;]
                 module_src_constants_infra_ts --&gt; export_infraAdapterDescriptor
                 export_K3sAdapterOptions[&quot;K3sAdapterOptions&quot;]
                 module_src_types_k3sRuntime_ts --&gt; export_K3sAdapterOptions
+                export_K3sAdapterOptions -.-&gt; export_K3sCliControlPlaneOptions
                 export_K3sAdapterOptions -.-&gt; export_K3sControlPlane
+                export_K3sCliControlPlaneOptions[&quot;K3sCliControlPlaneOptions&quot;]
+                module_src_types_k3sRuntime_ts --&gt; export_K3sCliControlPlaneOptions
+                export_K3sCliControlPlaneOptions -.-&gt; export_K3sNodeCommandExecutor
                 export_K3sClusterIdentity[&quot;K3sClusterIdentity&quot;]
                 module_src_types_k3sRuntime_ts --&gt; export_K3sClusterIdentity
                 export_K3sClusterObservation[&quot;K3sClusterObservation&quot;]
@@ -1672,12 +2279,20 @@ graph LR
                 export_K3sClusterSpec -.-&gt; export_K3sTopology
                 export_K3sControlPlane[&quot;K3sControlPlane&quot;] module_src_types_k3sRuntime_ts
                 --&gt; export_K3sControlPlane export_K3sControlPlane -.-&gt;
-                export_K3sClusterIdentity export_K3sControlPlane -.-&gt;
                 export_K3sClusterObservation export_K3sControlPlane -.-&gt; export_K3sClusterSpec
                 export_K3sControlPlane -.-&gt; export_K3sNodeAccess
                 export_K3sDesiredState[&quot;K3sDesiredState&quot;] module_src_types_k3sRuntime_ts
                 --&gt; export_K3sDesiredState export_K3sNodeAccess[&quot;K3sNodeAccess&quot;]
                 module_src_types_k3sRuntime_ts --&gt; export_K3sNodeAccess
+                export_K3sNodeCommandExecutor[&quot;K3sNodeCommandExecutor&quot;]
+                module_src_types_k3sRuntime_ts --&gt; export_K3sNodeCommandExecutor
+                export_K3sNodeCommandExecutor -.-&gt; export_K3sNodeAccess
+                export_K3sNodeCommandExecutor -.-&gt; export_K3sNodeCommandRequest
+                export_K3sNodeCommandExecutor -.-&gt; export_K3sNodeCommandResult
+                export_K3sNodeCommandRequest[&quot;K3sNodeCommandRequest&quot;]
+                module_src_types_k3sRuntime_ts --&gt; export_K3sNodeCommandRequest
+                export_K3sNodeCommandResult[&quot;K3sNodeCommandResult&quot;]
+                module_src_types_k3sRuntime_ts --&gt; export_K3sNodeCommandResult
                 export_K3sNodeObservation[&quot;K3sNodeObservation&quot;]
                 module_src_types_k3sRuntime_ts --&gt; export_K3sNodeObservation
                 export_K3sNodeSpec[&quot;K3sNodeSpec&quot;] module_src_types_k3sRuntime_ts --&gt;
@@ -1690,6 +2305,11 @@ graph LR
 graph LR
   module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
+  module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+  module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
@@ -1705,17 +2325,29 @@ graph LR
   module_src_features_cluster_runtime_utils_resolveK3sNodeAccessAsync_ts[&quot;src/features/cluster-runtime/utils/resolveK3sNodeAccessAsync.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
+  module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
   module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
   module_src_runtimeFixtures_test_ts[&quot;src/runtimeFixtures.test.ts&quot;]
   module_src_types_k3sRuntime_ts[&quot;src/types/k3sRuntime.ts&quot;]
   export_createInfraAdapter[&quot;createInfraAdapter&quot;]
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; export_createInfraAdapter
   export_createInfraAdapter -.-&gt; export_K3sAdapterOptions
+  export_createK3sCliControlPlane[&quot;createK3sCliControlPlane&quot;]
+  module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; export_createK3sCliControlPlane
+  export_createK3sCliControlPlane -.-&gt; export_K3sCliControlPlaneOptions
+  export_createK3sCliControlPlane -.-&gt; export_K3sControlPlane
+  export_createK3sNodeCommandExecutor[&quot;createK3sNodeCommandExecutor&quot;]
+  module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt; export_createK3sNodeCommandExecutor
+  export_createK3sNodeCommandExecutor -.-&gt; export_K3sNodeCommandExecutor
   export_infraAdapterDescriptor[&quot;infraAdapterDescriptor&quot;]
   module_src_constants_infra_ts --&gt; export_infraAdapterDescriptor
   export_K3sAdapterOptions[&quot;K3sAdapterOptions&quot;]
   module_src_types_k3sRuntime_ts --&gt; export_K3sAdapterOptions
+  export_K3sAdapterOptions -.-&gt; export_K3sCliControlPlaneOptions
   export_K3sAdapterOptions -.-&gt; export_K3sControlPlane
+  export_K3sCliControlPlaneOptions[&quot;K3sCliControlPlaneOptions&quot;]
+  module_src_types_k3sRuntime_ts --&gt; export_K3sCliControlPlaneOptions
+  export_K3sCliControlPlaneOptions -.-&gt; export_K3sNodeCommandExecutor
   export_K3sClusterIdentity[&quot;K3sClusterIdentity&quot;]
   module_src_types_k3sRuntime_ts --&gt; export_K3sClusterIdentity
   export_K3sClusterObservation[&quot;K3sClusterObservation&quot;]
@@ -1727,7 +2359,6 @@ graph LR
   export_K3sClusterSpec -.-&gt; export_K3sTopology
   export_K3sControlPlane[&quot;K3sControlPlane&quot;]
   module_src_types_k3sRuntime_ts --&gt; export_K3sControlPlane
-  export_K3sControlPlane -.-&gt; export_K3sClusterIdentity
   export_K3sControlPlane -.-&gt; export_K3sClusterObservation
   export_K3sControlPlane -.-&gt; export_K3sClusterSpec
   export_K3sControlPlane -.-&gt; export_K3sNodeAccess
@@ -1735,6 +2366,15 @@ graph LR
   module_src_types_k3sRuntime_ts --&gt; export_K3sDesiredState
   export_K3sNodeAccess[&quot;K3sNodeAccess&quot;]
   module_src_types_k3sRuntime_ts --&gt; export_K3sNodeAccess
+  export_K3sNodeCommandExecutor[&quot;K3sNodeCommandExecutor&quot;]
+  module_src_types_k3sRuntime_ts --&gt; export_K3sNodeCommandExecutor
+  export_K3sNodeCommandExecutor -.-&gt; export_K3sNodeAccess
+  export_K3sNodeCommandExecutor -.-&gt; export_K3sNodeCommandRequest
+  export_K3sNodeCommandExecutor -.-&gt; export_K3sNodeCommandResult
+  export_K3sNodeCommandRequest[&quot;K3sNodeCommandRequest&quot;]
+  module_src_types_k3sRuntime_ts --&gt; export_K3sNodeCommandRequest
+  export_K3sNodeCommandResult[&quot;K3sNodeCommandResult&quot;]
+  module_src_types_k3sRuntime_ts --&gt; export_K3sNodeCommandResult
   export_K3sNodeObservation[&quot;K3sNodeObservation&quot;]
   module_src_types_k3sRuntime_ts --&gt; export_K3sNodeObservation
   export_K3sNodeSpec[&quot;K3sNodeSpec&quot;]
@@ -1743,6 +2383,595 @@ graph LR
   module_src_types_k3sRuntime_ts --&gt; export_K3sTopology
 </pre>
               </details>
+            </article>
+            <article
+              class="item"
+              data-search="createInfraAdapter sequence diagrams/sequences/create-infra-adapter.mmd"
+            >
+              <h3>createInfraAdapter sequence</h3>
+              <p class="muted"><code>diagrams/sequences/create-infra-adapter.mmd</code></p>
+              <div class="mermaid">
+                sequenceDiagram participant participant_assertNonNegativeInteger as
+                assertNonNegativeInteger participant participant_assertPositiveInteger as
+                assertPositiveInteger participant participant_createInfraAdapter as
+                createInfraAdapter participant participant_createK3sCliControlPlane as
+                createK3sCliControlPlane participant participant_createK3sNodeCommandExecutor as
+                createK3sNodeCommandExecutor
+                participant_createInfraAdapter-&gt;&gt;participant_createK3sCliControlPlane:
+                createK3sCliControlPlane()
+                participant_createK3sCliControlPlane-&gt;&gt;participant_createK3sNodeCommandExecutor:
+                createK3sNodeCommandExecutor()
+                participant_createK3sNodeCommandExecutor--&gt;&gt;participant_createK3sCliControlPlane:
+                return
+                participant_createK3sCliControlPlane-&gt;&gt;participant_assertNonNegativeInteger:
+                assertNonNegativeInteger()
+                participant_assertNonNegativeInteger--&gt;&gt;participant_createK3sCliControlPlane:
+                return
+                participant_createK3sCliControlPlane-&gt;&gt;participant_assertPositiveInteger:
+                assertPositiveInteger()
+                participant_assertPositiveInteger--&gt;&gt;participant_createK3sCliControlPlane:
+                return participant_createK3sCliControlPlane--&gt;&gt;participant_createInfraAdapter:
+                return
+              </div>
+              <details>
+                <summary>View Mermaid source</summary>
+                <pre>
+sequenceDiagram
+  participant participant_assertNonNegativeInteger as assertNonNegativeInteger
+  participant participant_assertPositiveInteger as assertPositiveInteger
+  participant participant_createInfraAdapter as createInfraAdapter
+  participant participant_createK3sCliControlPlane as createK3sCliControlPlane
+  participant participant_createK3sNodeCommandExecutor as createK3sNodeCommandExecutor
+  participant_createInfraAdapter-&gt;&gt;participant_createK3sCliControlPlane: createK3sCliControlPlane()
+  participant_createK3sCliControlPlane-&gt;&gt;participant_createK3sNodeCommandExecutor: createK3sNodeCommandExecutor()
+  participant_createK3sNodeCommandExecutor--&gt;&gt;participant_createK3sCliControlPlane: return
+  participant_createK3sCliControlPlane-&gt;&gt;participant_assertNonNegativeInteger: assertNonNegativeInteger()
+  participant_assertNonNegativeInteger--&gt;&gt;participant_createK3sCliControlPlane: return
+  participant_createK3sCliControlPlane-&gt;&gt;participant_assertPositiveInteger: assertPositiveInteger()
+  participant_assertPositiveInteger--&gt;&gt;participant_createK3sCliControlPlane: return
+  participant_createK3sCliControlPlane--&gt;&gt;participant_createInfraAdapter: return
+</pre>
+              </details>
+            </article>
+            <article
+              class="item"
+              data-search="createK3sCliControlPlane sequence diagrams/sequences/create-k3s-cli-control-plane.mmd"
+            >
+              <h3>createK3sCliControlPlane sequence</h3>
+              <p class="muted"><code>diagrams/sequences/create-k3s-cli-control-plane.mmd</code></p>
+              <div class="mermaid">
+                sequenceDiagram participant participant_assertNonNegativeInteger as
+                assertNonNegativeInteger participant participant_assertPositiveInteger as
+                assertPositiveInteger participant participant_createK3sCliControlPlane as
+                createK3sCliControlPlane participant participant_createK3sNodeCommandExecutor as
+                createK3sNodeCommandExecutor
+                participant_createK3sCliControlPlane-&gt;&gt;participant_createK3sNodeCommandExecutor:
+                createK3sNodeCommandExecutor()
+                participant_createK3sNodeCommandExecutor--&gt;&gt;participant_createK3sCliControlPlane:
+                return
+                participant_createK3sCliControlPlane-&gt;&gt;participant_assertNonNegativeInteger:
+                assertNonNegativeInteger()
+                participant_assertNonNegativeInteger--&gt;&gt;participant_createK3sCliControlPlane:
+                return
+                participant_createK3sCliControlPlane-&gt;&gt;participant_assertPositiveInteger:
+                assertPositiveInteger()
+                participant_assertPositiveInteger--&gt;&gt;participant_createK3sCliControlPlane:
+                return
+              </div>
+              <details>
+                <summary>View Mermaid source</summary>
+                <pre>
+sequenceDiagram
+  participant participant_assertNonNegativeInteger as assertNonNegativeInteger
+  participant participant_assertPositiveInteger as assertPositiveInteger
+  participant participant_createK3sCliControlPlane as createK3sCliControlPlane
+  participant participant_createK3sNodeCommandExecutor as createK3sNodeCommandExecutor
+  participant_createK3sCliControlPlane-&gt;&gt;participant_createK3sNodeCommandExecutor: createK3sNodeCommandExecutor()
+  participant_createK3sNodeCommandExecutor--&gt;&gt;participant_createK3sCliControlPlane: return
+  participant_createK3sCliControlPlane-&gt;&gt;participant_assertNonNegativeInteger: assertNonNegativeInteger()
+  participant_assertNonNegativeInteger--&gt;&gt;participant_createK3sCliControlPlane: return
+  participant_createK3sCliControlPlane-&gt;&gt;participant_assertPositiveInteger: assertPositiveInteger()
+  participant_assertPositiveInteger--&gt;&gt;participant_createK3sCliControlPlane: return
+</pre>
+              </details>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-cluster-runtime-adapters-createk3sclicontrolplane-ts"
+          class="view"
+          data-view="src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts</h2>
+            <article
+              class="item"
+              data-search="createK3sCliControlPlane src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts "
+            >
+              <h3>createK3sCliControlPlane</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts:19:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-cluster-runtime-adapters-createk3snodecommandexecutor-ts"
+          class="view"
+          data-view="src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts</h2>
+            <article
+              class="item"
+              data-search="createK3sNodeCommandExecutor src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>createK3sNodeCommandExecutor</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:14:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="runSshAsync src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>runSshAsync</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:23:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="scanAndVerifyHostAsync src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>scanAndVerifyHostAsync</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:36:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="runVerifiedSshAsync src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>runVerifiedSshAsync</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:63:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createRemoteCommand src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>createRemoteCommand</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:102:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createRemoteStdin src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>createRemoteStdin</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:117:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="getRemoteEnvironment src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>getRemoteEnvironment</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:123:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="quote src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>quote</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:136:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="runSubprocessAsync src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts "
+            >
+              <h3>runSubprocessAsync</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts:140:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-cluster-runtime-adapters-inspectk3scliasync-ts"
+          class="view"
+          data-view="src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts</h2>
+            <article
+              class="item"
+              data-search="validateK3sCliAsync src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>validateK3sCliAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:20:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="inspectK3sCliAsync src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>inspectK3sCliAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:44:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="inspectNodeAsync src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>inspectNodeAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:69:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isK3sInstalledAsync src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>isK3sInstalledAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:98:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="versionMatchesAsync src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>versionMatchesAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:113:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createK3sKubernetesApi src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>createK3sKubernetesApi</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:128:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="aggregateState src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>aggregateState</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:141:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isInactiveService src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>isInactiveService</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:148:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="hasExactAccess src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>hasExactAccess</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:152:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-cluster-runtime-adapters-k3sclisupport-ts"
+          class="view"
+          data-view="src/features/cluster-runtime/adapters/k3sCliSupport.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/cluster-runtime/adapters/k3sCliSupport.ts</h2>
+            <article
+              class="item"
+              data-search="runNodeCommandAsync src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>runNodeCommandAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:15:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="loadOfficialInstallScriptAsync src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>loadOfficialInstallScriptAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:34:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="delayAsync src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>delayAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:40:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="success src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>success</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:57:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="invalidAccess src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>invalidAccess</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:61:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="invalidLocalTopology src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>invalidLocalTopology</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:68:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="readinessTimeout src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>readinessTimeout</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:72:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="commandFailed src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>commandFailed</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:76:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="failure src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>failure</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:80:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="assertNonNegativeInteger src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>assertNonNegativeInteger</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:84:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="assertPositiveInteger src/features/cluster-runtime/adapters/k3sCliSupport.ts "
+            >
+              <h3>assertPositiveInteger</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts:89:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-cluster-runtime-adapters-operatek3scliasync-ts"
+          class="view"
+          data-view="src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts</h2>
+            <article
+              class="item"
+              data-search="ensureK3sCliAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>ensureK3sCliAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:20:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="waitForK3sCliAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>waitForK3sCliAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:55:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="loadK3sImagesAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>loadK3sImagesAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:74:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="suspendK3sCliAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>suspendK3sCliAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:96:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="destroyK3sCliAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>destroyK3sCliAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:115:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resumeK3sNodesAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>resumeK3sNodesAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:135:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="installOrStartNodeAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>installOrStartNodeAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:154:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="inspectK3sApiAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>inspectK3sApiAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:183:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="readJoinTokenAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>readJoinTokenAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:199:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="canResume src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>canResume</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:215:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createInstallExec src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>createInstallExec</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:221:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="getNodeHost src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>getNodeHost</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:231:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="getService src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>getService</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:235:1</code>
+              </p>
+              <p class="empty">No description available.</p>
             </article>
           </section>
         </section>
@@ -1776,7 +3005,7 @@ graph LR
               <h3>missingDestroyAccess</h3>
               <p class="muted">
                 <code
-                  >src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts:50:1</code
+                  >src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts:55:1</code
                 >
               </p>
               <p class="empty">No description available.</p>
@@ -1788,7 +3017,7 @@ graph LR
               <h3>isConfirmed</h3>
               <p class="muted">
                 <code
-                  >src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts:63:1</code
+                  >src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts:68:1</code
                 >
               </p>
               <p class="empty">No description available.</p>
@@ -1800,7 +3029,7 @@ graph LR
               <h3>unconfirmedDestroy</h3>
               <p class="muted">
                 <code
-                  >src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts:72:1</code
+                  >src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts:77:1</code
                 >
               </p>
               <p class="empty">No description available.</p>
@@ -2045,16 +3274,18 @@ graph LR
             <h2>src/features/cluster-runtime/composition/createInfraAdapter.ts</h2>
             <article
               class="item"
-              data-search="createInfraAdapter src/features/cluster-runtime/composition/createInfraAdapter.ts Create the canonical k3s runtime adapter entrypoint.&#10;&#10;The caller supplies a k3s-specific control-plane boundary. Standard workload projection and&#10;reconciliation are delegated to the published Kubernetes driver."
+              data-search="createInfraAdapter src/features/cluster-runtime/composition/createInfraAdapter.ts Create the canonical k3s runtime adapter entrypoint.&#10;&#10;The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official&#10;k3s installer. Standard workload projection and reconciliation are delegated to the published&#10;Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary."
             >
               <h3>createInfraAdapter</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/composition/createInfraAdapter.ts:20:1</code>
+                <code>src/features/cluster-runtime/composition/createInfraAdapter.ts:22:1</code>
               </p>
               <p>
-                Create the canonical k3s runtime adapter entrypoint. The caller supplies a
-                k3s-specific control-plane boundary. Standard workload projection and reconciliation
-                are delegated to the published Kubernetes driver.
+                Create the canonical k3s runtime adapter entrypoint. The default composition
+                bootstraps local Linux or host-key-pinned SSH nodes through the official k3s
+                installer. Standard workload projection and reconciliation are delegated to the
+                published Kubernetes driver. Tests and specialized hosts may inject the
+                control-plane boundary.
               </p>
             </article>
           </section>
@@ -2200,6 +3431,31 @@ graph LR
           </section>
         </section>
         <section
+          id="view-src-k3sclicontrolplane-test-ts"
+          class="view"
+          data-view="src/k3sCliControlPlane.test.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/k3sCliControlPlane.test.ts</h2>
+            <article class="item" data-search="createLocalFixture src/k3sCliControlPlane.test.ts ">
+              <h3>createLocalFixture</h3>
+              <p class="muted"><code>src/k3sCliControlPlane.test.ts:115:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createRemoteFixture src/k3sCliControlPlane.test.ts ">
+              <h3>createRemoteFixture</h3>
+              <p class="muted"><code>src/k3sCliControlPlane.test.ts:138:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="result src/k3sCliControlPlane.test.ts ">
+              <h3>result</h3>
+              <p class="muted"><code>src/k3sCliControlPlane.test.ts:180:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
           id="view-src-k3sruntime-test-ts"
           class="view"
           data-view="src/k3sRuntime.test.ts"
@@ -2209,27 +3465,27 @@ graph LR
             <h2>src/k3sRuntime.test.ts</h2>
             <article class="item" data-search="createLocalDesired src/k3sRuntime.test.ts ">
               <h3>createLocalDesired</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:89:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:93:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createRemoteDesired src/k3sRuntime.test.ts ">
               <h3>createRemoteDesired</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:98:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:102:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createWorkload src/k3sRuntime.test.ts ">
               <h3>createWorkload</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:117:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:121:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createContext src/k3sRuntime.test.ts ">
               <h3>createContext</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:129:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:133:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createDestroyRequest src/k3sRuntime.test.ts ">
               <h3>createDestroyRequest</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:153:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:157:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>

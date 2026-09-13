@@ -8,7 +8,6 @@ import type {
 } from '@ankhorage/kubernetes';
 
 import type {
-  K3sClusterIdentity,
   K3sClusterObservation,
   K3sClusterSpec,
   K3sControlPlane,
@@ -58,7 +57,8 @@ export class FakeK3sControlPlane implements K3sControlPlane {
   }
 
   loadImagesAsync(
-    _identity: K3sClusterIdentity,
+    _spec: K3sClusterSpec,
+    _access: readonly K3sNodeAccess[],
     images: readonly string[],
   ): Promise<InfraResult<null>> {
     this.calls.push(`images:${images.join(',')}`);

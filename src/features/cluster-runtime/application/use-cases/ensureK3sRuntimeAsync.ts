@@ -6,14 +6,14 @@ import type {
 } from '@ankhorage/contracts/infra';
 import { createKubernetesDriver } from '@ankhorage/kubernetes';
 
-import type { K3sAdapterOptions, K3sDesiredState } from '../../../../types/k3sRuntime';
+import type { K3sDesiredState, K3sRuntimeDependencies } from '../../../../types/k3sRuntime';
 import { createK3sClusterOwner, createK3sNodeOwner } from '../../utils/createK3sOwners';
 import { createKubernetesDriverRequest } from '../../utils/createKubernetesDriverRequest';
 import { prepareK3sRuntimeAsync } from './prepareK3sRuntimeAsync';
 
 /*** Bootstrap k3s, reconcile workloads through Kubernetes and wait for readiness. */
 export async function ensureK3sRuntimeAsync(
-  options: K3sAdapterOptions,
+  options: K3sRuntimeDependencies,
   context: InfraExecutionContext,
   desired: K3sDesiredState,
 ): Promise<InfraResult<InfraReconcileResult>> {
@@ -22,11 +22,11 @@ export async function ensureK3sRuntimeAsync(
   const { spec, access } = prepared.value;
   const ensured = await options.controlPlane.ensureAsync(spec, access, context.signal);
   if (!ensured.ok) return ensured;
-  const ready = await options.controlPlane.waitUntilReadyAsync(spec, context.signal);
+  const ready = await options.controlPlane.waitUntilReadyAsync(spec, access, context.signal);
   if (!ready.ok) return ready;
   if (ready.value.api === undefined) return missingClusterAccess();
   const images = [...new Set(desired.workloads.map(({ artifact }) => artifact.image))].sort();
-  const loaded = await options.controlPlane.loadImagesAsync(spec, images, context.signal);
+  const loaded = await options.controlPlane.loadImagesAsync(spec, access, images, context.signal);
   if (!loaded.ok) return loaded;
   const driver = createKubernetesDriver({ api: ready.value.api });
   const request = createKubernetesDriverRequest(context, desired);
