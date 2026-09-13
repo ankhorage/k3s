@@ -1,5 +1,11 @@
 # @ankhorage/k3s
 
+## 0.3.0
+
+### Minor Changes
+
+- 174340e: Implement the concrete local and verified-SSH k3s lifecycle on Contracts 17 and Kubernetes 0.5.
+
 ## 0.2.0
 
 ### Minor Changes
