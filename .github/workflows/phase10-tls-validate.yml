@@ -1,5 +1,6 @@
 name: Phase 10 TLS validation
 
+# Validation retry after canonical lint cleanup.
 on:
   push:
     branches:
