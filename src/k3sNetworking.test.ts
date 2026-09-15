@@ -81,10 +81,7 @@ class NetworkingExecutor implements K3sNodeCommandExecutor {
 
   constructor(private current?: string) {}
 
-  runAsync(
-    _access: K3sNodeAccess,
-    request: K3sNodeCommandRequest,
-  ): Promise<K3sNodeCommandResult> {
+  runAsync(_access: K3sNodeAccess, request: K3sNodeCommandRequest): Promise<K3sNodeCommandResult> {
     this.commands.push([request.executable, ...request.arguments].join(' '));
     if (request.arguments.includes('get')) {
       return Promise.resolve({ exitCode: 0, stdout: this.current ?? '', stderr: '' });
@@ -118,9 +115,7 @@ function createSpec(tls: boolean): K3sClusterSpec {
     networking: {
       domain: 'api.sample.test',
       publicBaseUrl: tls ? 'https://api.sample.test' : 'http://api.sample.test',
-      ...(tls
-        ? { tls: { mode: 'acme-http-01' as const, contactEmail: 'infra@example.ch' } }
-        : {}),
+      ...(tls ? { tls: { mode: 'acme-http-01' as const, contactEmail: 'infra@example.ch' } } : {}),
     },
   };
 }
