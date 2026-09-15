@@ -43,10 +43,15 @@ export async function inspectK3sNetworkingAsync(
   if (actual === undefined) return commandFailed('k3s-networking-inspection-invalid');
   const owned = isOwnedByCluster(actual, spec);
   const desired = createK3sTraefikConfigResource(spec);
+  const desiredValuesContent = desired?.spec?.valuesContent;
   return success({
     state: owned ? 'owned' : 'foreign',
     configurationMatches:
-      desired === undefined ? !owned : owned && readValuesContent(actual) === readValuesContent(desired),
+      desired === undefined
+        ? !owned
+        : owned &&
+          typeof desiredValuesContent === 'string' &&
+          readValuesContent(actual) === desiredValuesContent,
   });
 }
 
