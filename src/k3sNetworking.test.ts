@@ -1,7 +1,7 @@
-import type { InfraResult } from '@ankhorage/contracts/infra';
 import { expect, it } from 'bun:test';
 
 import { reconcileK3sNetworkingAsync } from './features/cluster-runtime/adapters/reconcileK3sNetworkingAsync';
+import { createK3sTraefikConfigResource } from './features/cluster-runtime/utils/createK3sTraefikConfigResource';
 import type {
   K3sCliContext,
   K3sClusterSpec,
@@ -10,7 +10,6 @@ import type {
   K3sNodeCommandRequest,
   K3sNodeCommandResult,
 } from './types/k3sRuntime';
-import { createK3sTraefikConfigResource } from './features/cluster-runtime/utils/createK3sTraefikConfigResource';
 
 it('applies owned Traefik ACME configuration and waits for Traefik readiness', async () => {
   const executor = new NetworkingExecutor();
@@ -127,12 +126,9 @@ function createSpec(tls: boolean): K3sClusterSpec {
 }
 
 function createPrimaryAccess(): K3sNodeAccess {
+  const target = { id: 'server', kind: 'local-host', os: 'linux', architecture: 'amd64' } as const;
   return {
-    node: createSpec(true).nodes[0]!,
+    node: { id: target.id, role: 'server', target },
     transport: { kind: 'local' },
   };
-}
-
-function success<T>(value: T): InfraResult<T> {
-  return { ok: true, value, diagnostics: [] };
 }
