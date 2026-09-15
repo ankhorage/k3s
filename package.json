@@ -1,6 +1,6 @@
 {
   "name": "@ankhorage/k3s",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "k3s runtime adapter for provider-neutral Ankhorage infrastructure.",
   "type": "module",
   "main": "./dist/index.js",
