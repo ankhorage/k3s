@@ -15,7 +15,9 @@ import { validateK3sRuntimeAsync } from '../application/use-cases/validateK3sRun
  *
  * The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official
  * k3s installer. Standard workload projection and reconciliation are delegated to the published
- * Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary.
+ * Kubernetes driver. Canonical `networking.tls` ACME HTTP-01 intent is reconciled through an
+ * Infra-owned Traefik HelmChartConfig without overwriting foreign Traefik configuration. Tests and
+ * specialized hosts may inject the control-plane boundary.
  *
  * @readme
  */

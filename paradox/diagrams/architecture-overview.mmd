@@ -4,6 +4,7 @@ graph TD
   package__ankhorage_k3s --> entrypoint_src_index_ts
   module_examples_basic_usage_index_ts["examples/basic-usage/index.ts"]
   package__ankhorage_k3s -.-> module_examples_basic_usage_index_ts
+  module_examples_basic_usage_index_ts --> module_dist_index_d_ts
   module_src_constants_infra_ts["src/constants/infra.ts"]
   package__ankhorage_k3s -.-> module_src_constants_infra_ts
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts["src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts"]
@@ -18,8 +19,14 @@ graph TD
   module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --> module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts["src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"]
   package__ankhorage_k3s -.-> module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --> module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --> module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --> module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts["src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts"]
+  package__ankhorage_k3s -.-> module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --> module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --> module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --> module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_adapters_k3sCliSupport_ts["src/features/cluster-runtime/adapters/k3sCliSupport.ts"]
   package__ankhorage_k3s -.-> module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
   module_src_features_cluster_runtime_adapters_k3sCliSupport_ts --> module_src_types_k3sRuntime_ts
@@ -27,7 +34,14 @@ graph TD
   package__ankhorage_k3s -.-> module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --> module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --> module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --> module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --> module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts["src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts"]
+  package__ankhorage_k3s -.-> module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --> module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --> module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --> module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --> module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts["src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts"]
   package__ankhorage_k3s -.-> module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --> module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
@@ -78,6 +92,9 @@ graph TD
   module_src_features_cluster_runtime_utils_createK3sOwners_ts["src/features/cluster-runtime/utils/createK3sOwners.ts"]
   package__ankhorage_k3s -.-> module_src_features_cluster_runtime_utils_createK3sOwners_ts
   module_src_features_cluster_runtime_utils_createK3sOwners_ts --> module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts["src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts"]
+  package__ankhorage_k3s -.-> module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts --> module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts["src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts"]
   package__ankhorage_k3s -.-> module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts
   module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts --> module_src_types_k3sRuntime_ts
@@ -100,6 +117,12 @@ graph TD
   package__ankhorage_k3s -.-> module_src_k3sCliControlPlane_test_ts
   module_src_k3sCliControlPlane_test_ts --> module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
   module_src_k3sCliControlPlane_test_ts --> module_src_index_ts
+  module_src_k3sNetworking_test_ts["src/k3sNetworking.test.ts"]
+  package__ankhorage_k3s -.-> module_src_k3sNetworking_test_ts
+  module_src_k3sNetworking_test_ts --> module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_k3sNetworking_test_ts --> module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+  module_src_k3sNetworking_test_ts --> module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_k3sNetworking_test_ts --> module_src_types_k3sRuntime_ts
   module_src_k3sRuntime_test_ts["src/k3sRuntime.test.ts"]
   package__ankhorage_k3s -.-> module_src_k3sRuntime_test_ts
   module_src_k3sRuntime_test_ts --> module_src_index_ts

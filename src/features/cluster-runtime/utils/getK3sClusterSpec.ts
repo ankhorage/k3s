@@ -33,11 +33,15 @@ export function getK3sClusterSpec(
         role: index < topology.servers ? 'server' : 'agent',
         target,
       })),
+      ...(context.desired.networking === undefined
+        ? {}
+        : { networking: context.desired.networking }),
     },
     diagnostics: [],
   };
 }
 
+/** Validate canonical k3s server/agent counts. */
 function isValidTopology(topology: K3sTopology): boolean {
   return (
     Number.isInteger(topology.servers) &&
@@ -47,6 +51,7 @@ function isValidTopology(topology: K3sTopology): boolean {
   );
 }
 
+/** Build one stable target-validation diagnostic. */
 function invalidTargets(message: string): InfraResult<never> {
   return {
     ok: false,

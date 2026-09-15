@@ -19,14 +19,16 @@ export class FakeK3sControlPlane implements K3sControlPlane {
   readonly api = new FakeKubernetesApi();
   readonly calls: string[] = [];
   lastAccess: readonly K3sNodeAccess[] = [];
+  lastSpec?: K3sClusterSpec;
   state: K3sClusterObservation['state'] = 'absent';
   nodes: K3sClusterObservation['nodes'] = [];
 
   validateAsync(
-    _spec: K3sClusterSpec,
+    spec: K3sClusterSpec,
     access: readonly K3sNodeAccess[],
   ): Promise<InfraResult<null>> {
     this.calls.push('validate');
+    this.lastSpec = spec;
     this.lastAccess = access;
     return success(null);
   }
@@ -41,6 +43,7 @@ export class FakeK3sControlPlane implements K3sControlPlane {
     access: readonly K3sNodeAccess[],
   ): Promise<InfraResult<K3sClusterObservation>> {
     this.calls.push('ensure');
+    this.lastSpec = spec;
     this.lastAccess = access;
     this.state = 'ready';
     this.nodes = spec.nodes.map(({ id }) => ({
@@ -79,6 +82,7 @@ export class FakeK3sControlPlane implements K3sControlPlane {
     return success(null);
   }
 
+  /** Return the current fake cluster observation through the real control-plane contract. */
   private observation(): K3sClusterObservation {
     return {
       state: this.state,
@@ -126,10 +130,12 @@ class FakeKubernetesApi implements KubernetesApi {
   }
 }
 
+/** Wrap a successful fake result. */
 function success<T>(value: T): Promise<InfraResult<T>> {
   return Promise.resolve({ ok: true, value, diagnostics: [] });
 }
 
+/** Return whether actual labels include every expected ownership label. */
 function includesLabels(
   actual: Readonly<Record<string, string>>,
   expected: Readonly<Record<string, string>>,
@@ -141,6 +147,7 @@ function includesLabels(
   );
 }
 
+/** Compare Kubernetes resources by their canonical identity fields. */
 function sameResource(
   left: KubernetesResource,
   right: KubernetesResource | KubernetesResourceReference,

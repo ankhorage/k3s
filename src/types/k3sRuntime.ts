@@ -1,6 +1,7 @@
 import type {
   InfraComputeTarget,
   InfraExecutionContext,
+  InfraNetworkingSpec,
   InfraResourceStatus,
   InfraResult,
   InfraRuntimeDesiredState,
@@ -63,6 +64,27 @@ export interface K3sClusterSpec extends K3sClusterIdentity {
   readonly version?: string;
   readonly topology: K3sTopology;
   readonly nodes: readonly K3sNodeSpec[];
+  readonly networking?: InfraNetworkingSpec;
+}
+
+export interface K3sNodeObservation {
+  readonly id: string;
+  readonly state: InfraResourceStatus['state'];
+  readonly configurationMatches: boolean;
+  readonly detail?: string;
+}
+
+export interface K3sClusterObservation {
+  readonly state: InfraResourceStatus['state'];
+  readonly configurationMatches: boolean;
+  readonly nodes: readonly K3sNodeObservation[];
+  readonly api?: KubernetesApi;
+  readonly detail?: string;
+}
+
+export interface K3sNetworkingObservation {
+  readonly state: 'absent' | 'owned' | 'foreign';
+  readonly configurationMatches: boolean;
 }
 
 /** Resolved credentials exist only in calls across this execution boundary. */
@@ -82,21 +104,6 @@ export type K3sNodeAccess =
         readonly credential: Readonly<Record<string, string>>;
       };
     };
-
-export interface K3sNodeObservation {
-  readonly id: string;
-  readonly state: InfraResourceStatus['state'];
-  readonly configurationMatches: boolean;
-  readonly detail?: string;
-}
-
-export interface K3sClusterObservation {
-  readonly state: InfraResourceStatus['state'];
-  readonly configurationMatches: boolean;
-  readonly nodes: readonly K3sNodeObservation[];
-  readonly api?: KubernetesApi;
-  readonly detail?: string;
-}
 
 /** k3s-specific command boundary for local and authenticated SSH operations. */
 export interface K3sControlPlane {
