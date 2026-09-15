@@ -67,7 +67,7 @@ function parseResource(value: string): Record<string, unknown> | undefined {
 
 /** Check exact Infra ownership before k3s may mutate the singleton Traefik configuration. */
 function isOwnedByCluster(resource: Record<string, unknown>, spec: K3sClusterSpec): boolean {
-  const metadata = resource.metadata;
+  const { metadata } = resource;
   if (!isRecord(metadata) || !isRecord(metadata.labels)) return false;
   return (
     metadata.labels['app.kubernetes.io/managed-by'] === 'ankhorage-infra' &&
@@ -78,6 +78,6 @@ function isOwnedByCluster(resource: Record<string, unknown>, spec: K3sClusterSpe
 
 /** Read the one Traefik chart value controlled by this runtime slice. */
 function readValuesContent(resource: Record<string, unknown>): string | undefined {
-  const spec = resource.spec;
+  const { spec } = resource;
   return isRecord(spec) && typeof spec.valuesContent === 'string' ? spec.valuesContent : undefined;
 }
