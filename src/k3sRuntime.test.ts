@@ -46,6 +46,10 @@ it('bootstraps deterministic remote multi-node topology with transient SSH crede
     'agent-a:agent',
     'agent-b:agent',
   ]);
+  expect(controlPlane.lastSpec?.networking?.tls).toEqual({
+    mode: 'acme-http-01',
+    contactEmail: 'infra@example.ch',
+  });
   const remote = controlPlane.lastAccess.find(({ node }) => node.id === 'server-a');
   expect(remote?.transport.kind === 'ssh' && remote.transport.hostKeyFingerprint).toBe(
     'SHA256:server-a',
@@ -142,7 +146,14 @@ function createContext(environment: 'local' | 'production'): InfraExecutionConte
               compute: { provider: 'hetzner', location: 'fsn1' },
               runtime: { provider: 'k3s' },
             },
-      networking: { domain: 'api.sample.test' },
+      networking:
+        environment === 'production'
+          ? {
+              domain: 'api.sample.test',
+              publicBaseUrl: 'https://api.sample.test',
+              tls: { mode: 'acme-http-01', contactEmail: 'infra@example.ch' },
+            }
+          : { domain: 'api.sample.test' },
     },
     credentials: {
       resolveAsync: () =>
