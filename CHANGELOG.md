@@ -1,5 +1,11 @@
 # @ankhorage/k3s
 
+## 0.3.1
+
+### Patch Changes
+
+- 5a219ed: Require current Contracts and Kubernetes workload boundaries so runtime consumers cannot resolve a Kubernetes version that predates workload template materialization.
+
 ## 0.3.0
 
 ### Minor Changes
