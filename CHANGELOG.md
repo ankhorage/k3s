@@ -1,5 +1,11 @@
 # @ankhorage/k3s
 
+## 0.4.0
+
+### Minor Changes
+
+- 5b39813: Reconcile canonical ACME HTTP-01 networking intent through an Infra-owned Traefik HelmChartConfig while preserving foreign Traefik configuration.
+
 ## 0.3.1
 
 ### Patch Changes
