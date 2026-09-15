@@ -1,4 +1,5 @@
 import type { InfraResult } from '@ankhorage/contracts/infra';
+import type { KubernetesResource } from '@ankhorage/kubernetes';
 
 import type { K3sClusterSpec, K3sNodeAccess } from '../../../types/k3sRuntime';
 import { createK3sTraefikConfigResource } from '../utils/createK3sTraefikConfigResource';
@@ -19,24 +20,44 @@ export async function reconcileK3sNetworkingAsync(
   if (!observed.ok) return observed;
   const desired = createK3sTraefikConfigResource(spec);
   if (desired === undefined) {
-    if (observed.value.state !== 'owned') return success(null);
-    return runNodeCommandAsync(
-      context,
-      primary,
-      K3S_BINARY,
-      [
-        'kubectl',
-        'delete',
-        TRAEFIK_CONFIG_RESOURCE,
-        '--namespace',
-        TRAEFIK_NAMESPACE,
-        '--ignore-not-found=true',
-      ],
-      signal,
-    );
+    return observed.value.state === 'owned'
+      ? deleteTraefikConfigAsync(context, primary, signal)
+      : success(null);
   }
   if (observed.value.state === 'foreign') return foreignTraefikConfig();
   if (observed.value.configurationMatches) return success(null);
+  return applyTraefikConfigAsync(context, primary, desired, signal);
+}
+
+/** Delete only the singleton Traefik configuration previously marked as owned by Infra. */
+async function deleteTraefikConfigAsync(
+  context: K3sCliContext,
+  primary: K3sNodeAccess,
+  signal?: AbortSignal,
+): Promise<InfraResult<null>> {
+  return runNodeCommandAsync(
+    context,
+    primary,
+    K3S_BINARY,
+    [
+      'kubectl',
+      'delete',
+      TRAEFIK_CONFIG_RESOURCE,
+      '--namespace',
+      TRAEFIK_NAMESPACE,
+      '--ignore-not-found=true',
+    ],
+    signal,
+  );
+}
+
+/** Apply desired Traefik chart values and wait for the packaged ingress controller rollout. */
+async function applyTraefikConfigAsync(
+  context: K3sCliContext,
+  primary: K3sNodeAccess,
+  desired: KubernetesResource,
+  signal?: AbortSignal,
+): Promise<InfraResult<null>> {
   const applied = await runNodeCommandAsync(
     context,
     primary,
