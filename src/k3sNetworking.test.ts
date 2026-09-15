@@ -1,9 +1,9 @@
 import { expect, it } from 'bun:test';
 
+import type { K3sCliContext } from './features/cluster-runtime/adapters/k3sCliSupport';
 import { reconcileK3sNetworkingAsync } from './features/cluster-runtime/adapters/reconcileK3sNetworkingAsync';
 import { createK3sTraefikConfigResource } from './features/cluster-runtime/utils/createK3sTraefikConfigResource';
 import type {
-  K3sCliContext,
   K3sClusterSpec,
   K3sNodeAccess,
   K3sNodeCommandExecutor,
