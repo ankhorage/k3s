@@ -16,7 +16,9 @@ import {
   type K3sCliContext,
   success,
 } from './k3sCliSupport';
+import { inspectK3sNetworkingAsync } from './inspectK3sNetworkingAsync';
 
+/** Validate k3s node access and required host commands without mutating infrastructure. */
 export async function validateK3sCliAsync(
   context: K3sCliContext,
   spec: K3sClusterSpec,
@@ -41,6 +43,7 @@ export async function validateK3sCliAsync(
   return success(null);
 }
 
+/** Inspect k3s service, version and owned runtime networking state without mutation. */
 export async function inspectK3sCliAsync(
   context: K3sCliContext,
   spec: K3sClusterSpec,
@@ -56,9 +59,12 @@ export async function inspectK3sCliAsync(
   }
   const state = aggregateState(nodes);
   const primary = access.find(({ node }) => node.role === 'server');
+  const networking = await inspectReadyNetworkingAsync(context, spec, primary, state, signal);
+  if (!networking.ok) return networking;
   return success({
     state,
-    configurationMatches: nodes.every(({ configurationMatches }) => configurationMatches),
+    configurationMatches:
+      nodes.every(({ configurationMatches }) => configurationMatches) && networking.value,
     nodes,
     ...(state === 'ready' && primary !== undefined
       ? { api: createK3sKubernetesApi(context.executor, primary) }
@@ -66,6 +72,39 @@ export async function inspectK3sCliAsync(
   });
 }
 
+/** Inspect whether one k3s binary exists on a target node. */
+export async function isK3sInstalledAsync(
+  context: K3sCliContext,
+  access: K3sNodeAccess,
+  signal?: AbortSignal,
+): Promise<InfraResult<boolean>> {
+  const result = await context.executor.runAsync(access, {
+    executable: 'sh',
+    arguments: ['-c', `test -x ${K3S_BINARY}`],
+    ...(signal === undefined ? {} : { signal }),
+  });
+  return result.exitCode === 0 || result.exitCode === 1
+    ? success(result.exitCode === 0)
+    : commandFailed('k3s-inspection-failed');
+}
+
+/** Check the installed k3s version when the desired spec pins one. */
+export async function versionMatchesAsync(
+  context: K3sCliContext,
+  access: K3sNodeAccess,
+  spec: K3sClusterSpec,
+  signal?: AbortSignal,
+): Promise<boolean> {
+  if (spec.version === undefined) return true;
+  const result = await context.executor.runAsync(access, {
+    executable: K3S_BINARY,
+    arguments: ['--version'],
+    ...(signal === undefined ? {} : { signal }),
+  });
+  return result.exitCode === 0 && result.stdout.includes(spec.version.replace(/^v/, ''));
+}
+
+/** Inspect one systemd unit and its desired k3s version. */
 async function inspectNodeAsync(
   context: K3sCliContext,
   spec: K3sClusterSpec,
@@ -95,36 +134,21 @@ async function inspectNodeAsync(
   });
 }
 
-export async function isK3sInstalledAsync(
+/** Inspect runtime networking only while the Kubernetes API is expected to be reachable. */
+async function inspectReadyNetworkingAsync(
   context: K3sCliContext,
-  access: K3sNodeAccess,
+  spec: K3sClusterSpec,
+  primary: K3sNodeAccess | undefined,
+  state: InfraResourceStatus['state'],
   signal?: AbortSignal,
 ): Promise<InfraResult<boolean>> {
-  const result = await context.executor.runAsync(access, {
-    executable: 'sh',
-    arguments: ['-c', `test -x ${K3S_BINARY}`],
-    ...(signal === undefined ? {} : { signal }),
-  });
-  return result.exitCode === 0 || result.exitCode === 1
-    ? success(result.exitCode === 0)
-    : commandFailed('k3s-inspection-failed');
+  if (state !== 'ready') return success(true);
+  if (primary === undefined) return invalidAccess();
+  const networking = await inspectK3sNetworkingAsync(context, spec, primary, signal);
+  return networking.ok ? success(networking.value.configurationMatches) : networking;
 }
 
-export async function versionMatchesAsync(
-  context: K3sCliContext,
-  access: K3sNodeAccess,
-  spec: K3sClusterSpec,
-  signal?: AbortSignal,
-): Promise<boolean> {
-  if (spec.version === undefined) return true;
-  const result = await context.executor.runAsync(access, {
-    executable: K3S_BINARY,
-    arguments: ['--version'],
-    ...(signal === undefined ? {} : { signal }),
-  });
-  return result.exitCode === 0 && result.stdout.includes(spec.version.replace(/^v/, ''));
-}
-
+/** Build the generic Kubernetes API over the primary server's embedded kubectl. */
 function createK3sKubernetesApi(executor: K3sNodeCommandExecutor, primary: K3sNodeAccess) {
   const runner: KubernetesCommandRunner = {
     runAsync: (request) =>
@@ -138,6 +162,7 @@ function createK3sKubernetesApi(executor: K3sNodeCommandExecutor, primary: K3sNo
   return createKubectlKubernetesApi({ context: 'default', executable: K3S_BINARY, runner });
 }
 
+/** Aggregate deterministic cluster state from node observations. */
 function aggregateState(nodes: readonly K3sNodeObservation[]): InfraResourceStatus['state'] {
   if (nodes.every(({ state }) => state === 'absent')) return 'absent';
   if (nodes.every(({ state }) => state === 'ready')) return 'ready';
@@ -145,10 +170,12 @@ function aggregateState(nodes: readonly K3sNodeObservation[]): InfraResourceStat
   return 'degraded';
 }
 
+/** Recognize systemd states that mean an installed service is currently stopped. */
 function isInactiveService(stdout: string): boolean {
   return ['inactive', 'failed', 'deactivating'].includes(stdout.trim());
 }
 
+/** Ensure transient access entries exactly match the deterministic desired nodes. */
 function hasExactAccess(spec: K3sClusterSpec, access: readonly K3sNodeAccess[]): boolean {
   return (
     access.length === spec.nodes.length &&
