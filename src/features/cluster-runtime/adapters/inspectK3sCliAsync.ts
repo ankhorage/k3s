@@ -8,6 +8,7 @@ import type {
   K3sNodeCommandExecutor,
   K3sNodeObservation,
 } from '../../../types/k3sRuntime';
+import { inspectK3sNetworkingAsync } from './inspectK3sNetworkingAsync';
 import {
   commandFailed,
   invalidAccess,
@@ -16,7 +17,6 @@ import {
   type K3sCliContext,
   success,
 } from './k3sCliSupport';
-import { inspectK3sNetworkingAsync } from './inspectK3sNetworkingAsync';
 
 /** Validate k3s node access and required host commands without mutating infrastructure. */
 export async function validateK3sCliAsync(
@@ -72,7 +72,7 @@ export async function inspectK3sCliAsync(
   });
 }
 
-/** Inspect whether one k3s binary exists on a target node. */
+/** Inspect one k3s binary exists on a target node. */
 export async function isK3sInstalledAsync(
   context: K3sCliContext,
   access: K3sNodeAccess,
