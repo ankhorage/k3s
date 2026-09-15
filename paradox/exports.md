@@ -4,13 +4,15 @@
 
 Kind: `function`
 Module: `src/features/cluster-runtime/composition/createInfraAdapter.ts`
-Source: `src/features/cluster-runtime/composition/createInfraAdapter.ts:22:1`
+Source: `src/features/cluster-runtime/composition/createInfraAdapter.ts:24:1`
 
 Create the canonical k3s runtime adapter entrypoint.
 
 The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official
 k3s installer. Standard workload projection and reconciliation are delegated to the published
-Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary.
+Kubernetes driver. Canonical `networking.tls` ACME HTTP-01 intent is reconciled through an
+Infra-owned Traefik HelmChartConfig without overwriting foreign Traefik configuration. Tests and
+specialized hosts may inject the control-plane boundary.
 
 ### Signatures
 
@@ -51,7 +53,7 @@ Source: `src/constants/infra.ts:5:14`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:10:1`
+Source: `src/types/k3sRuntime.ts:11:1`
 
 ### Members
 
@@ -64,7 +66,7 @@ Source: `src/types/k3sRuntime.ts:10:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:38:1`
+Source: `src/types/k3sRuntime.ts:39:1`
 
 ### Members
 
@@ -79,7 +81,7 @@ Source: `src/types/k3sRuntime.ts:38:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:45:1`
+Source: `src/types/k3sRuntime.ts:46:1`
 
 ### Members
 
@@ -93,7 +95,7 @@ Source: `src/types/k3sRuntime.ts:45:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:93:1`
+Source: `src/types/k3sRuntime.ts:77:1`
 
 ### Members
 
@@ -109,7 +111,7 @@ Source: `src/types/k3sRuntime.ts:93:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:62:1`
+Source: `src/types/k3sRuntime.ts:63:1`
 
 ### Members
 
@@ -117,6 +119,7 @@ Source: `src/types/k3sRuntime.ts:62:1`
 | ----------- | -------- | -------------------------------------- | -------- | ----------- |
 | environment | property | `"local" \| "preview" \| "production"` | yes      |             |
 | name        | property | `string`                               | yes      |             |
+| networking  | property | `InfraNetworkingSpec \| undefined`     | no       |             |
 | nodes       | property | `readonly K3sNodeSpec[]`               | yes      |             |
 | projectId   | property | `string`                               | yes      |             |
 | topology    | property | `K3sTopology`                          | yes      |             |
@@ -126,7 +129,7 @@ Source: `src/types/k3sRuntime.ts:62:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:102:1`
+Source: `src/types/k3sRuntime.ts:109:1`
 
 ### Members
 
@@ -144,19 +147,19 @@ Source: `src/types/k3sRuntime.ts:102:1`
 
 Kind: `unknown`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:141:1`
+Source: `src/types/k3sRuntime.ts:148:1`
 
 ## K3sNodeAccess
 
 Kind: `unknown`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:69:1`
+Source: `src/types/k3sRuntime.ts:91:1`
 
 ## K3sNodeCommandExecutor
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:34:1`
+Source: `src/types/k3sRuntime.ts:35:1`
 
 ### Members
 
@@ -168,7 +171,7 @@ Source: `src/types/k3sRuntime.ts:34:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:19:1`
+Source: `src/types/k3sRuntime.ts:20:1`
 
 ### Members
 
@@ -184,7 +187,7 @@ Source: `src/types/k3sRuntime.ts:19:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:27:1`
+Source: `src/types/k3sRuntime.ts:28:1`
 
 ### Members
 
@@ -198,7 +201,7 @@ Source: `src/types/k3sRuntime.ts:27:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:86:1`
+Source: `src/types/k3sRuntime.ts:70:1`
 
 ### Members
 
@@ -213,7 +216,7 @@ Source: `src/types/k3sRuntime.ts:86:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:56:1`
+Source: `src/types/k3sRuntime.ts:57:1`
 
 ### Members
 
@@ -227,7 +230,7 @@ Source: `src/types/k3sRuntime.ts:56:1`
 
 Kind: `type`
 Module: `src/types/k3sRuntime.ts`
-Source: `src/types/k3sRuntime.ts:51:1`
+Source: `src/types/k3sRuntime.ts:52:1`
 
 ### Members
 

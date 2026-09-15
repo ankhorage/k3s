@@ -222,7 +222,17 @@
                 data-target="src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts"
               >
                 src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts
-                <small>9 functions</small>
+                <small>10 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts"
+              >
+                src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts
+                <small>4 functions</small>
               </button>
             </li>
             <li>
@@ -242,7 +252,17 @@
                 data-target="src/features/cluster-runtime/adapters/operateK3sCliAsync.ts"
               >
                 src/features/cluster-runtime/adapters/operateK3sCliAsync.ts
-                <small>13 functions</small>
+                <small>14 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts"
+              >
+                src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts
+                <small>4 functions</small>
               </button>
             </li>
             <li>
@@ -339,6 +359,16 @@
               <button
                 class="nav-button"
                 type="button"
+                data-target="src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts"
+              >
+                src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts
+                <small>2 functions</small>
+              </button>
+            </li>
+            <li>
+              <button
+                class="nav-button"
+                type="button"
                 data-target="src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts"
               >
                 src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts
@@ -382,6 +412,12 @@
               </button>
             </li>
             <li>
+              <button class="nav-button" type="button" data-target="src/k3sNetworking.test.ts">
+                src/k3sNetworking.test.ts
+                <small>3 functions</small>
+              </button>
+            </li>
+            <li>
               <button class="nav-button" type="button" data-target="src/k3sRuntime.test.ts">
                 src/k3sRuntime.test.ts
                 <small>5 functions</small>
@@ -403,7 +439,7 @@
             <div class="summary">
               <div><strong>18</strong><span class="muted">public exports</span></div>
               <div><strong>0</strong><span class="muted">components</span></div>
-              <div><strong>26</strong><span class="muted">modules</span></div>
+              <div><strong>30</strong><span class="muted">modules</span></div>
               <div><strong>1</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
@@ -414,10 +450,10 @@
 
           <section class="panel">
             <h2>Modules</h2>
-            <article class="item" data-search="examples/basic-usage/index.ts">
+            <article class="item" data-search="examples/basic-usage/index.ts dist/index.d.ts">
               <h3>examples/basic-usage/index.ts</h3>
               <p class="muted">Referenced module</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p><strong>Dependencies:</strong> <code>dist/index.d.ts</code></p>
               <p><strong>Exports:</strong> <span class="empty">None</span></p>
             </article>
             <article class="item" data-search="src/constants/infra.ts infraAdapterDescriptor">
@@ -453,12 +489,13 @@
             </article>
             <article
               class="item"
-              data-search="src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/types/k3sRuntime.ts inspectK3sCliAsync isK3sInstalledAsync validateK3sCliAsync versionMatchesAsync"
+              data-search="src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/types/k3sRuntime.ts inspectK3sCliAsync isK3sInstalledAsync validateK3sCliAsync versionMatchesAsync"
             >
               <h3>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts</h3>
               <p class="muted">Referenced module</p>
               <p>
                 <strong>Dependencies:</strong>
+                <code>src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts</code>,
                 <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts</code>,
                 <code>src/types/k3sRuntime.ts</code>
               </p>
@@ -470,7 +507,21 @@
             </article>
             <article
               class="item"
-              data-search="src/features/cluster-runtime/adapters/k3sCliSupport.ts src/types/k3sRuntime.ts assertNonNegativeInteger assertPositiveInteger commandFailed delayAsync invalidAccess invalidLocalTopology K3S_BINARY K3S_INSTALL_URL K3sCliContext loadOfficialInstallScriptAsync readinessTimeout runNodeCommandAsync success"
+              data-search="src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts src/types/k3sRuntime.ts inspectK3sNetworkingAsync"
+            >
+              <h3>src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts</code>,
+                <code>src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts</code>,
+                <code>src/types/k3sRuntime.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <code>inspectK3sNetworkingAsync</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/cluster-runtime/adapters/k3sCliSupport.ts src/types/k3sRuntime.ts assertNonNegativeInteger assertPositiveInteger commandFailed delayAsync invalidAccess invalidLocalTopology K3S_BINARY K3sCliContext loadOfficialInstallScriptAsync readinessTimeout runNodeCommandAsync success"
             >
               <h3>src/features/cluster-runtime/adapters/k3sCliSupport.ts</h3>
               <p class="muted">Referenced module</p>
@@ -480,14 +531,14 @@
                 <code>assertPositiveInteger</code>, <code>commandFailed</code>,
                 <code>delayAsync</code>, <code>invalidAccess</code>,
                 <code>invalidLocalTopology</code>, <code>K3S_BINARY</code>,
-                <code>K3S_INSTALL_URL</code>, <code>K3sCliContext</code>,
-                <code>loadOfficialInstallScriptAsync</code>, <code>readinessTimeout</code>,
-                <code>runNodeCommandAsync</code>, <code>success</code>
+                <code>K3sCliContext</code>, <code>loadOfficialInstallScriptAsync</code>,
+                <code>readinessTimeout</code>, <code>runNodeCommandAsync</code>,
+                <code>success</code>
               </p>
             </article>
             <article
               class="item"
-              data-search="src/features/cluster-runtime/adapters/operateK3sCliAsync.ts src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/types/k3sRuntime.ts destroyK3sCliAsync ensureK3sCliAsync loadK3sImagesAsync suspendK3sCliAsync waitForK3sCliAsync"
+              data-search="src/features/cluster-runtime/adapters/operateK3sCliAsync.ts src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts src/types/k3sRuntime.ts destroyK3sCliAsync ensureK3sCliAsync loadK3sImagesAsync suspendK3sCliAsync waitForK3sCliAsync"
             >
               <h3>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts</h3>
               <p class="muted">Referenced module</p>
@@ -495,6 +546,7 @@
                 <strong>Dependencies:</strong>
                 <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts</code>,
                 <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts</code>,
+                <code>src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts</code>,
                 <code>src/types/k3sRuntime.ts</code>
               </p>
               <p>
@@ -502,6 +554,21 @@
                 <code>ensureK3sCliAsync</code>, <code>loadK3sImagesAsync</code>,
                 <code>suspendK3sCliAsync</code>, <code>waitForK3sCliAsync</code>
               </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts src/types/k3sRuntime.ts reconcileK3sNetworkingAsync"
+            >
+              <h3>src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts</code>,
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts</code>,
+                <code>src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts</code>,
+                <code>src/types/k3sRuntime.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <code>reconcileK3sNetworkingAsync</code></p>
             </article>
             <article
               class="item"
@@ -651,6 +718,15 @@
             </article>
             <article
               class="item"
+              data-search="src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts src/types/k3sRuntime.ts createK3sTraefikConfigResource"
+            >
+              <h3>src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <code>src/types/k3sRuntime.ts</code></p>
+              <p><strong>Exports:</strong> <code>createK3sTraefikConfigResource</code></p>
+            </article>
+            <article
+              class="item"
               data-search="src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts src/types/k3sRuntime.ts createKubernetesDriverRequest"
             >
               <h3>src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts</h3>
@@ -735,6 +811,21 @@
             </article>
             <article
               class="item"
+              data-search="src/k3sNetworking.test.ts src/features/cluster-runtime/adapters/k3sCliSupport.ts src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts src/types/k3sRuntime.ts"
+            >
+              <h3>src/k3sNetworking.test.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong>
+                <code>src/features/cluster-runtime/adapters/k3sCliSupport.ts</code>,
+                <code>src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts</code>,
+                <code>src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts</code>,
+                <code>src/types/k3sRuntime.ts</code>
+              </p>
+              <p><strong>Exports:</strong> <span class="empty">None</span></p>
+            </article>
+            <article
+              class="item"
               data-search="src/k3sRuntime.test.ts src/index.ts src/runtimeFixtures.test.ts"
             >
               <h3>src/k3sRuntime.test.ts</h3>
@@ -756,7 +847,7 @@
             </article>
             <article
               class="item"
-              data-search="src/types/k3sRuntime.ts K3sAdapterOptions K3sCliControlPlaneOptions K3sClusterIdentity K3sClusterObservation K3sClusterSpec K3sControlPlane K3sDesiredState K3sNodeAccess K3sNodeCommandExecutor K3sNodeCommandRequest K3sNodeCommandResult K3sNodeObservation K3sNodeSpec K3sRuntimeDependencies K3sTopology"
+              data-search="src/types/k3sRuntime.ts K3sAdapterOptions K3sCliControlPlaneOptions K3sClusterIdentity K3sClusterObservation K3sClusterSpec K3sControlPlane K3sDesiredState K3sNetworkingObservation K3sNodeAccess K3sNodeCommandExecutor K3sNodeCommandRequest K3sNodeCommandResult K3sNodeObservation K3sNodeSpec K3sRuntimeDependencies K3sTopology"
             >
               <h3>src/types/k3sRuntime.ts</h3>
               <p class="muted">Referenced module</p>
@@ -766,10 +857,11 @@
                 <code>K3sCliControlPlaneOptions</code>, <code>K3sClusterIdentity</code>,
                 <code>K3sClusterObservation</code>, <code>K3sClusterSpec</code>,
                 <code>K3sControlPlane</code>, <code>K3sDesiredState</code>,
-                <code>K3sNodeAccess</code>, <code>K3sNodeCommandExecutor</code>,
-                <code>K3sNodeCommandRequest</code>, <code>K3sNodeCommandResult</code>,
-                <code>K3sNodeObservation</code>, <code>K3sNodeSpec</code>,
-                <code>K3sRuntimeDependencies</code>, <code>K3sTopology</code>
+                <code>K3sNetworkingObservation</code>, <code>K3sNodeAccess</code>,
+                <code>K3sNodeCommandExecutor</code>, <code>K3sNodeCommandRequest</code>,
+                <code>K3sNodeCommandResult</code>, <code>K3sNodeObservation</code>,
+                <code>K3sNodeSpec</code>, <code>K3sRuntimeDependencies</code>,
+                <code>K3sTopology</code>
               </p>
             </article>
           </section>
@@ -873,18 +965,20 @@
               <article
                 class="item"
                 id="symbol-createinfraadapter"
-                data-search='createInfraAdapter function src/features/cluster-runtime/composition/createInfraAdapter.ts Create the canonical k3s runtime adapter entrypoint.&#10;&#10;The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official&#10;k3s installer. Standard workload projection and reconciliation are delegated to the published&#10;Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary. K3sAdapterOptions (options?: K3sAdapterOptions) =&gt; InfraRuntimeAdapter&lt;"k3s"&gt;'
+                data-search='createInfraAdapter function src/features/cluster-runtime/composition/createInfraAdapter.ts Create the canonical k3s runtime adapter entrypoint.&#10;&#10;The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official&#10;k3s installer. Standard workload projection and reconciliation are delegated to the published&#10;Kubernetes driver. Canonical `networking.tls` ACME HTTP-01 intent is reconciled through an&#10;Infra-owned Traefik HelmChartConfig without overwriting foreign Traefik configuration. Tests and&#10;specialized hosts may inject the control-plane boundary. K3sAdapterOptions (options?: K3sAdapterOptions) =&gt; InfraRuntimeAdapter&lt;"k3s"&gt;'
               >
                 <h4>createInfraAdapter</h4>
                 <p class="muted">
                   function •
-                  <code>src/features/cluster-runtime/composition/createInfraAdapter.ts:22:1</code>
+                  <code>src/features/cluster-runtime/composition/createInfraAdapter.ts:24:1</code>
                 </p>
                 <p>
                   Create the canonical k3s runtime adapter entrypoint. The default composition
                   bootstraps local Linux or host-key-pinned SSH nodes through the official k3s
                   installer. Standard workload projection and reconciliation are delegated to the
-                  published Kubernetes driver. Tests and specialized hosts may inject the
+                  published Kubernetes driver. Canonical `networking.tls` ACME HTTP-01 intent is
+                  reconciled through an Infra-owned Traefik HelmChartConfig without overwriting
+                  foreign Traefik configuration. Tests and specialized hosts may inject the
                   control-plane boundary.
                 </p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
@@ -931,7 +1025,7 @@
                 data-search="K3sAdapterOptions type src/types/k3sRuntime.ts  K3sCliControlPlaneOptions K3sControlPlane"
               >
                 <h4>K3sAdapterOptions</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:10:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:11:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -976,7 +1070,7 @@
                 data-search="K3sCliControlPlaneOptions type src/types/k3sRuntime.ts  K3sNodeCommandExecutor"
               >
                 <h4>K3sCliControlPlaneOptions</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:38:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:39:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -1038,7 +1132,7 @@
                 data-search="K3sClusterIdentity type src/types/k3sRuntime.ts "
               >
                 <h4>K3sClusterIdentity</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:45:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:46:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1088,7 +1182,7 @@
                 data-search="K3sClusterObservation type src/types/k3sRuntime.ts  K3sNodeObservation"
               >
                 <h4>K3sClusterObservation</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:93:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:77:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -1159,7 +1253,7 @@
                 data-search="K3sClusterSpec type src/types/k3sRuntime.ts  K3sNodeSpec K3sTopology"
               >
                 <h4>K3sClusterSpec</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:62:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:63:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -1200,6 +1294,13 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <td><code>networking</code></td>
+                      <td>property</td>
+                      <td><code>InfraNetworkingSpec | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                    <tr>
                       <td><code>nodes</code></td>
                       <td>property</td>
                       <td><code>readonly K3sNodeSpec[]</code></td>
@@ -1236,7 +1337,7 @@
                 data-search="K3sControlPlane type src/types/k3sRuntime.ts  K3sClusterObservation K3sClusterSpec K3sNodeAccess"
               >
                 <h4>K3sControlPlane</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:102:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:109:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -1356,7 +1457,7 @@
                 data-search="K3sDesiredState unknown src/types/k3sRuntime.ts "
               >
                 <h4>K3sDesiredState</h4>
-                <p class="muted">unknown • <code>src/types/k3sRuntime.ts:141:1</code></p>
+                <p class="muted">unknown • <code>src/types/k3sRuntime.ts:148:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1367,7 +1468,7 @@
                 data-search="K3sNodeAccess unknown src/types/k3sRuntime.ts "
               >
                 <h4>K3sNodeAccess</h4>
-                <p class="muted">unknown • <code>src/types/k3sRuntime.ts:69:1</code></p>
+                <p class="muted">unknown • <code>src/types/k3sRuntime.ts:91:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1378,7 +1479,7 @@
                 data-search="K3sNodeCommandExecutor type src/types/k3sRuntime.ts  K3sNodeAccess K3sNodeCommandRequest K3sNodeCommandResult"
               >
                 <h4>K3sNodeCommandExecutor</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:34:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:35:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -1422,7 +1523,7 @@
                 data-search="K3sNodeCommandRequest type src/types/k3sRuntime.ts "
               >
                 <h4>K3sNodeCommandRequest</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:19:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:20:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1482,7 +1583,7 @@
                 data-search="K3sNodeCommandResult type src/types/k3sRuntime.ts "
               >
                 <h4>K3sNodeCommandResult</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:27:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:28:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1528,7 +1629,7 @@
                 data-search="K3sNodeObservation type src/types/k3sRuntime.ts "
               >
                 <h4>K3sNodeObservation</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:86:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:70:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1587,7 +1688,7 @@
                 data-search="K3sNodeSpec type src/types/k3sRuntime.ts "
               >
                 <h4>K3sNodeSpec</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:56:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:57:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1633,7 +1734,7 @@
                 data-search="K3sTopology type src/types/k3sRuntime.ts "
               >
                 <h4>K3sTopology</h4>
-                <p class="muted">type • <code>src/types/k3sRuntime.ts:51:1</code></p>
+                <p class="muted">type • <code>src/types/k3sRuntime.ts:52:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1686,6 +1787,7 @@
                 entrypoint_src_index_ts
                 module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
                 package__ankhorage_k3s -.-&gt; module_examples_basic_usage_index_ts
+                module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
                 module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
                 package__ankhorage_k3s -.-&gt; module_src_constants_infra_ts
                 module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
@@ -1710,8 +1812,19 @@
                 package__ankhorage_k3s -.-&gt;
                 module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
                 module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
                 module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
                 module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts&quot;]
+                package__ankhorage_k3s -.-&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt;
                 module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
                 package__ankhorage_k3s -.-&gt;
@@ -1726,6 +1839,19 @@
                 module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
                 module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
                 module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts&quot;]
+                package__ankhorage_k3s -.-&gt;
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt;
                 module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
                 package__ankhorage_k3s -.-&gt;
@@ -1824,6 +1950,11 @@
                 module_src_features_cluster_runtime_utils_createK3sOwners_ts
                 module_src_features_cluster_runtime_utils_createK3sOwners_ts --&gt;
                 module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts[&quot;src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts&quot;]
+                package__ankhorage_k3s -.-&gt;
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts --&gt;
+                module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts[&quot;src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts&quot;]
                 package__ankhorage_k3s -.-&gt;
                 module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts
@@ -1855,6 +1986,15 @@
                 module_src_k3sCliControlPlane_test_ts --&gt;
                 module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
                 module_src_k3sCliControlPlane_test_ts --&gt; module_src_index_ts
+                module_src_k3sNetworking_test_ts[&quot;src/k3sNetworking.test.ts&quot;]
+                package__ankhorage_k3s -.-&gt; module_src_k3sNetworking_test_ts
+                module_src_k3sNetworking_test_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_k3sNetworking_test_ts --&gt;
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+                module_src_k3sNetworking_test_ts --&gt;
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+                module_src_k3sNetworking_test_ts --&gt; module_src_types_k3sRuntime_ts
                 module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
                 package__ankhorage_k3s -.-&gt; module_src_k3sRuntime_test_ts
                 module_src_k3sRuntime_test_ts --&gt; module_src_index_ts
@@ -1874,6 +2014,7 @@ graph TD
   package__ankhorage_k3s --&gt; entrypoint_src_index_ts
   module_examples_basic_usage_index_ts[&quot;examples/basic-usage/index.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_examples_basic_usage_index_ts
+  module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
   module_src_constants_infra_ts[&quot;src/constants/infra.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_constants_infra_ts
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
@@ -1888,8 +2029,14 @@ graph TD
   module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
   module_src_features_cluster_runtime_adapters_k3sCliSupport_ts --&gt; module_src_types_k3sRuntime_ts
@@ -1897,7 +2044,14 @@ graph TD
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
@@ -1948,6 +2102,9 @@ graph TD
   module_src_features_cluster_runtime_utils_createK3sOwners_ts[&quot;src/features/cluster-runtime/utils/createK3sOwners.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
   module_src_features_cluster_runtime_utils_createK3sOwners_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts[&quot;src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts[&quot;src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts
   module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts --&gt; module_src_types_k3sRuntime_ts
@@ -1970,6 +2127,12 @@ graph TD
   package__ankhorage_k3s -.-&gt; module_src_k3sCliControlPlane_test_ts
   module_src_k3sCliControlPlane_test_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
   module_src_k3sCliControlPlane_test_ts --&gt; module_src_index_ts
+  module_src_k3sNetworking_test_ts[&quot;src/k3sNetworking.test.ts&quot;]
+  package__ankhorage_k3s -.-&gt; module_src_k3sNetworking_test_ts
+  module_src_k3sNetworking_test_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_k3sNetworking_test_ts --&gt; module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+  module_src_k3sNetworking_test_ts --&gt; module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_k3sNetworking_test_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
   package__ankhorage_k3s -.-&gt; module_src_k3sRuntime_test_ts
   module_src_k3sRuntime_test_ts --&gt; module_src_index_ts
@@ -1995,8 +2158,10 @@ graph TD
                 module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
                 module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
                 module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts&quot;]
                 module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
                 module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
@@ -2006,6 +2171,7 @@ graph TD
                 module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/validateK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts[&quot;src/features/cluster-runtime/composition/createInfraAdapter.ts&quot;]
                 module_src_features_cluster_runtime_utils_createK3sOwners_ts[&quot;src/features/cluster-runtime/utils/createK3sOwners.ts&quot;]
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts[&quot;src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts&quot;]
                 module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts[&quot;src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts&quot;]
                 module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts[&quot;src/features/cluster-runtime/utils/getK3sClusterIdentity.ts&quot;]
                 module_src_features_cluster_runtime_utils_getK3sClusterSpec_ts[&quot;src/features/cluster-runtime/utils/getK3sClusterSpec.ts&quot;]
@@ -2013,9 +2179,11 @@ graph TD
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
                 module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
+                module_src_k3sNetworking_test_ts[&quot;src/k3sNetworking.test.ts&quot;]
                 module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
                 module_src_runtimeFixtures_test_ts[&quot;src/runtimeFixtures.test.ts&quot;]
                 module_src_types_k3sRuntime_ts[&quot;src/types/k3sRuntime.ts&quot;]
+                module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
                 module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
                 module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts
                 module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt;
@@ -2029,8 +2197,16 @@ graph TD
                 module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt;
                 module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
                 module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
                 module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt;
                 module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_adapters_k3sCliSupport_ts --&gt;
                 module_src_types_k3sRuntime_ts
@@ -2039,6 +2215,16 @@ graph TD
                 module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
                 module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
                 module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+                module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt;
+                module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt;
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt;
                 module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts
                 --&gt;
@@ -2110,6 +2296,8 @@ graph TD
                 module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_utils_createK3sOwners_ts --&gt;
                 module_src_types_k3sRuntime_ts
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts --&gt;
+                module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts --&gt;
                 module_src_types_k3sRuntime_ts
                 module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts --&gt;
@@ -2124,6 +2312,13 @@ graph TD
                 module_src_runtimeFixtures_test_ts module_src_k3sCliControlPlane_test_ts --&gt;
                 module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
                 module_src_k3sCliControlPlane_test_ts --&gt; module_src_index_ts
+                module_src_k3sNetworking_test_ts --&gt;
+                module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+                module_src_k3sNetworking_test_ts --&gt;
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+                module_src_k3sNetworking_test_ts --&gt;
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+                module_src_k3sNetworking_test_ts --&gt; module_src_types_k3sRuntime_ts
                 module_src_k3sRuntime_test_ts --&gt; module_src_index_ts
                 module_src_k3sRuntime_test_ts --&gt; module_src_runtimeFixtures_test_ts
                 module_src_runtimeFixtures_test_ts --&gt; module_src_index_ts
@@ -2137,8 +2332,10 @@ graph LR
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
   module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts&quot;]
   module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
@@ -2148,6 +2345,7 @@ graph LR
   module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/validateK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts[&quot;src/features/cluster-runtime/composition/createInfraAdapter.ts&quot;]
   module_src_features_cluster_runtime_utils_createK3sOwners_ts[&quot;src/features/cluster-runtime/utils/createK3sOwners.ts&quot;]
+  module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts[&quot;src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts&quot;]
   module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts[&quot;src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts&quot;]
   module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts[&quot;src/features/cluster-runtime/utils/getK3sClusterIdentity.ts&quot;]
   module_src_features_cluster_runtime_utils_getK3sClusterSpec_ts[&quot;src/features/cluster-runtime/utils/getK3sClusterSpec.ts&quot;]
@@ -2155,21 +2353,32 @@ graph LR
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
   module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
+  module_src_k3sNetworking_test_ts[&quot;src/k3sNetworking.test.ts&quot;]
   module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
   module_src_runtimeFixtures_test_ts[&quot;src/runtimeFixtures.test.ts&quot;]
   module_src_types_k3sRuntime_ts[&quot;src/types/k3sRuntime.ts&quot;]
+  module_examples_basic_usage_index_ts --&gt; module_dist_index_d_ts
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_adapters_k3sCliSupport_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_application_use_cases_prepareK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_features_cluster_runtime_utils_createK3sOwners_ts
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts --&gt; module_src_types_k3sRuntime_ts
@@ -2202,6 +2411,7 @@ graph LR
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_utils_createK3sOwners_ts --&gt; module_src_types_k3sRuntime_ts
+  module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_features_cluster_runtime_utils_getK3sClusterSpec_ts --&gt; module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts
@@ -2211,6 +2421,10 @@ graph LR
   module_src_infraAdapter_test_ts --&gt; module_src_runtimeFixtures_test_ts
   module_src_k3sCliControlPlane_test_ts --&gt; module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts
   module_src_k3sCliControlPlane_test_ts --&gt; module_src_index_ts
+  module_src_k3sNetworking_test_ts --&gt; module_src_features_cluster_runtime_adapters_k3sCliSupport_ts
+  module_src_k3sNetworking_test_ts --&gt; module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts
+  module_src_k3sNetworking_test_ts --&gt; module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts
+  module_src_k3sNetworking_test_ts --&gt; module_src_types_k3sRuntime_ts
   module_src_k3sRuntime_test_ts --&gt; module_src_index_ts
   module_src_k3sRuntime_test_ts --&gt; module_src_runtimeFixtures_test_ts
   module_src_runtimeFixtures_test_ts --&gt; module_src_index_ts
@@ -2227,8 +2441,10 @@ graph LR
                 module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
                 module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
                 module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+                module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts&quot;]
                 module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
                 module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
+                module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
@@ -2238,6 +2454,7 @@ graph LR
                 module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/validateK3sRuntimeAsync.ts&quot;]
                 module_src_features_cluster_runtime_composition_createInfraAdapter_ts[&quot;src/features/cluster-runtime/composition/createInfraAdapter.ts&quot;]
                 module_src_features_cluster_runtime_utils_createK3sOwners_ts[&quot;src/features/cluster-runtime/utils/createK3sOwners.ts&quot;]
+                module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts[&quot;src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts&quot;]
                 module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts[&quot;src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts&quot;]
                 module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts[&quot;src/features/cluster-runtime/utils/getK3sClusterIdentity.ts&quot;]
                 module_src_features_cluster_runtime_utils_getK3sClusterSpec_ts[&quot;src/features/cluster-runtime/utils/getK3sClusterSpec.ts&quot;]
@@ -2245,6 +2462,7 @@ graph LR
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
                 module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
+                module_src_k3sNetworking_test_ts[&quot;src/k3sNetworking.test.ts&quot;]
                 module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
                 module_src_runtimeFixtures_test_ts[&quot;src/runtimeFixtures.test.ts&quot;]
                 module_src_types_k3sRuntime_ts[&quot;src/types/k3sRuntime.ts&quot;]
@@ -2308,8 +2526,10 @@ graph LR
   module_src_features_cluster_runtime_adapters_createK3sCliControlPlane_ts[&quot;src/features/cluster-runtime/adapters/createK3sCliControlPlane.ts&quot;]
   module_src_features_cluster_runtime_adapters_createK3sNodeCommandExecutor_ts[&quot;src/features/cluster-runtime/adapters/createK3sNodeCommandExecutor.ts&quot;]
   module_src_features_cluster_runtime_adapters_inspectK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts&quot;]
+  module_src_features_cluster_runtime_adapters_inspectK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts&quot;]
   module_src_features_cluster_runtime_adapters_k3sCliSupport_ts[&quot;src/features/cluster-runtime/adapters/k3sCliSupport.ts&quot;]
   module_src_features_cluster_runtime_adapters_operateK3sCliAsync_ts[&quot;src/features/cluster-runtime/adapters/operateK3sCliAsync.ts&quot;]
+  module_src_features_cluster_runtime_adapters_reconcileK3sNetworkingAsync_ts[&quot;src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_destroyK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/destroyK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_ensureK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/ensureK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_application_use_cases_getK3sStatusAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/getK3sStatusAsync.ts&quot;]
@@ -2319,6 +2539,7 @@ graph LR
   module_src_features_cluster_runtime_application_use_cases_validateK3sRuntimeAsync_ts[&quot;src/features/cluster-runtime/application/use-cases/validateK3sRuntimeAsync.ts&quot;]
   module_src_features_cluster_runtime_composition_createInfraAdapter_ts[&quot;src/features/cluster-runtime/composition/createInfraAdapter.ts&quot;]
   module_src_features_cluster_runtime_utils_createK3sOwners_ts[&quot;src/features/cluster-runtime/utils/createK3sOwners.ts&quot;]
+  module_src_features_cluster_runtime_utils_createK3sTraefikConfigResource_ts[&quot;src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts&quot;]
   module_src_features_cluster_runtime_utils_createKubernetesDriverRequest_ts[&quot;src/features/cluster-runtime/utils/createKubernetesDriverRequest.ts&quot;]
   module_src_features_cluster_runtime_utils_getK3sClusterIdentity_ts[&quot;src/features/cluster-runtime/utils/getK3sClusterIdentity.ts&quot;]
   module_src_features_cluster_runtime_utils_getK3sClusterSpec_ts[&quot;src/features/cluster-runtime/utils/getK3sClusterSpec.ts&quot;]
@@ -2326,6 +2547,7 @@ graph LR
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_infraAdapter_test_ts[&quot;src/infraAdapter.test.ts&quot;]
   module_src_k3sCliControlPlane_test_ts[&quot;src/k3sCliControlPlane.test.ts&quot;]
+  module_src_k3sNetworking_test_ts[&quot;src/k3sNetworking.test.ts&quot;]
   module_src_k3sRuntime_test_ts[&quot;src/k3sRuntime.test.ts&quot;]
   module_src_runtimeFixtures_test_ts[&quot;src/runtimeFixtures.test.ts&quot;]
   module_src_types_k3sRuntime_ts[&quot;src/types/k3sRuntime.ts&quot;]
@@ -2629,7 +2851,7 @@ sequenceDiagram
             >
               <h3>validateK3sCliAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:20:1</code>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:22:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2639,17 +2861,7 @@ sequenceDiagram
             >
               <h3>inspectK3sCliAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:44:1</code>
-              </p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="inspectNodeAsync src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
-            >
-              <h3>inspectNodeAsync</h3>
-              <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:69:1</code>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:47:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2659,7 +2871,7 @@ sequenceDiagram
             >
               <h3>isK3sInstalledAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:98:1</code>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:76:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2669,7 +2881,27 @@ sequenceDiagram
             >
               <h3>versionMatchesAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:113:1</code>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:92:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="inspectNodeAsync src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>inspectNodeAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:108:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="inspectReadyNetworkingAsync src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts "
+            >
+              <h3>inspectReadyNetworkingAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:138:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2679,7 +2911,7 @@ sequenceDiagram
             >
               <h3>createK3sKubernetesApi</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:128:1</code>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:152:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2689,7 +2921,7 @@ sequenceDiagram
             >
               <h3>aggregateState</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:141:1</code>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:166:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2699,7 +2931,7 @@ sequenceDiagram
             >
               <h3>isInactiveService</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:148:1</code>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:174:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2709,7 +2941,57 @@ sequenceDiagram
             >
               <h3>hasExactAccess</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:152:1</code>
+                <code>src/features/cluster-runtime/adapters/inspectK3sCliAsync.ts:179:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-cluster-runtime-adapters-inspectk3snetworkingasync-ts"
+          class="view"
+          data-view="src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts</h2>
+            <article
+              class="item"
+              data-search="inspectK3sNetworkingAsync src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts "
+            >
+              <h3>inspectK3sNetworkingAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts:16:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="parseResource src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts "
+            >
+              <h3>parseResource</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts:59:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="isOwnedByCluster src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts "
+            >
+              <h3>isOwnedByCluster</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts:69:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="readValuesContent src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts "
+            >
+              <h3>readValuesContent</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/inspectK3sNetworkingAsync.ts:80:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2849,7 +3131,7 @@ sequenceDiagram
             >
               <h3>ensureK3sCliAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:20:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:22:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2859,7 +3141,7 @@ sequenceDiagram
             >
               <h3>waitForK3sCliAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:55:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:37:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2869,7 +3151,7 @@ sequenceDiagram
             >
               <h3>loadK3sImagesAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:74:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:57:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2879,7 +3161,7 @@ sequenceDiagram
             >
               <h3>suspendK3sCliAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:96:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:80:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2889,7 +3171,17 @@ sequenceDiagram
             >
               <h3>destroyK3sCliAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:115:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:100:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="ensureK3sClusterAsync src/features/cluster-runtime/adapters/operateK3sCliAsync.ts "
+            >
+              <h3>ensureK3sClusterAsync</h3>
+              <p class="muted">
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:121:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2899,7 +3191,7 @@ sequenceDiagram
             >
               <h3>resumeK3sNodesAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:135:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:157:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2909,7 +3201,7 @@ sequenceDiagram
             >
               <h3>installOrStartNodeAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:154:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:177:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2919,7 +3211,7 @@ sequenceDiagram
             >
               <h3>inspectK3sApiAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:183:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:207:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2929,7 +3221,7 @@ sequenceDiagram
             >
               <h3>readJoinTokenAsync</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:199:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:224:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2939,7 +3231,7 @@ sequenceDiagram
             >
               <h3>canResume</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:215:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:241:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2949,7 +3241,7 @@ sequenceDiagram
             >
               <h3>createInstallExec</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:221:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:248:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2959,7 +3251,7 @@ sequenceDiagram
             >
               <h3>getNodeHost</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:231:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:259:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -2969,7 +3261,65 @@ sequenceDiagram
             >
               <h3>getService</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:235:1</code>
+                <code>src/features/cluster-runtime/adapters/operateK3sCliAsync.ts:264:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-cluster-runtime-adapters-reconcilek3snetworkingasync-ts"
+          class="view"
+          data-view="src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts</h2>
+            <article
+              class="item"
+              data-search="reconcileK3sNetworkingAsync src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts "
+            >
+              <h3>reconcileK3sNetworkingAsync</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts:13:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="deleteTraefikConfigAsync src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts "
+            >
+              <h3>deleteTraefikConfigAsync</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts:33:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="applyTraefikConfigAsync src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts "
+            >
+              <h3>applyTraefikConfigAsync</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts:55:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="foreignTraefikConfig src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts "
+            >
+              <h3>foreignTraefikConfig</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/adapters/reconcileK3sNetworkingAsync.ts:88:1</code
+                >
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -3274,17 +3624,19 @@ sequenceDiagram
             <h2>src/features/cluster-runtime/composition/createInfraAdapter.ts</h2>
             <article
               class="item"
-              data-search="createInfraAdapter src/features/cluster-runtime/composition/createInfraAdapter.ts Create the canonical k3s runtime adapter entrypoint.&#10;&#10;The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official&#10;k3s installer. Standard workload projection and reconciliation are delegated to the published&#10;Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary."
+              data-search="createInfraAdapter src/features/cluster-runtime/composition/createInfraAdapter.ts Create the canonical k3s runtime adapter entrypoint.&#10;&#10;The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official&#10;k3s installer. Standard workload projection and reconciliation are delegated to the published&#10;Kubernetes driver. Canonical `networking.tls` ACME HTTP-01 intent is reconciled through an&#10;Infra-owned Traefik HelmChartConfig without overwriting foreign Traefik configuration. Tests and&#10;specialized hosts may inject the control-plane boundary."
             >
               <h3>createInfraAdapter</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/composition/createInfraAdapter.ts:22:1</code>
+                <code>src/features/cluster-runtime/composition/createInfraAdapter.ts:24:1</code>
               </p>
               <p>
                 Create the canonical k3s runtime adapter entrypoint. The default composition
                 bootstraps local Linux or host-key-pinned SSH nodes through the official k3s
                 installer. Standard workload projection and reconciliation are delegated to the
-                published Kubernetes driver. Tests and specialized hosts may inject the
+                published Kubernetes driver. Canonical `networking.tls` ACME HTTP-01 intent is
+                reconciled through an Infra-owned Traefik HelmChartConfig without overwriting
+                foreign Traefik configuration. Tests and specialized hosts may inject the
                 control-plane boundary.
               </p>
             </article>
@@ -3315,6 +3667,40 @@ sequenceDiagram
               <h3>createK3sClusterOwner</h3>
               <p class="muted">
                 <code>src/features/cluster-runtime/utils/createK3sOwners.ts:26:1</code>
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
+          id="view-src-features-cluster-runtime-utils-createk3straefikconfigresource-ts"
+          class="view"
+          data-view="src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts</h2>
+            <article
+              class="item"
+              data-search="createK3sTraefikConfigResource src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts "
+            >
+              <h3>createK3sTraefikConfigResource</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts:10:1</code
+                >
+              </p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createValuesContent src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts "
+            >
+              <h3>createValuesContent</h3>
+              <p class="muted">
+                <code
+                  >src/features/cluster-runtime/utils/createK3sTraefikConfigResource.ts:37:1</code
+                >
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -3394,7 +3780,7 @@ sequenceDiagram
             >
               <h3>isValidTopology</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/utils/getK3sClusterSpec.ts:41:1</code>
+                <code>src/features/cluster-runtime/utils/getK3sClusterSpec.ts:45:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -3404,7 +3790,7 @@ sequenceDiagram
             >
               <h3>invalidTargets</h3>
               <p class="muted">
-                <code>src/features/cluster-runtime/utils/getK3sClusterSpec.ts:50:1</code>
+                <code>src/features/cluster-runtime/utils/getK3sClusterSpec.ts:55:1</code>
               </p>
               <p class="empty">No description available.</p>
             </article>
@@ -3456,6 +3842,31 @@ sequenceDiagram
           </section>
         </section>
         <section
+          id="view-src-k3snetworking-test-ts"
+          class="view"
+          data-view="src/k3sNetworking.test.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/k3sNetworking.test.ts</h2>
+            <article class="item" data-search="createContext src/k3sNetworking.test.ts ">
+              <h3>createContext</h3>
+              <p class="muted"><code>src/k3sNetworking.test.ts:98:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createSpec src/k3sNetworking.test.ts ">
+              <h3>createSpec</h3>
+              <p class="muted"><code>src/k3sNetworking.test.ts:107:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createPrimaryAccess src/k3sNetworking.test.ts ">
+              <h3>createPrimaryAccess</h3>
+              <p class="muted"><code>src/k3sNetworking.test.ts:123:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
+        <section
           id="view-src-k3sruntime-test-ts"
           class="view"
           data-view="src/k3sRuntime.test.ts"
@@ -3465,27 +3876,27 @@ sequenceDiagram
             <h2>src/k3sRuntime.test.ts</h2>
             <article class="item" data-search="createLocalDesired src/k3sRuntime.test.ts ">
               <h3>createLocalDesired</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:93:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:97:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createRemoteDesired src/k3sRuntime.test.ts ">
               <h3>createRemoteDesired</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:102:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:106:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createWorkload src/k3sRuntime.test.ts ">
               <h3>createWorkload</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:121:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:125:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createContext src/k3sRuntime.test.ts ">
               <h3>createContext</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:133:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:137:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createDestroyRequest src/k3sRuntime.test.ts ">
               <h3>createDestroyRequest</h3>
-              <p class="muted"><code>src/k3sRuntime.test.ts:157:1</code></p>
+              <p class="muted"><code>src/k3sRuntime.test.ts:168:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -3500,17 +3911,17 @@ sequenceDiagram
             <h2>src/runtimeFixtures.test.ts</h2>
             <article class="item" data-search="success src/runtimeFixtures.test.ts ">
               <h3>success</h3>
-              <p class="muted"><code>src/runtimeFixtures.test.ts:129:1</code></p>
+              <p class="muted"><code>src/runtimeFixtures.test.ts:134:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="includesLabels src/runtimeFixtures.test.ts ">
               <h3>includesLabels</h3>
-              <p class="muted"><code>src/runtimeFixtures.test.ts:133:1</code></p>
+              <p class="muted"><code>src/runtimeFixtures.test.ts:139:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="sameResource src/runtimeFixtures.test.ts ">
               <h3>sameResource</h3>
-              <p class="muted"><code>src/runtimeFixtures.test.ts:144:1</code></p>
+              <p class="muted"><code>src/runtimeFixtures.test.ts:151:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>

@@ -3,7 +3,7 @@
 
 # @ankhorage/k3s
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v0.2.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v0.3.1](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 k3s runtime adapter for provider-neutral Ankhorage infrastructure.
 
@@ -33,10 +33,12 @@ Create the canonical k3s runtime adapter entrypoint.
 
 The default composition bootstraps local Linux or host-key-pinned SSH nodes through the official
 k3s installer. Standard workload projection and reconciliation are delegated to the published
-Kubernetes driver. Tests and specialized hosts may inject the control-plane boundary.
+Kubernetes driver. Canonical `networking.tls` ACME HTTP-01 intent is reconciled through an
+Infra-owned Traefik HelmChartConfig without overwriting foreign Traefik configuration. Tests and
+specialized hosts may inject the control-plane boundary.
 
 Module: `src/features/cluster-runtime/composition/createInfraAdapter.ts`
-Source: `src/features/cluster-runtime/composition/createInfraAdapter.ts:22:1`
+Source: `src/features/cluster-runtime/composition/createInfraAdapter.ts:24:1`
 Related symbols: `K3sAdapterOptions`
 
 </details>
