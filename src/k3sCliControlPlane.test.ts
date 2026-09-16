@@ -38,24 +38,72 @@ it('runs the concrete single-node lifecycle and resumes without downloading agai
   expect(absent.ok && absent.value.state).toBe('absent');
 });
 
-it('bootstraps multi-node servers and agents through the same transient access boundary', async () => {
+it('runs the concrete 2-server/1-agent membership lifecycle through transient access', async () => {
   const executor = new RecordingExecutor();
+  let downloads = 0;
   const controlPlane = createK3sCliControlPlane({
     executor,
-    installScriptLoader: () => Promise.resolve('official-installer'),
+    installScriptLoader: () => {
+      downloads += 1;
+      return Promise.resolve('official-installer');
+    },
   });
   const { spec, access } = createRemoteFixture();
 
   const ensured = await controlPlane.ensureAsync(spec, access);
   expect(ensured.ok && ensured.value.state).toBe('ready');
+  expect(ensured.ok && ensured.value.nodes.map(({ id, state }) => `${id}:${state}`)).toEqual([
+    'server-a:ready',
+    'server-b:ready',
+    'agent-a:ready',
+  ]);
   const installs = executor.requests.filter(
     ({ request }) => request.stdin === 'official-installer',
   );
   expect(installs).toHaveLength(3);
   expect(installs[0]?.request.environment?.INSTALL_K3S_EXEC).toBe('server --cluster-init');
+  expect(installs[1]?.request.environment?.INSTALL_K3S_EXEC).toBe('server');
   expect(installs[1]?.request.environment?.K3S_TOKEN).toBe('join-token');
   expect(installs[2]?.request.environment?.INSTALL_K3S_EXEC).toBe('agent');
+  expect(installs[2]?.request.environment?.K3S_TOKEN).toBe('join-token');
   expect(JSON.stringify(ensured)).not.toContain('join-token');
+  expect(downloads).toBe(1);
+
+  expect((await controlPlane.suspendAsync(spec, access)).ok).toBe(true);
+  const suspended = await controlPlane.inspectAsync(spec, access);
+  expect(suspended.ok && suspended.value.nodes.map(({ id, state }) => `${id}:${state}`)).toEqual([
+    'server-a:stopped',
+    'server-b:stopped',
+    'agent-a:stopped',
+  ]);
+  expect(
+    executor.requests
+      .filter(
+        ({ request }) => request.executable === 'systemctl' && request.arguments[0] === 'stop',
+      )
+      .map(({ nodeId, request }) => `${nodeId}:${request.arguments[1]}`),
+  ).toEqual(['agent-a:k3s-agent', 'server-b:k3s', 'server-a:k3s']);
+
+  const resumed = await controlPlane.ensureAsync(spec, access);
+  expect(resumed.ok && resumed.value.state).toBe('ready');
+  expect(downloads).toBe(1);
+  expect(executor.requests.filter(({ request }) => request.stdin === 'official-installer')).toHaveLength(
+    3,
+  );
+
+  expect((await controlPlane.destroyAsync(spec, access)).ok).toBe(true);
+  expect(
+    executor.requests
+      .filter(({ request }) => request.executable.endsWith('uninstall.sh'))
+      .map(({ nodeId, request }) => `${nodeId}:${request.executable}`),
+  ).toEqual([
+    'agent-a:/usr/local/bin/k3s-agent-uninstall.sh',
+    'server-b:/usr/local/bin/k3s-uninstall.sh',
+    'server-a:/usr/local/bin/k3s-uninstall.sh',
+  ]);
+  const absent = await controlPlane.inspectAsync(spec, access);
+  expect(absent.ok && absent.value.state).toBe('absent');
+  expect(absent.ok && absent.value.nodes).toEqual([]);
 });
 
 class RecordingExecutor implements K3sNodeCommandExecutor {
