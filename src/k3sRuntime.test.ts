@@ -57,6 +57,29 @@ it('bootstraps deterministic remote multi-node topology with transient SSH crede
   expect(JSON.stringify(result)).not.toContain('private-key');
 });
 
+it('projects the same generic Kubernetes workloads for single-node and multi-node topology', async () => {
+  const context = createContext('production');
+  const singleControlPlane = new FakeK3sControlPlane();
+  const multiControlPlane = new FakeK3sControlPlane();
+  const single = createInfraAdapter({ controlPlane: singleControlPlane });
+  const multi = createInfraAdapter({ controlPlane: multiControlPlane });
+
+  const singleResult = await single.ensureAsync(
+    context,
+    createRemoteDesired({ servers: 1, agents: 0 }),
+  );
+  const multiResult = await multi.ensureAsync(
+    context,
+    createRemoteDesired({ servers: 2, agents: 1 }),
+  );
+
+  expect(singleResult.ok).toBe(true);
+  expect(multiResult.ok).toBe(true);
+  expect(singleControlPlane.lastSpec?.topology).toEqual({ servers: 1, agents: 0 });
+  expect(multiControlPlane.lastSpec?.topology).toEqual({ servers: 2, agents: 1 });
+  expect(multiControlPlane.api.resources).toEqual(singleControlPlane.api.resources);
+});
+
 it('retains the k3s cluster when persistent workload data is not authorized for deletion', async () => {
   const controlPlane = new FakeK3sControlPlane();
   const adapter = createInfraAdapter({ controlPlane });
@@ -103,10 +126,22 @@ function createLocalDesired(persistent = false): InfraRuntimeDesiredState<'k3s'>
   };
 }
 
-function createRemoteDesired(): InfraRuntimeDesiredState<'k3s'> {
+function createRemoteDesired(
+  topology: { readonly servers: number; readonly agents: number } = { servers: 1, agents: 2 },
+): InfraRuntimeDesiredState<'k3s'> {
+  const ids = [
+    ...Array.from(
+      { length: topology.servers },
+      (_, index) => `server-${String.fromCharCode(97 + index)}`,
+    ),
+    ...Array.from(
+      { length: topology.agents },
+      (_, index) => `agent-${String.fromCharCode(97 + index)}`,
+    ),
+  ];
   return {
-    selection: { provider: 'k3s', topology: { servers: 1, agents: 2 } },
-    targets: ['server-a', 'agent-a', 'agent-b'].map((id) => ({
+    selection: { provider: 'k3s', topology },
+    targets: ids.map((id) => ({
       id,
       kind: 'ssh-host' as const,
       os: 'linux' as const,
