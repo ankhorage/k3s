@@ -70,7 +70,9 @@ async function expectMultiNodeBootstrap(
     'server-b:ready',
     'agent-a:ready',
   ]);
-  const installs = executor.requests.filter(({ request }) => request.stdin === 'official-installer');
+  const installs = executor.requests.filter(
+    ({ request }) => request.stdin === 'official-installer',
+  );
   expect(installs).toHaveLength(3);
   expect(installs[0]?.request.environment?.INSTALL_K3S_EXEC).toBe('server --cluster-init');
   expect(installs[1]?.request.environment?.INSTALL_K3S_EXEC).toBe('server');
