@@ -134,7 +134,11 @@ async function expectMultiNodeDestroy(
   ]);
   const absent = await controlPlane.inspectAsync(spec, access);
   expect(absent.ok && absent.value.state).toBe('absent');
-  expect(absent.ok && absent.value.nodes).toEqual([]);
+  expect(absent.ok && absent.value.nodes.map(({ id, state }) => `${id}:${state}`)).toEqual([
+    'server-a:absent',
+    'server-b:absent',
+    'agent-a:absent',
+  ]);
 }
 
 class RecordingExecutor implements K3sNodeCommandExecutor {
